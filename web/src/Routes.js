@@ -1,19 +1,27 @@
-// In this file, all Page components from 'src/pages` are auto-imported. Nested
-// directories are supported, and should be uppercase. Each subdirectory will be
-// prepended onto the component name.
-//
-// Examples:
-//
-// 'src/pages/HomePage/HomePage.js'         -> HomePage
-// 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
+// IMPORTING PACKAGES/MODULES
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import { useRecoilState } from 'recoil'
 
 import { Router, Route } from '@redwoodjs/router'
 
+import { darkThemeAtom } from './contexts/atoms'
+import DarkTheme from './themes/darkTheme'
+import LightTheme from './themes/lightTheme'
+
 const Routes = () => {
+  // GETTING ATOMIC STATES
+  const [isDarkTheme] = useRecoilState(darkThemeAtom)
+
   return (
-    <Router>
-      <Route notfound page={NotFoundPage} />
-    </Router>
+    <ThemeProvider theme={isDarkTheme === true ? DarkTheme : LightTheme}>
+      <CssBaseline />
+      <Router>
+        <Route path="/" page={LandingPage} name="landing" />
+        <Route path="/signup" page={SignupPage} name="signup" />
+        <Route path="/signin" page={SigninPage} name="signin" />
+        <Route notfound page={NotFoundPage} />
+      </Router>
+    </ThemeProvider>
   )
 }
 

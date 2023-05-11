@@ -1,3 +1,6 @@
+// IMPORTING PACKAGES/MODULES
+import { RecoilRoot } from 'recoil'
+
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 
@@ -10,7 +13,9 @@ const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <RedwoodApolloProvider>
-        <Routes />
+        <RecoilRoot>
+          <Routes />
+        </RecoilRoot>
       </RedwoodApolloProvider>
     </RedwoodProvider>
   </FatalErrorBoundary>
