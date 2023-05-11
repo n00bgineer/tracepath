@@ -11536,6 +11536,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"diagonostic@workspace:diagonostic":
+  version: 0.0.0-use.local
+  resolution: "diagonostic@workspace:diagonostic"
+  dependencies:
+    nodejs-traceroute: ^2.0.1
+  languageName: unknown
+  linkType: soft
+
 "diff-sequences@npm:^29.4.3":
   version: 29.4.3
   resolution: "diff-sequences@npm:29.4.3"
@@ -18286,6 +18294,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nodejs-traceroute@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "nodejs-traceroute@npm:2.0.1"
+  dependencies:
+    validator: ^13.7.0
+  checksum: d4d2aaf1e93a25364e559550cb9b0418e25655b10870a2f75b3e1e28e8e25b9418871f6c70450472a043380d954e6fe99502dae6d00bbc907d6288146b98cd44
+  languageName: node
+  linkType: hard
+
 "nodemon@npm:2.0.22":
   version: 2.0.22
   resolution: "nodemon@npm:2.0.22"
@@ -24131,6 +24148,13 @@ __metadata:
     spdx-correct: ^3.0.0
     spdx-expression-parse: ^3.0.0
   checksum: 7b91e455a8de9a0beaa9fe961e536b677da7f48c9a493edf4d4d4a87fd80a7a10267d438723364e432c2fcd00b5650b5378275cded362383ef570276e6312f4f
+  languageName: node
+  linkType: hard
+
+"validator@npm:^13.7.0":
+  version: 13.9.0
+  resolution: "validator@npm:13.9.0"
+  checksum: 0a0af4b37779671b53ef790aa9d36f71a605c9d41c6daf198d2a1051ce549bcdca3313fa3b52c8fa24577e1a4968ec9404ad8a928d3607d51bccef6d6e33bee7
   languageName: node
   linkType: hard
 
