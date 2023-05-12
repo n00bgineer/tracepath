@@ -15,22 +15,22 @@ const DarkTheme = createTheme({
   typography: {
     fontFamily: 'Source Sans Pro',
     h1: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Roboto Slab',
     },
     h2: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Roboto Slab',
     },
     h3: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Roboto Slab',
     },
     h4: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Roboto Slab',
     },
     h5: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Roboto Slab',
     },
     h6: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Roboto Slab',
     },
     fontSize: 16,
   },
