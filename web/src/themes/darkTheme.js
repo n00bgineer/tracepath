@@ -11,6 +11,9 @@ const DarkTheme = createTheme({
     secondary: {
       main: '#b15c5b',
     },
+    background: {
+      default: 'rgb(39 39 42)',
+    },
   },
   typography: {
     fontFamily: 'Source Sans Pro',
