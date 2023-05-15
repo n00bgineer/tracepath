@@ -7,7 +7,6 @@ const PriceCard = ({ title, content, selected, price, features }) => {
     <Card
       className="price-card"
       sx={(theme) => {
-        console.log(theme)
         return {
           border: selected ? '3px solid' : '1px solid',
           borderColor:

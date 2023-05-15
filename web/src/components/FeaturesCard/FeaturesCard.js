@@ -14,7 +14,6 @@ const FeaturesCard = ({ title, content, image, tags, link }) => {
     <Card
       className="features-card"
       sx={(theme) => {
-        console.log(theme)
         return {
           borderColor:
             theme.palette.mode === 'light'
