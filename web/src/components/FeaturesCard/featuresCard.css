@@ -37,3 +37,17 @@
   margin-left: -5px!important;
   margin-top: 5px!important;
 }
+
+@media screen and (max-width: 400px) {
+  .features-card{
+    min-width: 100%;
+    aspect-ratio: unset;
+  }
+  .feature-tags-container{
+    margin-bottom: 15px;
+  }
+  .features-card > .feature-card-image{
+    margin-bottom: -33%;
+    margin-right: -30%;
+  }
+}
