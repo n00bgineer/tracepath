@@ -1,0 +1,39 @@
+/* STYLING FEATURES CARD */
+.features-card{
+  aspect-ratio: 1.1/1;
+  border: 1px solid;
+  border-radius: 24px!important;
+  flex-grow: 1!important;
+  margin: 15px!important;
+  max-width: calc(33% - 50px)!important;
+  min-width: 400px;
+  padding: 25px!important;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+.features-card:hover{
+  transform: scale(1.05);
+}
+.feature-card-title{
+  font-weight: normal!important;
+  text-align: left!important;
+}
+.feature-card-subtitle{
+  margin-top: 10px!important;
+  text-align: left!important;
+}
+.features-card > .feature-card-image{
+  bottom: 0;
+  margin-bottom: -20%;
+  margin-right: -15%;
+  position: absolute;
+  right: 0;
+  width: 60%;
+}
+.feature-tags-container{
+  margin-top: 15px;
+}
+.feature-card-link{
+  margin-left: -5px!important;
+  margin-top: 5px!important;
+}
