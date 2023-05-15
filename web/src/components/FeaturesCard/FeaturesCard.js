@@ -3,9 +3,11 @@ import React from 'react'
 import './featuresCard.css'
 
 import { ArrowCircleRight } from '@mui/icons-material'
-import { Box, Card, Chip, IconButton, Typography } from '@mui/material'
+import { Box, Card, Chip, Typography } from '@mui/material'
 
 import { Link } from '@redwoodjs/router'
+
+import IconButton from '../IconButton/IconButton'
 
 const FeaturesCard = ({ title, content, image, tags, link }) => {
   return (
