@@ -15,6 +15,8 @@ const PriceCard = ({ title, content, selected, price, features }) => {
               ? selected
                 ? 'primary.main'
                 : 'hsl(214.3 31.8% 91.4)'
+              : selected
+              ? 'primary.main'
               : 'rgba(230,230,230,0.4)',
           backdropFilter: 'blur(10px)',
         }
