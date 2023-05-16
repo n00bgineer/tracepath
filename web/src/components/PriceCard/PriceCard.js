@@ -1,8 +1,21 @@
 // IMPORTING PACKAGES/MODULES
 import { Box, Card, Typography } from '@mui/material'
-import './priceCard.css'
 
-const PriceCard = ({ title, content, selected, price, features }) => {
+import './priceCard.css'
+import { Link as RedwoodLink } from '@redwoodjs/router'
+
+import Button from '../Button/Button'
+
+const PriceCard = ({
+  title,
+  content,
+  selected,
+  price,
+  features,
+  link,
+  linkDisabled,
+  linkStartIcon,
+}) => {
   return (
     <Card
       className="price-card"
@@ -55,6 +68,20 @@ const PriceCard = ({ title, content, selected, price, features }) => {
           })}
         </Box>
       )}
+      <Box className="price-card-action-container">
+        <Button
+          variant="contained"
+          component={RedwoodLink}
+          size="large"
+          className="primary-grad"
+          to={link}
+          disabled={linkDisabled}
+          linkStartIcon={linkStartIcon}
+          fullWidth
+        >
+          Get Started
+        </Button>
+      </Box>
     </Card>
   )
 }

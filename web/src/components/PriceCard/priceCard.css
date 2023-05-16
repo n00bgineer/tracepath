@@ -32,9 +32,13 @@
   list-style: none;
 }
 .price-card .feature-list-item{
-  margin-left: -25px!important;
   text-align: center!important;
+  margin: 10px 0px 10px -25px!important;
 }
+.price-card-action-container{
+  margin: 10px auto;
+}
+
 
 @media screen and (max-width: 900px) {
   .price-card{
