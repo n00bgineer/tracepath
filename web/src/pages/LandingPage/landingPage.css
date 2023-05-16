@@ -1,0 +1,212 @@
+/* COMMON STYLES */
+.section-title-container{
+  margin: 0px auto;
+  width: 65%;
+}
+.section-title{
+  font-size: 1.75em!important;
+  font-weight: bolder!important;
+  text-align: center!important;
+}
+.section-subtitle{
+  font-size: 1em!important;
+  margin-top: 15px!important;
+  text-align: center!important;
+}
+
+@media screen and (max-width: 900px) {
+  .section-title-container{
+    width: 100%;
+  }
+}
+
+/* HEADER STYLES */
+header, section, footer{
+  padding: 10px 20px;
+}
+header{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.brand-info-container{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.brand-info-container > .logo{
+  height: 55px;
+  margin-right: 5px;
+}
+.brand-info-container > .brand-name{
+  font-size: 2em!important;
+  font-weight: bolder!important;
+}
+.primary-links > a, .secondary-links > a{
+  font-weight: 500;
+  margin-right: 15px;
+  text-decoration: none;
+}
+.primary-links > a:hover, .secondary-links > a:hover{
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+  .brand-info-container > .logo{
+    height: 45px;
+  }
+  .brand-info-container > .brand-name{
+    font-size: 1.5em!important;
+  }
+  .primary-links > a{
+    margin-right: 5px;
+  }
+  .secondary-links{
+    visibility: hidden;
+  }
+}
+
+/* HERO SECTION */
+.hero-content-container{
+  margin: 50px auto 30px;
+  width: 50%;
+}
+.hero-headline{
+  font-size: 3em!important;
+  font-weight: bolder!important;
+  text-align: center!important;
+}
+.hero-subheadline{
+  font-size: 1.5em!important;
+  margin-top: 20px!important;
+  text-align: center!important;
+}
+.hero-cta-container{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 1300px) {
+  .hero-content-container{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .hero-content-container{
+    width: 95%;
+  }
+}
+
+/* FEATURE SECTION */
+#features{
+  margin: 50px auto 30px;
+}
+.features-card-container{
+  align-items: center;
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px auto 0px;
+  padding: 15px 0px;
+  width: 80%;
+}
+
+@media screen and (max-width: 1300px) {
+  #features{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 900px) {
+  #features{
+    width: 95%;
+  }
+  .features-card-container{
+    margin: 0px auto;
+    padding: 0px;
+    width: 100%;
+  }
+}
+
+/* PRICING SECTION */
+#pricing{
+  margin: 50px auto 30px;
+}
+.pricing-cards-container{
+  align-items: center;
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px auto 0px;
+  padding: 15px 0px;
+  width: 80%;
+}
+
+@media screen and (max-width: 1300px) {
+  #pricing{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 900px) {
+  #pricing{
+    width: 95%;
+  }
+  .pricing-cards-container{
+    margin: 0px auto;
+    padding: 0px;
+    width: 100%;
+  }
+}
+
+/* CTA SECTION */
+#cta{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+.cta-content-container{
+  margin-right: -8%;
+}
+.cta-canvas-container{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1450px) {
+  #cta{
+    width: 70%;
+  }
+  .cta-content-container{
+    margin-right: 0px;
+  }
+}
+@media screen and (max-width: 900px) {
+  #cta{
+    padding: 0px 10px;
+    width: 100%;
+  }
+}
+
+/* FOOTER SECTION */
+footer{
+  border-radius: 24px;
+  padding: 30px;
+  width: 95%;
+  margin: 20px auto
+}
+.footer-copyright{
+  font-weight: 900!important;
+  margin-top: 15px!important;
+  text-align: center!important;
+}
