@@ -142,7 +142,7 @@ header{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px auto 0px;
+  margin: 20px auto 20px;
   padding: 15px 0px;
   width: 80%;
 }
@@ -201,12 +201,29 @@ header{
 /* FOOTER SECTION */
 footer{
   border-radius: 24px;
+  margin: 20px auto;
   padding: 30px;
-  width: 95%;
-  margin: 20px auto
+  width: 95%
 }
 .footer-copyright{
   font-weight: 900!important;
   margin-top: 15px!important;
   text-align: center!important;
+}
+
+/* FAQ SECTIONS */
+.faq-cards-container{
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 35px auto;
+  width: 80%;
+}
+
+@media screen and (max-width: 900px) {
+  .faq-cards-container{
+    width: 100%;
+  }
 }

@@ -10,6 +10,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 import './landingPage.css'
 import Button from 'src/components/Button/Button'
+import FaqCard from 'src/components/FaqCard/FaqCard'
 import FeaturesCard from 'src/components/FeaturesCard/FeaturesCard'
 import PriceCard from 'src/components/PriceCard/PriceCard'
 
@@ -202,8 +203,8 @@ const LandingPage = () => {
               features={[
                 '- Deep dives for all metrics',
                 '- Visual Tracerouting for reports',
-                '- Manual execution',
                 '- Only 3 reports/mo',
+                '- Manual execution',
                 '- Access to a limited number of servers',
                 <Typography key="TraceScore" variant="body1">
                   - TraceScore&trade; isn&rsquo;t available{' '}
@@ -239,6 +240,39 @@ const LandingPage = () => {
               link={routes.signup()}
               linkDisabled={true}
               linkStartIcon={<Paid />}
+            />
+          </Box>
+        </Box>
+        <Box id="faq" component="section">
+          <Box className="section-title-container">
+            <Typography variant="h2" className="section-title">
+              Frequently asked questions
+            </Typography>
+          </Box>
+          <Box className="faq-cards-container">
+            <FaqCard
+              question="What is Tracepath?"
+              answer="Tracepath is an application monitoring system that provides visual tracerouting and simplified performance metrics to help optimize application performance."
+            />
+            <FaqCard
+              question="How does Tracepath help improve application performance?"
+              answer="Tracepath enables users to track and analyze performance metrics, identify bottlenecks, and optimize their applications for seamless user experiences."
+            />
+            <FaqCard
+              question="Can Tracepath monitor applications from multiple locations?"
+              answer="Yes, Tracepath generates performance reports from multiple locations across the globe, offering insights into how an application performs in different geographical regions."
+            />
+            <FaqCard
+              question="Is Tracepath suitable for non-technical users?"
+              answer="Absolutely! Tracepath offers a user-friendly interface and simplified metrics, making it accessible and easy to use for both technical and non-technical users."
+            />
+            <FaqCard
+              question="Can I compare my application's performance against competitors using Tracepath?"
+              answer="It's WIP, but Tracepath provides a competitor analysis feature that allows you to compare your application's performance metrics against industry rivals, giving you insights to outperform the competition."
+            />
+            <FaqCard
+              question="Can Tracepath monitor both web-based and mobile applications?"
+              answer="Unfortunately, it only works for web applications for now."
             />
           </Box>
         </Box>
