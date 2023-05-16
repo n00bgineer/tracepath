@@ -10205,6 +10205,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cobe@npm:^0.6.3":
+  version: 0.6.3
+  resolution: "cobe@npm:0.6.3"
+  dependencies:
+    phenomenon: ^1.6.0
+  checksum: ffb647d5fe3706534b896cb48594dcaae9dfbd97d35a408f084f4b8ad11d1cbb3583977371670d05d518e67e38ef88fb24c843d191fd49c03e576a4a9d81cf63
+  languageName: node
+  linkType: hard
+
 "code-block-writer@npm:^11.0.0":
   version: 11.0.3
   resolution: "code-block-writer@npm:11.0.3"
@@ -19298,6 +19307,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"phenomenon@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "phenomenon@npm:1.6.0"
+  checksum: 32216a8861e69ab1d96c8fa96217769073f446173f3135fbe369ea61f0959c453347004b5aefb22ba18f725273e7c57ce2d2a29c4db6ac431a2839b7bacf9778
+  languageName: node
+  linkType: hard
+
 "picocolors@npm:^0.2.1":
   version: 0.2.1
   resolution: "picocolors@npm:0.2.1"
@@ -24376,6 +24392,7 @@ __metadata:
     "@redwoodjs/forms": 5.1.2
     "@redwoodjs/router": 5.1.2
     "@redwoodjs/web": 5.1.2
+    cobe: ^0.6.3
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
