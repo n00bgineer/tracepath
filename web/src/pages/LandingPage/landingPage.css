@@ -210,6 +210,28 @@ footer{
   margin-top: 15px!important;
   text-align: center!important;
 }
+.footer-brand-info-container{
+  width: fit-content;
+  max-width: 200px;
+}
+footer > .brand-info-container{
+  display: flex;
+  flex-direction: column;
+}
+.brand-logo-container{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.brand-logo-container > .logo{
+  height: 55px;
+  margin-right: 5px;
+}
+.brand-logo-container > .brand-name{
+  font-size: 2em!important;
+  font-weight: bolder!important;
+}
 
 /* FAQ SECTIONS */
 .faq-cards-container{

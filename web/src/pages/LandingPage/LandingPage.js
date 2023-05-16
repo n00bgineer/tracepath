@@ -318,8 +318,8 @@ const LandingPage = () => {
             }
           }}
         >
-          <Box>
-            <Box className="brand-info-container">
+          <Box className="brand-info-container">
+            <Box className="brand-logo-container">
               <img
                 src="https://res.cloudinary.com/dgu9rv3om/image/upload/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
                 alt="Tracepath logo"
@@ -329,6 +329,9 @@ const LandingPage = () => {
                 Tracepath
               </Typography>
             </Box>
+            <Typography variant="body1">
+              Application Monitoring Simplified
+            </Typography>
           </Box>
           <Typography variant="body1" className="footer-copyright">
             Copyright &copy; n00bgineer 2023
