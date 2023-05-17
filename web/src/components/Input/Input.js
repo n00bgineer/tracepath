@@ -68,7 +68,7 @@ const CustomFormHelperText = styled(MuiFormHelperText)(() => ({
   },
 }))
 
-const Input = ({ size, margin, ...props }) => {
+const Input = ({ margin, ...props }) => {
   // SETTING LOCAL VARIABLES
   // SETTING MARGIN CLASS
   let marginClass = ''
