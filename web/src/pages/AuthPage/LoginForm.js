@@ -46,11 +46,8 @@ const LoginForm = () => {
   return (
     <>
       <Box className="auth-form-text-container">
-        <Typography variant="h2" className="auth-form-title">
-          Welcome back
-        </Typography>
-        <Typography variant="body2" className="auth-form-subtitle">
-          Sign in to continue exploring Tracepath
+        <Typography variant="body1" className="auth-form-subtitle">
+          Welcome back!
         </Typography>
       </Box>
       <FormControl className="auth-form signup-form">

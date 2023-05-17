@@ -46,11 +46,8 @@ const SignupForm = () => {
   return (
     <>
       <Box className="auth-form-text-container">
-        <Typography variant="h2" className="auth-form-title">
+        <Typography variant="body1" className="auth-form-subtitle">
           Create an account
-        </Typography>
-        <Typography variant="body2" className="auth-form-subtitle">
-          Explore your app&rsquo;s performance by joining Tracepath
         </Typography>
       </Box>
       <FormControl className="auth-form signup-form">
@@ -75,6 +72,7 @@ const SignupForm = () => {
           margin="large"
           color="primary"
           onInput={setEmailField}
+          label="email"
         />
         <Input
           placeholder="Password"
@@ -95,6 +93,7 @@ const SignupForm = () => {
           margin="large"
           color="primary"
           onInput={setPasswordField}
+          label="password"
         />
         <Button
           size="large"
