@@ -52,7 +52,7 @@ const LoginForm = () => {
       </Box>
       <FormControl className="auth-form signup-form">
         <Button
-          size="large"
+          size="medium"
           variant="outlined"
           fullWidth={true}
           startIcon={<Google />}
@@ -94,7 +94,7 @@ const LoginForm = () => {
           onInput={setPasswordField}
         />
         <Button
-          size="large"
+          size="medium"
           variant="contained"
           fullWidth={true}
           color="primary"
