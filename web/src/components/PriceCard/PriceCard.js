@@ -73,7 +73,6 @@ const PriceCard = ({
           variant="contained"
           component={RedwoodLink}
           size="large"
-          className="primary-grad"
           to={link}
           disabled={linkDisabled}
           linkStartIcon={linkStartIcon}

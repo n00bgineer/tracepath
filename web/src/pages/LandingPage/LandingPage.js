@@ -125,7 +125,6 @@ const LandingPage = () => {
                 component={RedwoodLink}
                 size="large"
                 to={routes.signup()}
-                className="primary-grad"
               >
                 Generate your app&rsquo;s report
               </Button>
@@ -291,7 +290,6 @@ const LandingPage = () => {
                   variant="contained"
                   component={RedwoodLink}
                   size="large"
-                  className="primary-grad"
                   to={routes.signup()}
                 >
                   Get Started
