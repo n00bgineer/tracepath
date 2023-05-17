@@ -11,7 +11,6 @@ const CustomInput = styled(MuiInput)(({ theme }) => ({
   // ROOT STYLES
   '&.MuiOutlinedInput-root': {
     borderRadius: '9999px',
-    padding: '5px',
   },
   '&.MuiOutlinedInput-root:hover': {
     boxShadow: '0 0 15px rgba(0, 0, 0, 0.5)',
@@ -30,7 +29,7 @@ const CustomInput = styled(MuiInput)(({ theme }) => ({
 
   // SIZE STYLES
   '&MuiInputBase-sizeSmall': {
-    padding: '10px',
+    padding: '5px',
   },
 
   // ADORNMENT STYLES
@@ -69,15 +68,13 @@ const CustomFormHelperText = styled(MuiFormHelperText)(() => ({
   },
 }))
 
-const Input = ({ ...props }) => {
+const Input = ({ size, margin, ...props }) => {
   // SETTING LOCAL VARIABLES
   // SETTING MARGIN CLASS
   let marginClass = ''
-  if (props.margin === 'small') marginClass = 'MuiOutlinedInput-margin-small'
-  else if (props.margin === 'medium')
-    marginClass = 'MuiOutlinedInput-margin-normal'
-  else if (props.margin === 'large')
-    marginClass = 'MuiOutlinedInput-margin-large'
+  if (margin === 'small') marginClass = 'MuiOutlinedInput-margin-small'
+  else if (margin === 'medium') marginClass = 'MuiOutlinedInput-margin-normal'
+  else if (margin === 'large') marginClass = 'MuiOutlinedInput-margin-large'
 
   return (
     <>
