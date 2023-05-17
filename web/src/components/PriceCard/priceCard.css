@@ -46,10 +46,3 @@
     width: calc(100%);
   }
 }
-
-@media screen and (max-width: 400px) {
-  .features-card{
-    aspect-ratio: unset;
-    min-width: 100%;
-  }
-}
