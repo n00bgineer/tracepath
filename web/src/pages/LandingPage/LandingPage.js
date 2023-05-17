@@ -75,7 +75,7 @@ const LandingPage = () => {
           >
             <Link
               component="a"
-              href="https://twitter.com/n00bgineer"
+              href="https://twitter.com/n00bgineer/status/1654742809394692097?s=20"
               target="_blank"
             >
               Updates
@@ -105,7 +105,7 @@ const LandingPage = () => {
               }
             }}
           >
-            <Link component={RedwoodLink} href="#">
+            <Link component={RedwoodLink} to={routes.signup()}>
               Signup
             </Link>
           </Box>
@@ -145,7 +145,7 @@ const LandingPage = () => {
               application efficiency for a seamless user experience.
             </Typography>
           </Box>
-          <Box className="features-card-container">
+          <Box className="features-card-container card-container">
             <FeaturesCard
               title="Simplified Metrics"
               content="Tracepath simplifies metrics for effortless optimization and makes it accessible to even non-technical stakeholders. Track, analyze, and improve performance indicators with ease."
@@ -194,7 +194,7 @@ const LandingPage = () => {
               is available for now.
             </Typography>
           </Box>
-          <Box className="pricing-cards-container">
+          <Box className="pricing-card-container card-container">
             <PriceCard
               selected={true}
               title="Free mode"
@@ -249,7 +249,7 @@ const LandingPage = () => {
               Frequently asked questions
             </Typography>
           </Box>
-          <Box className="faq-cards-container">
+          <Box className="faq-card-container card-container">
             <FaqCard
               question="What is Tracepath?"
               answer="Tracepath is an application monitoring system that provides visual tracerouting and simplified performance metrics to help optimize application performance."
@@ -292,6 +292,7 @@ const LandingPage = () => {
                   component={RedwoodLink}
                   size="large"
                   className="primary-grad"
+                  to={routes.signup()}
                 >
                   Get Started
                 </Button>
