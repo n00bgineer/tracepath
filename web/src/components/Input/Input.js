@@ -74,7 +74,7 @@ const Input = ({ ...props }) => {
   // SETTING MARGIN CLASS
   let marginClass = ''
   if (props.margin === 'small') marginClass = 'MuiOutlinedInput-margin-small'
-  else if (props.margin === 'normal')
+  else if (props.margin === 'medium')
     marginClass = 'MuiOutlinedInput-margin-normal'
   else if (props.margin === 'large')
     marginClass = 'MuiOutlinedInput-margin-large'

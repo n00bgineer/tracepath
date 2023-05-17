@@ -107,7 +107,7 @@ const Button = ({ ...props }) => {
   // SETTING MARGIN CLASS
   let marginClass = ''
   if (props.margin === 'small') marginClass = 'MuiButton-margin-small'
-  else if (props.margin === 'normal') marginClass = 'MuiButton-margin-normal'
+  else if (props.margin === 'medium') marginClass = 'MuiButton-margin-normal'
   else if (props.margin === 'large') marginClass = 'MuiButton-margin-large'
 
   return (
