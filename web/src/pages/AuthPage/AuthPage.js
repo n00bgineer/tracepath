@@ -65,14 +65,14 @@ const AuthPage = () => {
                 label="Sign up"
                 icon={<AccountCircle />}
                 iconPosition="start"
-                size="large"
+                size="medium"
                 {...a11yProps(0)}
               />
               <Tab
                 label="Sign in"
                 icon={<Login />}
                 iconPosition="start"
-                size="large"
+                size="medium"
                 {...a11yProps(1)}
               />
             </Tabs>
