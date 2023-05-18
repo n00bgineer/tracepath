@@ -105,7 +105,7 @@ const LandingPage = () => {
               }
             }}
           >
-            <Link component={RedwoodLink} to={routes.auth()}>
+            <Link component={RedwoodLink} to={routes.signup()}>
               Signup
             </Link>
           </Box>
@@ -124,7 +124,7 @@ const LandingPage = () => {
                 variant="contained"
                 component={RedwoodLink}
                 size="large"
-                to={routes.auth()}
+                to={routes.signup()}
               >
                 Generate your app&rsquo;s report
               </Button>
@@ -149,19 +149,19 @@ const LandingPage = () => {
               title="Simplified Metrics"
               content="Tracepath simplifies metrics for effortless optimization and makes it accessible to even non-technical stakeholders. Track, analyze, and improve performance indicators with ease."
               image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684180433/tracepath/assets/Fractal_Cube_4_0001_uwjnom.png"
-              link={routes.auth()}
+              link={routes.signup()}
             />
             <FeaturesCard
               title="Visual Tracerouting"
               content="You can visualize the routing path of your network packets along with it's geographic location, allowing you to identify any potential bottlenecks or performance issues along the way."
               image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684179759/tracepath/assets/Atom_Bucky_1__R_tjxtpa.png"
-              link={routes.auth()}
+              link={routes.signup()}
             />
             <FeaturesCard
               title="Multiple Servers"
               content="Tracepath allows you to generate comprehensive reports across global locations, from Tokyo to New York. Gain valuable insights into application behavior from different geographical regions. "
               image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684181735/tracepath/assets/Torus_Stack_Taper_R_hnkmsm.png"
-              link={routes.auth()}
+              link={routes.signup()}
             />
             <FeaturesCard
               title="Competitor Analysis"
@@ -214,7 +214,7 @@ const LandingPage = () => {
                   <Chip color="default" label="🚧 In Progress" />
                 </Typography>,
               ]}
-              link={routes.auth()}
+              link={routes.signup()}
               linkStartIcon={<FreeBreakfast />}
             />
             <PriceCard
@@ -236,7 +236,7 @@ const LandingPage = () => {
                   <Chip color="default" label="🚧 In Progress" />
                 </Typography>,
               ]}
-              link={routes.auth()}
+              link={routes.signup()}
               linkDisabled={true}
               linkStartIcon={<Paid />}
             />
@@ -290,7 +290,7 @@ const LandingPage = () => {
                   variant="contained"
                   component={RedwoodLink}
                   size="large"
-                  to={routes.auth()}
+                  to={routes.signup()}
                 >
                   Get Started
                 </Button>

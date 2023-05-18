@@ -8,13 +8,15 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material'
-import { Box, FormControl, Typography } from '@mui/material'
+import { Box, FormControl, Typography, Link } from '@mui/material'
+
+import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
 import Button from 'src/components/Button/Button'
 import IconButton from 'src/components/IconButton/IconButton'
 import Input from 'src/components/Input/Input'
 
-const LoginForm = () => {
+const SigninForm = () => {
   // SETTING LOCAL STATE
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -46,8 +48,12 @@ const LoginForm = () => {
   return (
     <>
       <Box className="auth-form-text-container">
+        <Typography variant="h2" className="auth-form-title">
+          Welcome back
+        </Typography>
         <Typography variant="body1" className="auth-form-subtitle">
-          Welcome back!
+          Log in to Tracepath to generate reports, explore performance metrics,
+          and take control of your application&rsquo;s success
         </Typography>
       </Box>
       <FormControl className="auth-form signup-form">
@@ -102,8 +108,29 @@ const LoginForm = () => {
           Log in
         </Button>
       </FormControl>
+      <Box className="auth-page-links-container">
+        <Typography variant="body1">
+          New to Tracepath?{' '}
+          <Link
+            component={RedwoodLink}
+            to={routes.signup()}
+            className="auth-link"
+          >
+            Sign up
+          </Link>
+        </Typography>
+        <Typography variant="body1">
+          <Link
+            component={RedwoodLink}
+            to={routes.landing()}
+            className="auth-link"
+          >
+            Back to Home
+          </Link>
+        </Typography>
+      </Box>
     </>
   )
 }
 
-export default LoginForm
+export default SigninForm

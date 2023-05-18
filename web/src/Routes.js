@@ -16,7 +16,8 @@ const Routes = () => {
     <ThemeProvider theme={isDarkTheme === true ? DarkTheme : LightTheme}>
       <CssBaseline />
       <Router>
-        <Route path="/auth" page={AuthPage} name="auth" />
+        <Route path="/signin" page={SigninPage} name="signin" />
+        <Route path="/signup" page={SignupPage} name="signup" />
         <Route path="/" page={LandingPage} name="landing" />
         <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
         <Route notfound page={NotFoundPage} />

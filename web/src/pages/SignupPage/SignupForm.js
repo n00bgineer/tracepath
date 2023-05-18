@@ -8,7 +8,9 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material'
-import { Box, FormControl, Typography } from '@mui/material'
+import { Box, Link, FormControl, Typography } from '@mui/material'
+
+import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
 import Button from 'src/components/Button/Button'
 import IconButton from 'src/components/IconButton/IconButton'
@@ -46,8 +48,12 @@ const SignupForm = () => {
   return (
     <>
       <Box className="auth-form-text-container">
-        <Typography variant="body1" className="auth-form-subtitle">
+        <Typography variant="h2" className="auth-form-title">
           Create an account
+        </Typography>
+        <Typography variant="body1" className="auth-form-subtitle">
+          Sign up to Tracepath for effortless application monitoring, actionable
+          insights, and improved performance optimization
         </Typography>
       </Box>
       <FormControl className="auth-form signup-form">
@@ -56,7 +62,7 @@ const SignupForm = () => {
           variant="outlined"
           fullWidth={true}
           startIcon={<Google />}
-          margin="large"
+          margin="medium"
           color="primary"
         >
           Continue with Google
@@ -104,6 +110,27 @@ const SignupForm = () => {
           Sign up
         </Button>
       </FormControl>
+      <Box className="auth-page-links-container">
+        <Typography variant="body1">
+          Have an account?{' '}
+          <Link
+            component={RedwoodLink}
+            to={routes.signin()}
+            className="auth-link"
+          >
+            Sign in
+          </Link>
+        </Typography>
+        <Typography variant="body1">
+          <Link
+            component={RedwoodLink}
+            to={routes.landing()}
+            className="auth-link"
+          >
+            Back to Home
+          </Link>
+        </Typography>
+      </Box>
     </>
   )
 }
