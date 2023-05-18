@@ -8,7 +8,7 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material'
-import { Box, FormControl, Typography, Link } from '@mui/material'
+import { Box, Typography, Link } from '@mui/material'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
@@ -56,7 +56,7 @@ const SigninForm = () => {
           and take control of your application&rsquo;s success
         </Typography>
       </Box>
-      <FormControl className="auth-form signup-form">
+      <form className="auth-form signup-form">
         <Button
           size="medium"
           variant="outlined"
@@ -85,12 +85,8 @@ const SigninForm = () => {
           startAdornment={<Lock />}
           value={password}
           endAdornment={
-            <IconButton>
-              {isPasswordVisible ? (
-                <VisibilityOff onClick={setTogglePasswordVisibility} />
-              ) : (
-                <Visibility onClick={setTogglePasswordVisibility} />
-              )}
+            <IconButton onClick={setTogglePasswordVisibility}>
+              {isPasswordVisible ? <VisibilityOff /> : <Visibility />}
             </IconButton>
           }
           fullWidth={true}
@@ -107,7 +103,7 @@ const SigninForm = () => {
         >
           Log in
         </Button>
-      </FormControl>
+      </form>
       <Box className="auth-page-links-container">
         <Typography variant="body1">
           New to Tracepath?{' '}

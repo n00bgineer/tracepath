@@ -8,7 +8,7 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material'
-import { Box, Link, FormControl, Typography } from '@mui/material'
+import { Box, Link, Typography } from '@mui/material'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
@@ -56,7 +56,7 @@ const SignupForm = () => {
           insights, and improved performance optimization
         </Typography>
       </Box>
-      <FormControl className="auth-form signup-form">
+      <form className="auth-form signup-form">
         <Button
           size="medium"
           variant="outlined"
@@ -86,12 +86,8 @@ const SignupForm = () => {
           startAdornment={<Lock />}
           value={password}
           endAdornment={
-            <IconButton>
-              {isPasswordVisible ? (
-                <VisibilityOff onClick={setTogglePasswordVisibility} />
-              ) : (
-                <Visibility onClick={setTogglePasswordVisibility} />
-              )}
+            <IconButton onClick={setTogglePasswordVisibility}>
+              {isPasswordVisible ? <VisibilityOff /> : <Visibility />}
             </IconButton>
           }
           fullWidth={true}
@@ -109,7 +105,23 @@ const SignupForm = () => {
         >
           Sign up
         </Button>
-      </FormControl>
+      </form>
+      <Box className="auth-page-tac-container">
+        <Typography variant="body2" color="default">
+          By signing up or logging in, you agree to our{' '}
+          <Link component={RedwoodLink} to={routes.tos()} className="auth-link">
+            Terms of use
+          </Link>{' '}
+          and{' '}
+          <Link
+            component={RedwoodLink}
+            to={routes.privacy()}
+            className="auth-link"
+          >
+            Privacy policy
+          </Link>{' '}
+        </Typography>
+      </Box>
       <Box className="auth-page-links-container">
         <Typography variant="body1">
           Have an account?{' '}
