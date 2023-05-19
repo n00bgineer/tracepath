@@ -1,19 +1,8 @@
 /* COMMON STYLES */
-header{
-  margin: 0px auto;
-  padding: 10px 20px;
-  width: 95%;
-}
 section{
   margin: 50px auto;
   padding: 10px 20px;
   width: 100%;
-}
-footer{
-  border-radius: 24px;
-  margin: 30px auto;
-  padding: 30px;
-  width: 95%;
 }
 .section-title-container{
   margin: 0px auto;
@@ -40,61 +29,11 @@ footer{
   }
 }
 @media screen and (max-width: 900px) {
-  header{
-    margin-top: 15px;
-    padding: 5px;
-    width: 100%;
-  }
   .section-title-container{
     width: 100%;
   }
   .card-container{
     width: 100%;
-  }
-}
-
-/* HEADER STYLES */
-header{
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.brand-info-container{
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.brand-info-container > .logo{
-  height: 55px;
-  margin-right: 5px;
-}
-.brand-info-container > .brand-name{
-  font-size: 2em!important;
-  font-weight: bolder!important;
-}
-.primary-links > a, .secondary-links > a{
-  font-weight: 500;
-  margin-right: 15px;
-  text-decoration: none;
-}
-.primary-links > a:hover, .secondary-links > a:hover{
-  text-decoration: underline;
-}
-
-@media screen and (max-width: 900px) {
-  .brand-info-container > .logo{
-    height: 45px;
-  }
-  .brand-info-container > .brand-name{
-    font-size: 1.5em!important;
-  }
-  .primary-links > a{
-    margin-right: 5px;
-  }
-  .secondary-links{
-    visibility: hidden;
   }
 }
 
@@ -186,33 +125,4 @@ header{
   #cta{
     padding: 0px 10px;
   }
-}
-
-/* FOOTER SECTION */
-.footer-copyright{
-  font-weight: 900!important;
-  margin-top: 15px!important;
-  text-align: center!important;
-}
-.footer-brand-info-container{
-  max-width: 200px;
-  width: fit-content;
-}
-footer > .brand-info-container{
-  display: flex;
-  flex-direction: column;
-}
-.brand-logo-container{
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.brand-logo-container > .logo{
-  height: 55px;
-  margin-right: 5px;
-}
-.brand-logo-container > .brand-name{
-  font-size: 2em!important;
-  font-weight: bolder!important;
 }

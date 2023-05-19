@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 
 import { FreeBreakfast, Paid } from '@mui/icons-material'
-import { Box, Chip, Link, Typography } from '@mui/material'
+import { Box, Chip, Typography } from '@mui/material'
 import createGlobe from 'cobe'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
@@ -12,6 +12,8 @@ import './landingPage.css'
 import Button from 'src/components/Button/Button'
 import FaqCard from 'src/components/FaqCard/FaqCard'
 import FeaturesCard from 'src/components/FeaturesCard/FeaturesCard'
+import Footer from 'src/components/Footer/Footer'
+import Header from 'src/components/Header/Header'
 import PriceCard from 'src/components/PriceCard/PriceCard'
 
 const LandingPage = () => {
@@ -58,58 +60,7 @@ const LandingPage = () => {
         description="Track your application's performance effortlessly with Tracepath"
       />
       <>
-        <Box component="header">
-          <Box
-            component="nav"
-            className="secondary-links"
-            sx={(theme) => {
-              return {
-                '&>a': {
-                  color:
-                    theme.palette.mode === 'light'
-                      ? 'common.black'
-                      : 'common.white',
-                },
-              }
-            }}
-          >
-            <Link
-              component="a"
-              href="https://twitter.com/n00bgineer/status/1654742809394692097?s=20"
-              target="_blank"
-            >
-              Updates
-            </Link>
-          </Box>
-          <Box className="brand-info-container">
-            <img
-              src="https://res.cloudinary.com/dgu9rv3om/image/upload/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
-              alt="Tracepath logo"
-              className="logo"
-            />
-            <Typography variant="body1" className="brand-name">
-              Tracepath
-            </Typography>
-          </Box>
-          <Box
-            component="nav"
-            className="primary-links"
-            sx={(theme) => {
-              return {
-                '&>a': {
-                  color:
-                    theme.palette.mode === 'light'
-                      ? 'common.black'
-                      : 'common.white',
-                },
-              }
-            }}
-          >
-            <Link component={RedwoodLink} to={routes.signup()}>
-              Signup
-            </Link>
-          </Box>
-        </Box>
+        <Header />
         <Box id="hero" component="section">
           <Box className="hero-content-container">
             <Typography variant="h1" className="hero-headline">
@@ -309,33 +260,7 @@ const LandingPage = () => {
             />
           </Box>
         </Box>
-        <Box
-          component="footer"
-          sx={(theme) => {
-            return {
-              background: `linear-gradient(to top, ${theme.palette.secondary.dark}, ${theme.palette.secondary.main}, ${theme.palette.secondary.main})`,
-            }
-          }}
-        >
-          <Box className="brand-info-container">
-            <Box className="brand-logo-container">
-              <img
-                src="https://res.cloudinary.com/dgu9rv3om/image/upload/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
-                alt="Tracepath logo"
-                className="logo"
-              />
-              <Typography variant="body1" className="brand-name">
-                Tracepath
-              </Typography>
-            </Box>
-            <Typography variant="body1">
-              Application Monitoring Simplified
-            </Typography>
-          </Box>
-          <Typography variant="body1" className="footer-copyright">
-            Copyright &copy; n00bgineer 2023
-          </Typography>
-        </Box>
+        <Footer />
       </>
     </>
   )
