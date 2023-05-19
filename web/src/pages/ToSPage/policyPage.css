@@ -1,0 +1,18 @@
+.policy-container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 0px 10px;
+  width: 80%;
+}
+.policy-header{
+  font-size: 2em!important;
+  font-weight: 900!important;
+  text-align: center!important;
+  margin-bottom: 20px!important;
+}
+.policy-last-update{
+  margin-bottom: 20px!important;
+}
