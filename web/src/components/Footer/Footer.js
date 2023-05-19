@@ -1,3 +1,4 @@
+// IMPORTING PACKAGES/MODULES
 import { Box, Link, Typography } from '@mui/material'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
