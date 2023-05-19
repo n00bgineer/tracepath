@@ -1,4 +1,6 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Link, Typography } from '@mui/material'
+
+import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 import './footer.css'
 
 const Footer = () => {
@@ -22,13 +24,101 @@ const Footer = () => {
             Tracepath
           </Typography>
         </Box>
-        <Typography variant="body1">
-          Application Monitoring Simplified
+        <Typography variant="body2" className="brand-description">
+          Tracepath generates simplified performance reports for your web apps
+          from multiple locations across the world
+        </Typography>
+        <Typography variant="body2" className="footer-copyright">
+          Copyright &copy; n00bgineer 2023
         </Typography>
       </Box>
-      <Typography variant="body1" className="footer-copyright">
-        Copyright &copy; n00bgineer 2023
-      </Typography>
+      <Box className="footer-links-container">
+        <Box className="footer-links-subcontainer">
+          <Typography variant="body1" className="footer-links-header">
+            About
+          </Typography>
+          <Link
+            component="a"
+            className="footer-link"
+            href={`${window.location.origin}/#features`}
+            sx={(theme) => {
+              return {
+                color:
+                  theme.palette.mode === 'light'
+                    ? 'common.black'
+                    : 'common.white',
+              }
+            }}
+          >
+            Features
+          </Link>
+          <Link
+            component="a"
+            className="footer-link"
+            href={`${window.location.origin}/#pricing`}
+            sx={(theme) => {
+              return {
+                color:
+                  theme.palette.mode === 'light'
+                    ? 'common.black'
+                    : 'common.white',
+              }
+            }}
+          >
+            Pricing
+          </Link>
+          <Link
+            component="a"
+            className="footer-link"
+            href={`${window.location.origin}/#faq`}
+            sx={(theme) => {
+              return {
+                color:
+                  theme.palette.mode === 'light'
+                    ? 'common.black'
+                    : 'common.white',
+              }
+            }}
+          >
+            FAQ
+          </Link>
+        </Box>
+        <Box className="footer-links-subcontainer">
+          <Typography variant="body1" className="footer-links-header">
+            Policy
+          </Typography>
+          <Link
+            component={RedwoodLink}
+            className="footer-link"
+            to={routes.tos()}
+            sx={(theme) => {
+              return {
+                color:
+                  theme.palette.mode === 'light'
+                    ? 'common.black'
+                    : 'common.white',
+              }
+            }}
+          >
+            Terms of Services
+          </Link>
+          <Link
+            component={RedwoodLink}
+            className="footer-link"
+            to={routes.privacy()}
+            sx={(theme) => {
+              return {
+                color:
+                  theme.palette.mode === 'light'
+                    ? 'common.black'
+                    : 'common.white',
+              }
+            }}
+          >
+            Privacy Policy
+          </Link>
+        </Box>
+      </Box>
     </Box>
   )
 }
