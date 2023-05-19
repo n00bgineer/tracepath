@@ -38,6 +38,15 @@ const CustomInput = styled(MuiInput)(({ theme }) => ({
   '&.MuiInputBase-colorSecondary.Mui-focused .MuiSvgIcon-root': {
     color: theme.palette.secondary.main,
   },
+  '&.MuiInputBase-colorError.Mui-focused .MuiSvgIcon-root': {
+    color: theme.palette.error.main,
+  },
+  '&.MuiInputBase-colorInfo.Mui-focused .MuiSvgIcon-root': {
+    color: theme.palette.info.main,
+  },
+  '&.MuiInputBase-colorSuccess.Mui-focused .MuiSvgIcon-root': {
+    color: theme.palette.success.main,
+  },
   '&.Mui-error .MuiSvgIcon-root': {
     color: `${theme.palette.error.main}!important`,
   },
@@ -48,6 +57,15 @@ const CustomInput = styled(MuiInput)(({ theme }) => ({
   },
   '&.MuiInputBase-colorSecondary.Mui-focused': {
     boxShadow: `0 0 15px ${theme.palette.secondary.main}`,
+  },
+  '&.MuiInputBase-colorInfo.Mui-focused': {
+    boxShadow: `0 0 15px ${theme.palette.info.main}`,
+  },
+  '&.MuiInputBase-colorError.Mui-focused': {
+    boxShadow: `0 0 15px ${theme.palette.error.main}`,
+  },
+  '&.MuiInputBase-colorSuccess.Mui-focused': {
+    boxShadow: `0 0 15px ${theme.palette.success.main}`,
   },
   '&.MuiError.Mui-focused': {
     boxShadow: `0 0 15px ${theme.palette.error.main}`,
@@ -60,7 +78,7 @@ const CustomFormHelperText = styled(MuiFormHelperText)(() => ({
   },
 }))
 
-const Input = ({ margin, ...props }) => {
+const Input = ({ margin, errorText, formHelperText, ...props }) => {
   // SETTING LOCAL VARIABLES
   // SETTING MARGIN CLASS
   let marginClass = ''
@@ -71,15 +89,15 @@ const Input = ({ margin, ...props }) => {
   return (
     <Box className={marginClass}>
       <CustomInput {...props} notched={false} />
-      {props.formHelperText && !props.errorText && (
+      {formHelperText && !errorText && (
         <CustomFormHelperText>
-          <Typography variant="body2">{props.formHelperText}</Typography>
+          <Typography variant="body2">{formHelperText}</Typography>
         </CustomFormHelperText>
       )}
-      {props.errorText && (
-        <CustomFormHelperText>
+      {errorText && (
+        <CustomFormHelperText component="div">
           <Typography variant="body2" sx={{ color: 'error.main' }}>
-            {props.errorText}
+            {errorText}
           </Typography>
         </CustomFormHelperText>
       )}
