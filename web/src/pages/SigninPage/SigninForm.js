@@ -118,6 +118,15 @@ const SigninForm = () => {
         <Typography variant="body1">
           <Link
             component={RedwoodLink}
+            to={routes.resetPassword()}
+            className="auth-link"
+          >
+            Forgot password?
+          </Link>
+        </Typography>
+        <Typography variant="body1">
+          <Link
+            component={RedwoodLink}
             to={routes.landing()}
             className="auth-link"
           >
