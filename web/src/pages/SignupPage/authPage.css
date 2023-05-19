@@ -50,6 +50,9 @@
 .auth-link:hover{
   text-decoration: underline!important;
 }
+.forgot-password-link{
+  margin-bottom: 10px!important;
+}
 .auth-page-links-container{
   align-items: center;
   display: flex;
