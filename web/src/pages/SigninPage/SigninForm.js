@@ -91,10 +91,19 @@ const SigninForm = () => {
           }
           fullWidth={true}
           type={isPasswordVisible ? 'text' : 'password'}
-          margin="large"
+          margin="medium"
           color="primary"
           onInput={setPasswordField}
         />
+        <Typography variant="body2" className="auth-link forgot-password-link">
+          <Link
+            component={RedwoodLink}
+            to={routes.resetPassword()}
+            className="auth-link"
+          >
+            Forgot your password?
+          </Link>
+        </Typography>
         <Button
           size="medium"
           variant="contained"
@@ -105,7 +114,7 @@ const SigninForm = () => {
         </Button>
       </form>
       <Box className="auth-page-links-container">
-        <Typography variant="body1">
+        <Typography variant="body2">
           New to Tracepath?{' '}
           <Link
             component={RedwoodLink}
@@ -115,16 +124,7 @@ const SigninForm = () => {
             Sign up
           </Link>
         </Typography>
-        <Typography variant="body1">
-          <Link
-            component={RedwoodLink}
-            to={routes.resetPassword()}
-            className="auth-link"
-          >
-            Forgot password?
-          </Link>
-        </Typography>
-        <Typography variant="body1">
+        <Typography variant="body2">
           <Link
             component={RedwoodLink}
             to={routes.landing()}

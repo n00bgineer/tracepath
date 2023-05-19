@@ -123,7 +123,7 @@ const SignupForm = () => {
         </Typography>
       </Box>
       <Box className="auth-page-links-container">
-        <Typography variant="body1">
+        <Typography variant="body2">
           Have an account?{' '}
           <Link
             component={RedwoodLink}
@@ -133,7 +133,7 @@ const SignupForm = () => {
             Sign in
           </Link>
         </Typography>
-        <Typography variant="body1">
+        <Typography variant="body2">
           <Link
             component={RedwoodLink}
             to={routes.landing()}
