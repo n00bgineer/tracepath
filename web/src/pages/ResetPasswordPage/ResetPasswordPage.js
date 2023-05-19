@@ -1,20 +1,32 @@
-import { Link, routes } from '@redwoodjs/router'
+// IMPORTING PACKAGES/MODULES
+import { Box, Typography } from '@mui/material'
+
 import { MetaTags } from '@redwoodjs/web'
+
+import '../SignupPage/authPage.css'
+
+import ResetPasswordForm from './ResetPasswordForm'
 
 const ResetPasswordPage = () => {
   return (
     <>
-      <MetaTags title="ResetPassword" description="ResetPassword page" />
+      <MetaTags title="Reset Password" description="Reset Password page" />
 
-      <h1>ResetPasswordPage</h1>
-      <p>
-        Find me in{' '}
-        <code>./web/src/pages/ResetPasswordPage/ResetPasswordPage.js</code>
-      </p>
-      <p>
-        My default route is named <code>resetPassword</code>, link to me with `
-        <Link to={routes.resetPassword()}>ResetPassword</Link>`
-      </p>
+      <Box className="auth-page">
+        <Box className="auth-form-container">
+          <Box className="brand-info-container">
+            <img
+              src="https://res.cloudinary.com/dgu9rv3om/image/upload/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
+              alt="Tracepath logo"
+              className="logo"
+            />
+            <Typography variant="body1" className="brand-name">
+              Tracepath
+            </Typography>
+          </Box>
+          <ResetPasswordForm />
+        </Box>
+      </Box>
     </>
   )
 }
