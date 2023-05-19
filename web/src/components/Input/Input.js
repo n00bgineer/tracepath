@@ -20,7 +20,7 @@ const CustomInput = styled(MuiInput)(({ theme }) => ({
   '&.MuiOutlinedInput-root.MuiOutlinedInput-margin-small': {
     marginBottom: '5px',
   },
-  '&.MuiOutlinedInput-root.MuiOutlinedInput-margin-normal': {
+  '&.MuiOutlinedInput-root.MuiOutlinedInput-margin-medium': {
     marginBottom: '10px',
   },
   '&.MuiOutlinedInput-root.MuiOutlinedInput-margin-large': {
@@ -73,14 +73,16 @@ const Input = ({ margin, ...props }) => {
   // SETTING MARGIN CLASS
   let marginClass = ''
   if (margin === 'small') marginClass = 'MuiOutlinedInput-margin-small'
-  else if (margin === 'medium') marginClass = 'MuiOutlinedInput-margin-normal'
+  else if (margin === 'medium') marginClass = 'MuiOutlinedInput-margin-medium'
   else if (margin === 'large') marginClass = 'MuiOutlinedInput-margin-large'
 
   return (
     <>
       <CustomInput
         {...props}
-        className={(props.className ? props.className : '') + ' ' + marginClass}
+        className={
+          props.className ? props.className + ' ' + marginClass : marginClass
+        }
         notched={false}
       />
       {props.formHelperText && !props.errorText && (

@@ -9,7 +9,7 @@ const CustomButton = styled(MuiButton)(({ theme }) => ({
 
   // MARGIN STYLES
   '&.MuiButton-margin-small': { marginBottom: '5px' },
-  '&.MuiButton-margin-normal': { marginBottom: '10px' },
+  '&.MuiButton-margin-medium': { marginBottom: '10px' },
   '&.MuiButton-margin-large': { marginBottom: '20px' },
 
   // CONTAINED STYLES
@@ -107,7 +107,7 @@ const Button = ({ ...props }) => {
   // SETTING MARGIN CLASS
   let marginClass = ''
   if (props.margin === 'small') marginClass = 'MuiButton-margin-small'
-  else if (props.margin === 'medium') marginClass = 'MuiButton-margin-normal'
+  else if (props.margin === 'medium') marginClass = 'MuiButton-margin-medium'
   else if (props.margin === 'large') marginClass = 'MuiButton-margin-large'
 
   return (
