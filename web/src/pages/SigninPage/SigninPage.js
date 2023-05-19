@@ -10,7 +10,7 @@ import SigninForm from './SigninForm'
 const SigninPage = () => {
   return (
     <>
-      <MetaTags title="Auth" description="Auth page" />
+      <MetaTags title="Signin" description="Signin page" />
 
       <Box className="auth-page">
         <Box className="auth-form-container">
