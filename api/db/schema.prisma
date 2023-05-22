@@ -1,18 +1,123 @@
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = "native"
+  provider = "prisma-client-js"
 }
 
-// Define your own datamodels here and run `yarn redwood prisma migrate dev`
-// to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+// TYPE OF USER: INDVIDUAL, ORGANIZATION
+enum AccountType {
+  INDIVIDUAL
+  ORGANIZATION
+}
+
+// TYPE OF USER: USER, BOT & ADMIN
+enum RoleType {
+  USER
+  BOT
+  ADMIN
+}
+
+// TYPE OF SUBSCRIPTION: FREE, PRO (MONTHLY) & PRO (ANNUAL)
+enum SubscriptionType {
+  FREE
+  PRO_MONTHLY
+  PRO_ANNUAL
+}
+
+// MODEL FOR STORING USER DATA
+model User {
+  // METADATA
+  id          String   @id @default(uuid())
+  guid        String   @unique
+  createdAt   DateTime @default(now())
+  updateAt    DateTime @updatedAt
+  lastLoginAt DateTime
+
+  // TYPES
+  roleType         RoleType         @default(USER)
+  accountType      AccountType      @default(INDIVIDUAL)
+  subscriptionType SubscriptionType @default(FREE)
+
+  // DETAILS
+  userName    String  @unique
+  email       String  @unique
+  displayName String?
+
+  // RELATIONS
+  Reports Report[]
+}
+
+// MODEL FOR STORING REPORT DATA
+model Report {
+  // METADATA
+  id                String   @id @default(uuid())
+  userId            String
+  createdAt         DateTime @default(now())
+  updateAt          DateTime @updatedAt
+  reportVersion     String
+  lhVersion         String?  @default("10.2.0")
+  executionTime     Float
+  isPrivate         Boolean? @default(false)
+  isTracerouteError Boolean? @default(false)
+  isLighthouseError Boolean? @default(false)
+  regionName        String
+
+  // DETAILS
+  traceroute        Json? // Tracerouting Data
+  fcpScore          Float? // First Contentful Paint
+  fcpValue          Float?
+  lcpScore          Float? // Largest Contentful Paint
+  lcpValue          Float?
+  tbtScore          Float? // Total Blocking Time
+  tbtValue          Float?
+  ttiScore          Float? // Time To Interactive
+  ttiValue          Float?
+  clsScore          Float? // Cumulative Layout Shift
+  srtValue          Float? // Server Response Time
+  srtItems          Float?
+  speedIndexScore   Float? // Speed Index
+  speedIndexValue   Float?
+  bootupTimeScore   Float? // Bootup Time
+  bootupTimeValue   Float?
+  bootupTimeItems   Json?
+  bootupTimeSummary Json?
+  thirdPartyItems   Json? // Third Party Summary
+  thirdPartySummary Json?
+
+  // RELATIONS
+  User   User   @relation(fields: [userId], references: [id])
+  Region Region @relation(fields: [regionName], references: [name])
+}
+
+// TYPE OF PROVIDER FOR CLOUD INSTANCE
+enum ProviderType {
+  AWS
+  GOOGLE
+  AZURE
+  DIGITALOCEAN
+  ALIBABA
+}
+
+// MODEL FOR STORING CLOUD INSTANCE DATA
+model Region {
+  // METADATA
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  expiryAt  DateTime
+
+  // TYPES
+  providerType ProviderType?
+
+  // DETAILS
+  name          String @unique
+  apiKey        String @unique @default(uuid())
+  url           String @unique //SHOULD ALSO INCLUDE PORT NO
+  machineConfig Json?
+
+  // RELATIONS
+  Reports Report[]
 }
