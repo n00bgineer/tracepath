@@ -64,6 +64,8 @@ model Report {
   isTracerouteError Boolean? @default(false)
   isLighthouseError Boolean? @default(false)
   regionName        String
+  url               String
+  finalURL          String?
 
   // DETAILS
   traceroute        Json? // Tracerouting Data
