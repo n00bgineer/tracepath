@@ -91,12 +91,13 @@ model Report {
 
   // RELATIONS
   User   User   @relation(fields: [userId], references: [id])
-  Region Region @relation(fields: [regionName], references: [name])
+  Region Region @relation(fields: [regionName], references: [regionName])
 }
 
 // TYPE OF PROVIDER FOR CLOUD INSTANCE
 enum ProviderType {
-  AWS
+  AWSEC2
+  AWSLS
   GOOGLE
   AZURE
   DIGITALOCEAN
@@ -115,9 +116,11 @@ model Region {
   providerType ProviderType?
 
   // DETAILS
-  name          String @unique
-  apiKey        String @unique @default(uuid())
-  url           String @unique //SHOULD ALSO INCLUDE PORT NO
+  name          String //e.g. 🇫🇷 Paris
+  regionName    String @unique //e.g. eu-west-3a
+  authKey       String @unique @default(uuid())
+  ipAddress     String @unique //SHOULD ALSO INCLUDE PORT NO
+  portNo        String
   machineConfig Json?
 
   // RELATIONS
