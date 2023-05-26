@@ -2,9 +2,10 @@
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { useRecoilState } from 'recoil'
 
-import { Router, Route } from '@redwoodjs/router'
+import { Router, Route, Set } from '@redwoodjs/router'
 
 import { darkThemeAtom } from './contexts/atoms'
+import NavigationLayout from './layouts/NavigationLayout/NavigationLayout'
 import DarkTheme from './themes/darkTheme'
 import LightTheme from './themes/lightTheme'
 
@@ -16,9 +17,16 @@ const Routes = () => {
     <ThemeProvider theme={isDarkTheme === true ? DarkTheme : LightTheme}>
       <CssBaseline />
       <Router>
-        <Route path="/" page={LandingPage} name="landing" />
-        <Route path="/tos" page={ToSPage} name="tos" />
-        <Route path="/privacy" page={PrivacyPage} name="privacy" />
+        <Set wrap={NavigationLayout}>
+          <Route path="/report/generate" page={ReportNewReportPage} name="generate" />
+          <Route path="/report/{id}" page={ReportReportPage} name="report" />
+          <Route path="/explore" page={ReportReportsPage} name="explore" />
+          <Route path="/users/{id}" page={UserUserPage} name="user" />
+          {/* <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" /> */}
+        </Set>
+        <Route path="/" page={LandingPage} name="landing" prerender={true} />
+        <Route path="/tos" page={ToSPage} name="tos" prerender={true} />
+        <Route path="/privacy" page={PrivacyPage} name="privacy" prerender={true} />
         <Route path="/signin" page={SigninPage} name="signin" />
         <Route path="/signup" page={SignupPage} name="signup" />
         <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
