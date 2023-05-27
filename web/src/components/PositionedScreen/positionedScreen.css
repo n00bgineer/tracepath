@@ -1,0 +1,7 @@
+:root{
+  --side-navigation-width: 81px;
+}
+.positioned-screen{
+  width: calc(100% - var(--side-navigation-width));
+  margin-left: var(--side-navigation-width);
+}
