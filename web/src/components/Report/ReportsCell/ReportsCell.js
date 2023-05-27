@@ -48,7 +48,7 @@ export const Empty = () => {
   return (
     <div className="rw-text-center">
       {'No reports yet. '}
-      <Link to={routes.newReport()} className="rw-link">
+      <Link to={routes.generate()} className="rw-link">
         {'Create one?'}
       </Link>
     </div>
