@@ -18,10 +18,11 @@ const Routes = () => {
       <CssBaseline />
       <Router>
         <Set wrap={NavigationLayout}>
-          <Route path="/report/generate" page={ReportNewReportPage} name="generate" />
+          <Route path="/generate" page={ReportNewReportPage} name="generate" />
           <Route path="/report/{id}" page={ReportReportPage} name="report" />
           <Route path="/explore" page={ReportReportsPage} name="explore" />
-          <Route path="/users/{id}" page={UserUserPage} name="user" />
+          <Route path="/user/{id}" page={UserUserPage} name="user" />
+          <Route path="/users/new" page={UserNewUserPage} name="newUser" />
           {/* <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" /> */}
         </Set>
         <Route path="/" page={LandingPage} name="landing" prerender={true} />
