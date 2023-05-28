@@ -91,7 +91,13 @@ const CustomFormHelperText = styled(MuiFormHelperText)(() => ({
   },
 }))
 
-const Select = ({ margin, errorText, formHelperText, ...props }) => {
+const Select = ({
+  margin,
+  errorText,
+  formHelperText,
+  selectItems,
+  ...props
+}) => {
   // SETTING LOCAL VARIABLES
   // SETTING MARGIN CLASS
   let marginClass = ''
@@ -101,10 +107,34 @@ const Select = ({ margin, errorText, formHelperText, ...props }) => {
 
   return (
     <Box className={marginClass}>
-      <CustomSelect {...props} notched={false} variant="outlined">
-        <CustomMenuItem value={10}>Ten</CustomMenuItem>
-        <CustomMenuItem value={20}>Twenty</CustomMenuItem>
-        <CustomMenuItem value={30}>Thirty</CustomMenuItem>
+      <CustomSelect
+        {...props}
+        notched={false}
+        variant="outlined"
+        MenuProps={{
+          sx: {
+            '& .MuiMenu-list': {
+              padding: '0px',
+            },
+            '& .MuiMenu-paper': {
+              borderRadius: '24px',
+              marginTop: '10px',
+              padding: '0px',
+            },
+          },
+        }}
+      >
+        <CustomMenuItem key="default" value="default">
+          {props.placeholder}
+        </CustomMenuItem>
+        {selectItems &&
+          selectItems.map((selectItem) => {
+            return (
+              <CustomMenuItem key={selectItem.value} value={selectItem.value}>
+                {selectItem.label}
+              </CustomMenuItem>
+            )
+          })}
       </CustomSelect>
       {formHelperText && !errorText && (
         <CustomFormHelperText>
