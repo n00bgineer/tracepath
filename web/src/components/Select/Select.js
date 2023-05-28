@@ -5,6 +5,7 @@ import {
   Select as MuiSelect,
   MenuItem as MuiMenuItem,
   Typography,
+  Chip,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import './select.css'
@@ -15,6 +16,12 @@ const CustomMenuItem = styled(MuiMenuItem)(() => ({
   '&.MuiMenuItem-root': {
     borderRadius: '9999px',
     margin: '5px',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  '& .MuiMenuItem-label': {
+    flexGrow: '1',
   },
 }))
 const CustomSelect = styled(MuiSelect)(({ theme }) => ({
@@ -81,7 +88,15 @@ const CustomSelect = styled(MuiSelect)(({ theme }) => ({
 
   // SELECT STYLES
   '& .MuiSelect-icon': {
-    margin: '0px!important',
+    margin: '0px 0px 0px 10px!important',
+  },
+  '& .MuiOutlinedInput-input': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  '& .MuiOutlinedInput-input > .MuiMenuItem-label': {
+    flexGrow: '1',
   },
 }))
 const CustomFormHelperText = styled(MuiFormHelperText)(() => ({
@@ -130,8 +145,20 @@ const Select = ({
         {selectItems &&
           selectItems.map((selectItem) => {
             return (
-              <CustomMenuItem key={selectItem.value} value={selectItem.value}>
-                {selectItem.label}
+              <CustomMenuItem
+                key={selectItem.value}
+                value={selectItem.value}
+                disabled={selectItem.disabled}
+              >
+                <Box className="MuiMenuItem-label">{selectItem.label}</Box>
+                <Chip
+                  size="small"
+                  label={selectItem.chipLabel}
+                  sx={{
+                    color: `${selectItem.chipColor}.dark`,
+                    bgcolor: `${selectItem.chipColor}.300`,
+                  }}
+                />
               </CustomMenuItem>
             )
           })}
