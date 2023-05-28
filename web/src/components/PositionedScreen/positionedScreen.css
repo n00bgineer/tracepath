@@ -5,6 +5,7 @@
 .positioned-screen{
   width: calc(100% - var(--side-navigation-width));
   margin-left: var(--side-navigation-width);
+  height: 100%;
 }
 @media screen and (max-width: 900px) {
   .positioned-screen{
