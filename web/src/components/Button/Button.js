@@ -9,7 +9,7 @@ const CustomButton = styled(MuiButton)(({ theme }) => ({
 
   // MARGIN STYLES
   '&.MuiButton-margin-small': { marginBottom: '5px' },
-  '&.MuiButton-margin-medium': { marginBottom: '10px' },
+  '&.MuiButton-margin-medium': { marginBottom: '12.5px' },
   '&.MuiButton-margin-large': { marginBottom: '20px' },
 
   // CONTAINED STYLES
