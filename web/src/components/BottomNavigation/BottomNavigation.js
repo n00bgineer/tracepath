@@ -40,15 +40,17 @@ const BottomNavigationAction = styled(MuiBottomNavigationAction)(
 )
 
 const BottomNavigation = ({ topActions, ...props }) => {
-  const [value, setValue] = useState(0)
+  // SETTING LOCAL STATES
+  const [bottomNavigationValue, setBottomNavigationValue] = useState(0)
+
   return (
     <Paper elevation={3} className="bottom-navigation-paper">
       <CustomBottomNavigation
         {...props}
         showLabels
-        value={value}
+        value={bottomNavigationValue}
         onChange={(event, newValue) => {
-          setValue(newValue)
+          setBottomNavigationValue(newValue)
         }}
       >
         {topActions.map((topActionItem) => {
