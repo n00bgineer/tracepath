@@ -155,7 +155,7 @@ const Select = ({
                   size="small"
                   label={selectItem.chipLabel}
                   sx={{
-                    color: `${selectItem.chipColor}.dark`,
+                    color: `${selectItem.chipColor}.main`,
                     bgcolor: `${selectItem.chipColor}.300`,
                   }}
                 />
