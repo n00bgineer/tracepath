@@ -1,0 +1,20 @@
+/* MARGIN STYLES */
+.MuiSelect-margin-small{
+  margin-bottom: 5px;
+}
+.MuiSelect-margin-medium{
+  margin-bottom: 10px;
+}
+.MuiSelect-margin-large{
+  margin-bottom: 20px;
+}
+
+/* STYLE MENU STYLING */
+.MuiMenu-list{
+  padding: 0px;
+}
+.MuiMenu-paper{
+  border-radius: 24px;
+  margin-top: 10px;
+  padding: 0px;
+}
