@@ -2,7 +2,7 @@
 import { Button as MuiButton } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-// CUSTOM ELEMENTS
+// CUSTOM COMPONENTS
 const CustomButton = styled(MuiButton)(({ theme }) => ({
   borderRadius: '9999px',
   textTransform: 'none',

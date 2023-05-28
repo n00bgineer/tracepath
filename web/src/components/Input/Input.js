@@ -8,7 +8,7 @@ import {
 import { styled } from '@mui/material/styles'
 import './input.css'
 
-// CUSTOM ELEMENTS
+// CUSTOM COMPONENTS
 const CustomInput = styled(MuiInput)(({ theme }) => ({
   // ROOT STYLES
   '&.MuiOutlinedInput-root': {

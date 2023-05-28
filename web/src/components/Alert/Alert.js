@@ -2,7 +2,7 @@
 import { Alert as MuiAlert } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-// CUSTOM ELEMENTS
+// CUSTOM COMPONENTS
 const CustomAlert = styled(MuiAlert)(({ theme }) => ({
   // DEFAULT STYLES
   '&.MuiAlert-root': {
