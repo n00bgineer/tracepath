@@ -11,6 +11,7 @@ export const schema = gql`
     ipAddress: String!
     portNo: String!
     machineConfig: JSON
+    status: String!
     Reports: [Report]!
   }
 
@@ -24,7 +25,7 @@ export const schema = gql`
   }
 
   type Query {
-    regions: [Region!]! @requireAuth
+    regions: [Region!]! @skipAuth
     region(id: String!): Region @requireAuth
   }
 

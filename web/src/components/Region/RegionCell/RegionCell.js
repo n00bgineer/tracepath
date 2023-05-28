@@ -1,19 +1,12 @@
+// IMPORTING PACKAGES/MOFDULES
 import Region from 'src/components/Region/Region'
 
 export const QUERY = gql`
   query FindRegionById($id: String!) {
     region: region(id: $id) {
-      id
-      createdAt
-      updateAt
-      expiryAt
-      providerType
       name
       regionName
-      authKey
-      ipAddress
-      portNo
-      machineConfig
+      status
     }
   }
 `

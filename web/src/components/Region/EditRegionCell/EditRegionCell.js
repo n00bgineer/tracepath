@@ -1,5 +1,4 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
@@ -8,17 +7,8 @@ import RegionForm from 'src/components/Region/RegionForm'
 export const QUERY = gql`
   query EditRegionById($id: String!) {
     region: region(id: $id) {
-      id
-      createdAt
-      updateAt
-      expiryAt
-      providerType
       name
       regionName
-      authKey
-      ipAddress
-      portNo
-      machineConfig
     }
   }
 `

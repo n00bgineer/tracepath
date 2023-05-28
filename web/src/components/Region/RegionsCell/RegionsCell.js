@@ -1,3 +1,4 @@
+// IMPORTING PACKAGES/MOFDULES
 import { Link, routes } from '@redwoodjs/router'
 
 import Regions from 'src/components/Region/Regions'
@@ -5,17 +6,9 @@ import Regions from 'src/components/Region/Regions'
 export const QUERY = gql`
   query FindRegions {
     regions {
-      id
-      createdAt
-      updateAt
-      expiryAt
-      providerType
       name
       regionName
-      authKey
-      ipAddress
-      portNo
-      machineConfig
+      status
     }
   }
 `
