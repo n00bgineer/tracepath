@@ -11,10 +11,13 @@ import {
   Logout,
   LogoutOutlined,
 } from '@mui/icons-material'
+import { Box, useMediaQuery } from '@mui/material'
 import { useRecoilState } from 'recoil'
 
 import { routes } from '@redwoodjs/router'
 
+import './navigationLayout.css'
+import BottomNavigation from 'src/components/BottomNavigation/BottomNavigation'
 import PositionedScreen from 'src/components/PositionedScreen/PositionedScreen'
 import SideNavigation from 'src/components/SideNavigation/SideNavigation'
 import { darkThemeAtom } from 'src/contexts/atoms'
@@ -26,6 +29,9 @@ const NavigationLayout = ({ children }) => {
 
   // GETTING ATOMIC STATES
   const [isDarkTheme, setDarkTheme] = useRecoilState(darkThemeAtom)
+
+  // SETTING MEDIA QUERY
+  const isMobileViewport = useMediaQuery('(min-width:900px)')
 
   // SETTING TOP ACTIONS
   const topActions = [
@@ -81,15 +87,19 @@ const NavigationLayout = ({ children }) => {
   }
 
   return (
-    <>
-      <SideNavigation
-        logoUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
-        topActions={topActions}
-        bottomActions={bottomActions}
-        size="large"
-      />
+    <Box className="navigation-layout">
+      {!isMobileViewport ? (
+        <BottomNavigation topActions={topActions} />
+      ) : (
+        <SideNavigation
+          logoUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
+          topActions={topActions}
+          bottomActions={bottomActions}
+          size="large"
+        />
+      )}
       <PositionedScreen>{children}</PositionedScreen>
-    </>
+    </Box>
   )
 }
 

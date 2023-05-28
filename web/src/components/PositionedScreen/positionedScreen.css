@@ -1,7 +1,15 @@
 :root{
   --side-navigation-width: 81px;
+  --bottom-navigation-height: 66px;
 }
 .positioned-screen{
   width: calc(100% - var(--side-navigation-width));
   margin-left: var(--side-navigation-width);
+}
+@media screen and (max-width: 900px) {
+  .positioned-screen{
+    width: 100%;
+    margin-left: unset;
+    padding-bottom: var(--bottom-navigation-width);
+  }
 }

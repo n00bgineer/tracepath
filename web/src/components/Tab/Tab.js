@@ -2,7 +2,7 @@
 import { Tab as MuiTab } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-// CUSTOM ELEMENTS
+// CUSTOM COMPONENTS
 const CustomTab = styled(MuiTab)(({ theme }) => ({
   // COMMON STYLES
   '&.MuiTab-root': {
