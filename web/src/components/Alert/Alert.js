@@ -9,6 +9,10 @@ const CustomAlert = styled(MuiAlert)(({ theme }) => ({
     borderRadius: '9999px',
     padding: '10px',
   },
+  '& .MuiAlert-icon': {
+    padding: '10px',
+    margin: '0px',
+  },
 
   // FILLED STYLES
   '&.MuiAlert-filledSuccess': {
