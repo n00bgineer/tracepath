@@ -10,7 +10,8 @@ const Footer = () => {
       component="footer"
       sx={(theme) => {
         return {
-          background: `linear-gradient(to top, ${theme.palette.secondary.dark}, ${theme.palette.secondary.main}, ${theme.palette.secondary.main})`,
+          background: `linear-gradient(to top, ${theme.palette.primary.dark}, ${theme.palette.primary.main}, ${theme.palette.primary.main})`,
+          backdropFilter: 'blur(10px)',
         }
       }}
     >

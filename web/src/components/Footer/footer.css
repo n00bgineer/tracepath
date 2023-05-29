@@ -15,7 +15,6 @@ footer{
 footer > .brand-info-container{
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   margin-right: 25px;
 }
 footer .brand-logo-container{
