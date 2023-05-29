@@ -2,12 +2,12 @@
 import {
   AccountCircle,
   AccountCircleOutlined,
+  Assessment,
+  AssessmentOutlined,
   DarkMode,
   Explore,
   ExploreOutlined,
   LightMode,
-  LocationOn,
-  LocationOnOutlined,
   Logout,
   LogoutOutlined,
 } from '@mui/icons-material'
@@ -37,8 +37,8 @@ const NavigationLayout = ({ children }) => {
   const topActions = [
     {
       label: 'Generate',
-      selectedIcon: <LocationOn />,
-      unselectedIcon: <LocationOnOutlined />,
+      selectedIcon: <Assessment />,
+      unselectedIcon: <AssessmentOutlined />,
       link: routes.generate(),
       isSelected: pathname === routes.generate(),
     },
