@@ -6,14 +6,12 @@ import { Assessment, Link, Storage } from '@mui/icons-material'
 import { Box, Skeleton, Typography } from '@mui/material'
 import './reportForm.css'
 import Globe from 'react-globe.gl'
-import { useRecoilState } from 'recoil'
 
 import Alert from 'src/components/Alert/Alert'
 import Button from 'src/components/Button/Button'
 import Input from 'src/components/Input/Input'
 import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/RegionsCell'
 import Select from 'src/components/Select/Select'
-import { darkThemeAtom } from 'src/contexts/atoms'
 
 /**
  * @name validateUrl
@@ -38,7 +36,6 @@ const ReportForm = ({ loading, onSave, error, report }) => {
   const [submitErrorText, setSubmitErrorText] = useState('')
 
   // GETTING ATOMIC STATES
-  const [isDarkMode] = useRecoilState(darkThemeAtom)
 
   // INITIALISING APOLLO CLIENT
   const client = useApolloClient()
