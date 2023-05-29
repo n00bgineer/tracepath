@@ -195,11 +195,9 @@ const ReportForm = ({ loading, onSave, error, report }) => {
       </Box>
       <div className="report-globe-container" ref={globeContainerRef}>
         <Globe
-          globeImageUrl={
-            isDarkMode
-              ? 'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685334279/earth-night_qtrmnr.jpg'
-              : 'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685334753/earth-blue-marble_ype7nq.jpg'
-          }
+          globeImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685334753/earth-blue-marble_ype7nq.jpg"
+          bumpImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335416/earth-topology_q6brg8.png"
+          backgroundImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335571/night-sky_hplesi.png"
           width={globeContainerRef.current?.offsetWidth}
           height={globeContainerRef.current?.offsetHeight}
           center={{ lat: 23.3441, lng: 85.3096 }}
