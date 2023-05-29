@@ -156,7 +156,7 @@ const Select = ({
                   label={selectItem.chipLabel}
                   sx={{
                     color: `${selectItem.chipColor}.main`,
-                    bgcolor: `${selectItem.chipColor}.300`,
+                    bgcolor: `${selectItem.chipColor}.100`,
                   }}
                 />
               </CustomMenuItem>
