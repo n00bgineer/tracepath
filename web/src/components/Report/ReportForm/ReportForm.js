@@ -197,11 +197,12 @@ const ReportForm = ({ loading, onSave, error, report }) => {
         <Globe
           globeImageUrl={
             isDarkMode
-              ? '//unpkg.com/three-globe/example/img/earth-night.jpg'
-              : '//unpkg.com/three-globe/example/img/earth-day.jpg'
+              ? 'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685334279/earth-night_qtrmnr.jpg'
+              : 'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685334753/earth-blue-marble_ype7nq.jpg'
           }
           width={globeContainerRef.current?.offsetWidth}
           height={globeContainerRef.current?.offsetHeight}
+          center={{ lat: 23.3441, lng: 85.3096 }}
         />
       </div>
     </Box>
