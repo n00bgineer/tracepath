@@ -54,7 +54,7 @@ model User {
 model Report {
   // METADATA
   id                String   @id @default(uuid())
-  userId            String
+  userId            String   @default("bba8c3b0-fc14-43b0-a2fb-4ab8a8314d46")
   createdAt         DateTime @default(now())
   updateAt          DateTime @updatedAt
   reportVersion     String
@@ -79,7 +79,7 @@ model Report {
   ttiValue          Float?
   clsScore          Float? // Cumulative Layout Shift
   srtValue          Float? // Server Response Time
-  srtItems          Float?
+  srtItems          Json?
   speedIndexScore   Float? // Speed Index
   speedIndexValue   Float?
   bootupTimeScore   Float? // Bootup Time
@@ -90,8 +90,8 @@ model Report {
   thirdPartySummary Json?
 
   // RELATIONS
-  User   User   @relation(fields: [userId], references: [id])
-  Region Region @relation(fields: [regionName], references: [regionName])
+  User   User    @relation(fields: [userId], references: [id])
+  Region Region? @relation(fields: [regionName], references: [regionName])
 }
 
 // TYPE OF PROVIDER FOR CLOUD INSTANCE
