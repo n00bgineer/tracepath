@@ -24,7 +24,7 @@ export const schema = gql`
     ttiValue: Float
     clsScore: Float
     srtValue: Float
-    srtItems: Float
+    srtItems: JSON
     speedIndexScore: Float
     speedIndexValue: Float
     bootupTimeScore: Float
@@ -43,37 +43,9 @@ export const schema = gql`
   }
 
   input CreateReportInput {
-    userId: String!
-    updateAt: DateTime!
-    reportVersion: String!
-    lhVersion: String
-    executionTime: Float!
-    isPrivate: Boolean
-    isTracerouteError: Boolean
-    isLighthouseError: Boolean
+    userId: String
     regionName: String!
     url: String!
-    finalUrl: String
-    traceroute: JSON
-    fcpScore: Float
-    fcpValue: Float
-    lcpScore: Float
-    lcpValue: Float
-    tbtScore: Float
-    tbtValue: Float
-    ttiScore: Float
-    ttiValue: Float
-    clsScore: Float
-    srtValue: Float
-    srtItems: Float
-    speedIndexScore: Float
-    speedIndexValue: Float
-    bootupTimeScore: Float
-    bootupTimeValue: Float
-    bootupTimeItems: JSON
-    bootupTimeSummary: JSON
-    thirdPartyItems: JSON
-    thirdPartySummary: JSON
   }
 
   input UpdateReportInput {
@@ -99,7 +71,7 @@ export const schema = gql`
     ttiValue: Float
     clsScore: Float
     srtValue: Float
-    srtItems: Float
+    srtItems: JSON
     speedIndexScore: Float
     speedIndexValue: Float
     bootupTimeScore: Float
