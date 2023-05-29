@@ -1,0 +1,25 @@
+.loading-container{
+  border-radius: 24px;
+  padding: 10px;
+  margin: 10px auto;
+}
+.loading-container > .loading-container-image{
+  max-height: 300px;
+  margin: 0px auto;
+  display: block;
+}
+.loading-text-container{
+  width: 80%;
+  margin: 15px auto;
+}
+.loading-container-title{
+  font-size: 1.25em!important;
+  font-weight: bolder!important;
+  text-align: center;
+  /* margin-top: 10px!important; */
+}
+.loading-container-subtitle{
+  font-size: 0.9em!important;
+  text-align: center;
+  margin-top: 5px!important;
+}
