@@ -31,23 +31,23 @@ const CustomButton = styled(MuiButton)(({ theme }) => ({
 
   // CONTAINED HOVER STYLES
   '&.MuiButton-containedPrimary:hover': {
-    boxShadow: `0 0 15px ${theme.palette.primary.main}`,
+    boxShadow: `0 0 10px ${theme.palette.primary.main}`,
     filter: 'brightness(120%)',
   },
   '&.MuiButton-containedSecondary:hover': {
-    boxShadow: `0 0 15px ${theme.palette.secondary.main}`,
+    boxShadow: `0 0 10px ${theme.palette.secondary.main}`,
     filter: 'brightness(120%)',
   },
   '&.MuiButton-containedError:hover': {
-    boxShadow: `0 0 15px ${theme.palette.error.main}`,
+    boxShadow: `0 0 10px ${theme.palette.error.main}`,
     filter: 'brightness(120%)',
   },
   '&.MuiButton-containedSuccess:hover': {
-    boxShadow: `0 0 15px ${theme.palette.success.main}`,
+    boxShadow: `0 0 10px ${theme.palette.success.main}`,
     filter: 'brightness(120%)',
   },
   '&.MuiButton-containedInfo:hover': {
-    boxShadow: `0 0 15px ${theme.palette.success.main}`,
+    boxShadow: `0 0 10px ${theme.palette.success.main}`,
     filter: 'brightness(120%)',
   },
 
@@ -58,23 +58,23 @@ const CustomButton = styled(MuiButton)(({ theme }) => ({
 
   // OUTLINED HOVER STYLES
   '&.MuiButton-outlinedPrimary:hover': {
-    boxShadow: `0 0 15px ${theme.palette.primary.main}`,
+    boxShadow: `0 0 10px ${theme.palette.primary.main}`,
     filter: 'brightness(120%)',
   },
   '&.MuiButton-outlinedSecondary:hover': {
-    boxShadow: `0 0 15px ${theme.palette.secondary.main}`,
+    boxShadow: `0 0 10px ${theme.palette.secondary.main}`,
     filter: 'brightness(120%)',
   },
   '&.MuiButton-outlinedError:hover': {
-    boxShadow: `0 0 15px ${theme.palette.error.main}`,
+    boxShadow: `0 0 10px ${theme.palette.error.main}`,
     filter: 'brightness(120%)',
   },
   '&.MuiButton-outlinedSuccess:hover': {
-    boxShadow: `0 0 15px ${theme.palette.success.main}`,
+    boxShadow: `0 0 10px ${theme.palette.success.main}`,
     filter: 'brightness(120%)',
   },
   '&.MuiButton-outlinedInfo:hover': {
-    boxShadow: `0 0 15px ${theme.palette.success.main}`,
+    boxShadow: `0 0 10px ${theme.palette.success.main}`,
     filter: 'brightness(120%)',
   },
 
