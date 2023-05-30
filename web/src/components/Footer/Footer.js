@@ -12,6 +12,7 @@ const Footer = () => {
         return {
           background: `linear-gradient(to top, ${theme.palette.primary.dark}, ${theme.palette.primary.main}, ${theme.palette.primary.main})`,
           backdropFilter: 'blur(10px)',
+          color: 'common.black',
         }
       }}
     >
@@ -43,14 +44,7 @@ const Footer = () => {
             component="a"
             className="footer-link"
             href={`${window.location.origin}/#features`}
-            sx={(theme) => {
-              return {
-                color:
-                  theme.palette.mode === 'light'
-                    ? 'common.black'
-                    : 'common.white',
-              }
-            }}
+            sx={{ color: 'common.black' }}
           >
             Features
           </Link>
@@ -58,14 +52,7 @@ const Footer = () => {
             component="a"
             className="footer-link"
             href={`${window.location.origin}/#pricing`}
-            sx={(theme) => {
-              return {
-                color:
-                  theme.palette.mode === 'light'
-                    ? 'common.black'
-                    : 'common.white',
-              }
-            }}
+            sx={{ color: 'common.black' }}
           >
             Pricing
           </Link>
@@ -73,14 +60,7 @@ const Footer = () => {
             component="a"
             className="footer-link"
             href={`${window.location.origin}/#faq`}
-            sx={(theme) => {
-              return {
-                color:
-                  theme.palette.mode === 'light'
-                    ? 'common.black'
-                    : 'common.white',
-              }
-            }}
+            sx={{ color: 'common.black' }}
           >
             FAQ
           </Link>
@@ -92,32 +72,18 @@ const Footer = () => {
           <Link
             component={RedwoodLink}
             className="footer-link"
-            to={routes.tos()}
-            sx={(theme) => {
-              return {
-                color:
-                  theme.palette.mode === 'light'
-                    ? 'common.black'
-                    : 'common.white',
-              }
-            }}
+            to={routes.privacy()}
+            sx={{ color: 'common.black' }}
           >
-            Terms of Services
+            Privacy
           </Link>
           <Link
             component={RedwoodLink}
             className="footer-link"
-            to={routes.privacy()}
-            sx={(theme) => {
-              return {
-                color:
-                  theme.palette.mode === 'light'
-                    ? 'common.black'
-                    : 'common.white',
-              }
-            }}
+            to={routes.tos()}
+            sx={{ color: 'common.black' }}
           >
-            Privacy Policy
+            Terms
           </Link>
         </Box>
       </Box>
