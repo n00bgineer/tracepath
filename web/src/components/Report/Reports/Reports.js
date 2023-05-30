@@ -125,13 +125,6 @@ const ReportsList = ({ reports }) => {
                   >
                     Show
                   </Link>
-                  <Link
-                    to={routes.editReport({ id: report.id })}
-                    title={'Edit report ' + report.id}
-                    className="rw-button rw-button-small rw-button-blue"
-                  >
-                    Edit
-                  </Link>
                   <button
                     type="button"
                     title={'Delete report ' + report.id}
