@@ -6,12 +6,16 @@ import { Assessment, Link, Storage } from '@mui/icons-material'
 import { Box, Skeleton, Typography } from '@mui/material'
 import './reportForm.css'
 import Globe from 'react-globe.gl'
+import { useRecoilState } from 'recoil'
 
 import Alert from 'src/components/Alert/Alert'
 import Button from 'src/components/Button/Button'
 import Input from 'src/components/Input/Input'
+import LoadingContainer from 'src/components/LoadingContainer/LoadingContainer'
 import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/RegionsCell'
 import Select from 'src/components/Select/Select'
+import { reportAtom, regionsAtom } from 'src/contexts/atoms'
+import { jsonDisplay } from 'src/lib/formatters'
 
 /**
  * @name validateUrl
@@ -24,18 +28,36 @@ const validateUrl = (url) => {
   return urlPattern.test(url)
 }
 
-const ReportForm = ({ loading, onSave, error, report }) => {
+const ReportForm = ({ loading = true, onSave, error }) => {
+  // SETTING LOCAL VARIABLES
+  const loadingContainerItems = [
+    {
+      label: "It might take a minute to load your report, so here's a Panda",
+      imgUrl:
+        'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685369472/panda_mi7tab.png',
+    },
+    {
+      label: "It might take a minute to load your report, so here's a Rhea",
+      imgUrl:
+        'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685369489/fawn_dvhyuz.png',
+    },
+  ]
+  const randomLoadingContainerItem =
+    loadingContainerItems[
+      Math.floor(Math.random() * loadingContainerItems.length)
+    ]
+
+  // GETTING ATOMIC CONTEXT
+  const [report, setReport] = useRecoilState(reportAtom)
+  const [regions, setRegions] = useRecoilState(regionsAtom)
+
   // SETTING LOCAL STATE
-  const [url, setUrl] = useState('')
-  const [selectItems, setSelectItems] = useState(null)
-  const [selectedRegion, setSelectedRegion] = useState(null)
-  const [hasRegionsDataLoaded, setHasRegionsDataLoaded] = useState(false)
+  const [url, setUrl] = useState('') // SETTING URL
+  const [selectedRegion, setSelectedRegion] = useState('default') // SETTING SELECTED REGION
 
   // INPUT FIELD VALIDATION STATES
   const [urlErrorText, setUrlErrorText] = useState('')
   const [submitErrorText, setSubmitErrorText] = useState('')
-
-  // GETTING ATOMIC STATES
 
   // INITIALISING APOLLO CLIENT
   const client = useApolloClient()
@@ -70,10 +92,12 @@ const ReportForm = ({ loading, onSave, error, report }) => {
   /**
    * @name onSubmit
    * @description METHOD TO SUBMIT DATA
-   * @param {*} data DATA TO BE SUBMITED
+   * @param {*} event EVENT OBJECT
    * @returns {undefined} undefined
    */
-  const onSubmit = (data) => {
+  const onSubmit = async (event) => {
+    event.preventDefault()
+    setSubmitErrorText('')
     if (selectedRegion === null || selectedRegion === 'default')
       setSubmitErrorText('Please select a region to continue')
     else if (urlErrorText !== '' || url.length === 0)
@@ -82,9 +106,24 @@ const ReportForm = ({ loading, onSave, error, report }) => {
       if (error) {
         setSubmitErrorText(error.message)
       } else {
-        setSubmitErrorText('')
+        // STORING FORM DATA
+        const data = {
+          url: url,
+          regionName: selectedRegion,
+        }
+        await onSave(data)
+          .then(({ data, errors }) => {
+            if (!errors) {
+              setSelectedRegion('default')
+              setUrl('')
+              setReport(data.createReport)
+            } else setSubmitErrorText(errors[0]['message'])
+          })
+          .catch((error) => {
+            console.log(error)
+            setSubmitErrorText('Something went wrong')
+          })
       }
-      onSave(data, report?.id)
     }
   }
 
@@ -99,7 +138,7 @@ const ReportForm = ({ loading, onSave, error, report }) => {
         query: REGIONS_QUERY,
       })
       .then((res) => {
-        setSelectItems(
+        setRegions(
           res.data.regions.map((region) => {
             return {
               label: region.name,
@@ -109,7 +148,6 @@ const ReportForm = ({ loading, onSave, error, report }) => {
             }
           })
         )
-        setHasRegionsDataLoaded(true)
       })
       .catch((error) => {
         console.error(error.message)
@@ -118,7 +156,7 @@ const ReportForm = ({ loading, onSave, error, report }) => {
 
   // SETTING SIDE EFFECTS
   useEffect(() => {
-    setRegionsLoad()
+    if (regions === null) setRegionsLoad()
   }, [])
 
   return (
@@ -129,18 +167,14 @@ const ReportForm = ({ loading, onSave, error, report }) => {
           return { borderRight: `1px solid ${theme.palette.divider}` }
         }}
       >
-        <Typography
-          variant="body1"
-          className="report-form-title"
-          color="primary"
-        >
+        <Typography variant="h2" className="report-form-title">
           Generate Report
         </Typography>
         <Typography variant="body2" className="report-form-subtitle">
-          Gain valuable insights for optimizing your application&rsquo;s
+          Gain valuable insights for optimizing your web application&rsquo;s
           performance and security through our comprehensive reports
         </Typography>
-        {hasRegionsDataLoaded ? (
+        {regions !== null ? (
           <form>
             <Select
               fullWidth={true}
@@ -151,15 +185,16 @@ const ReportForm = ({ loading, onSave, error, report }) => {
               size="small"
               defaultValue="default"
               startAdornment={<Storage />}
-              selectItems={selectItems}
+              selectItems={regions}
               onChange={setSelectedField}
+              disabled={loading}
+              value={selectedRegion}
             />
             <Input
               placeholder="Enter URL"
               required={true}
               startAdornment={<Link />}
               fullWidth={true}
-              type="url"
               value={url}
               margin="medium"
               color={urlErrorText !== '' ? 'error' : 'primary'}
@@ -167,6 +202,7 @@ const ReportForm = ({ loading, onSave, error, report }) => {
               errorText={urlErrorText}
               label="url"
               size="small"
+              disabled={loading}
             />
             <Button
               type="submit"
@@ -189,6 +225,15 @@ const ReportForm = ({ loading, onSave, error, report }) => {
         ) : (
           <Skeleton variant="rectangular" className="report-form-skeleton" />
         )}
+        {loading && (
+          <LoadingContainer
+            title="Generating report"
+            subtitle={randomLoadingContainerItem.label}
+            gray={true}
+            imgUrl={randomLoadingContainerItem.imgUrl}
+          />
+        )}
+        {report && !loading && jsonDisplay(report)}
       </Box>
       <div className="report-globe-container" ref={globeContainerRef}>
         <Globe
