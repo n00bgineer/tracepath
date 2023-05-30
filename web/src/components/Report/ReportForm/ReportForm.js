@@ -11,11 +11,11 @@ import { useRecoilState } from 'recoil'
 import Alert from 'src/components/Alert/Alert'
 import Button from 'src/components/Button/Button'
 import Input from 'src/components/Input/Input'
-import LoadingContainer from 'src/components/LoadingContainer/LoadingContainer'
+import Loading from 'src/components/Loading/Loading'
 import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/RegionsCell'
+import ReportData from 'src/components/ReportData/ReportData'
 import Select from 'src/components/Select/Select'
 import { reportAtom, regionsAtom } from 'src/contexts/atoms'
-import { jsonDisplay } from 'src/lib/formatters'
 
 /**
  * @name validateUrl
@@ -167,15 +167,19 @@ const ReportForm = ({ loading = true, onSave, error }) => {
           return { borderRight: `1px solid ${theme.palette.divider}` }
         }}
       >
+        {/* METADTA */}
         <Box className="page-description-container">
           <Typography variant="h2" className="page-title">
-            Generate Report
+            Generate Reports
           </Typography>
           <Typography variant="body2" className="page-subtitle">
-            Gain valuable insights for optimizing your web application&rsquo;s
-            performance and security through our comprehensive reports
+            Leverage comprehensive reports to analyze performance metrics and
+            make informed decisions for your web application&rsquo;s
+            optimization
           </Typography>
         </Box>
+
+        {/* FORM */}
         {regions !== null ? (
           <form>
             <Select
@@ -227,15 +231,21 @@ const ReportForm = ({ loading = true, onSave, error }) => {
         ) : (
           <Skeleton variant="rectangular" className="report-form-skeleton" />
         )}
+
+        {/* LOADING CONTAINER */}
         {loading && (
-          <LoadingContainer
+          <Loading
             title="Generating report"
             subtitle={randomLoadingContainerItem.label}
             gray={true}
             imgUrl={randomLoadingContainerItem.imgUrl}
           />
         )}
-        {report && !loading && jsonDisplay(report)}
+
+        {/* REPORT OUTPUT */}
+        {report && !loading && <ReportData data={report} />}
+
+        {/*  */}
       </Box>
       <div className="report-globe-container" ref={globeContainerRef}>
         <Globe

@@ -3,19 +3,19 @@
 //
 // ```jsx
 // export const generated = (args) => {
-//   return <LoadingContainer {...args} />
+//   return <Loading {...args} />
 // }
 // ```
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import LoadingContainer from './LoadingContainer'
+import Loading from './Loading'
 
 export const generated = () => {
-  return <LoadingContainer />
+  return <Loading />
 }
 
 export default {
-  title: 'Components/LoadingContainer',
-  component: LoadingContainer,
+  title: 'Components/Loading',
+  component: Loading,
 }
