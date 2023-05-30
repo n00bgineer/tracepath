@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import {
+  Divider,
   BottomNavigation as MuiBottomNavigation,
   BottomNavigationAction as MuiBottomNavigationAction,
   Paper,
@@ -44,28 +45,31 @@ const BottomNavigation = ({ topActions, ...props }) => {
   const [bottomNavigationValue, setBottomNavigationValue] = useState(0)
 
   return (
-    <Paper elevation={3} className="bottom-navigation-paper">
-      <CustomBottomNavigation
-        {...props}
-        showLabels
-        value={bottomNavigationValue}
-        onChange={(event, newValue) => {
-          setBottomNavigationValue(newValue)
-        }}
-      >
-        {topActions.map((topActionItem) => {
-          return (
-            <BottomNavigationAction
-              component={RedwoodLink}
-              to={topActionItem.link}
-              key={topActionItem.label}
-              label={topActionItem.label}
-              icon={topActionItem.selectedIcon}
-            />
-          )
-        })}
-      </CustomBottomNavigation>
-    </Paper>
+    <>
+      <Paper elevation={3} className="bottom-navigation-paper">
+        <Divider />
+        <CustomBottomNavigation
+          {...props}
+          showLabels
+          value={bottomNavigationValue}
+          onChange={(event, newValue) => {
+            setBottomNavigationValue(newValue)
+          }}
+        >
+          {topActions.map((topActionItem) => {
+            return (
+              <BottomNavigationAction
+                component={RedwoodLink}
+                to={topActionItem.link}
+                key={topActionItem.label}
+                label={topActionItem.label}
+                icon={topActionItem.selectedIcon}
+              />
+            )
+          })}
+        </CustomBottomNavigation>
+      </Paper>
+    </>
   )
 }
 
