@@ -132,7 +132,7 @@ const Select = ({
               padding: '0px',
             },
             '& .MuiMenu-paper': {
-              borderRadius: '24px',
+              borderRadius: '25px',
               marginTop: '10px',
               padding: '0px',
             },

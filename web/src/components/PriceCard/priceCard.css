@@ -1,7 +1,7 @@
 /* STYLING PRICE CARD */
 .price-card{
   border: 1px solid;
-  border-radius: 24px!important;
+  border-radius: 25px!important;
   flex-grow: 1!important;
   margin: 15px!important;
   max-width: 450px;
