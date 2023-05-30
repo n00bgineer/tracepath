@@ -160,20 +160,22 @@ const ReportForm = ({ loading = true, onSave, error }) => {
   }, [])
 
   return (
-    <Box className="report-form-globe-container">
+    <Box className="dashboard report-form-globe-container">
       <Box
         className="report-form-container"
         sx={(theme) => {
           return { borderRight: `1px solid ${theme.palette.divider}` }
         }}
       >
-        <Typography variant="h2" className="report-form-title">
-          Generate Report
-        </Typography>
-        <Typography variant="body2" className="report-form-subtitle">
-          Gain valuable insights for optimizing your web application&rsquo;s
-          performance and security through our comprehensive reports
-        </Typography>
+        <Box className="page-description-container">
+          <Typography variant="h2" className="page-title">
+            Generate Report
+          </Typography>
+          <Typography variant="body2" className="page-subtitle">
+            Gain valuable insights for optimizing your web application&rsquo;s
+            performance and security through our comprehensive reports
+          </Typography>
+        </Box>
         {regions !== null ? (
           <form>
             <Select

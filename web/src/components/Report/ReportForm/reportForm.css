@@ -17,13 +17,6 @@
   flex-grow: 3;
   max-width: 66.666%;
 }
-.report-form-title{
-  font-weight: 900!important;
-  font-size: 1.5em!important;
-}
-.report-form-subtitle{
-  margin: 5px 0px 15px!important;
-}
 .report-form-skeleton{
   height: 176px!important;
   width: 100%;

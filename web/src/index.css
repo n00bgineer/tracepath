@@ -7,3 +7,13 @@
   background: rgb(177,92,91);
   background: radial-gradient(circle, rgba(255,255,255,1), rgba(177,92,91,1) 90% 100%);
 }
+
+/* COMMON FASHBOARD STYLES */
+.dashboard .page-description-container{
+  margin: 5px 0px 15px;
+}
+.dashboard .page-title{
+  font-weight: bolder!important;
+  font-size: 1.5em!important;
+  margin-bottom: 5px;
+}
