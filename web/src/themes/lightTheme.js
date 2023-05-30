@@ -18,22 +18,22 @@ const LightTheme = createTheme({
   typography: {
     fontFamily: 'Source Sans Pro',
     h1: {
-      fontFamily: 'Roboto Slab',
+      fontFamily: 'Raleway',
     },
     h2: {
-      fontFamily: 'Roboto Slab',
+      fontFamily: 'Raleway',
     },
     h3: {
-      fontFamily: 'Roboto Slab',
+      fontFamily: 'Raleway',
     },
     h4: {
-      fontFamily: 'Roboto Slab',
+      fontFamily: 'Raleway',
     },
     h5: {
-      fontFamily: 'Roboto Slab',
+      fontFamily: 'Raleway',
     },
     h6: {
-      fontFamily: 'Roboto Slab',
+      fontFamily: 'Raleway',
     },
     fontSize: 16,
   },
