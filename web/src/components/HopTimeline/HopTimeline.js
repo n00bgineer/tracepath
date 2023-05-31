@@ -70,59 +70,29 @@ const HopTimeline = ({ hops, ...props }) => {
    * @param {*} text TEXT
    * @returns {String} CAPITALISED TEXT
    */
-  const capitalise = (text) =>
-    text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase()
+  const capitalise = (text) => {
+    return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase()
+  }
 
   /**
    * @name determineHopChipColor
    * @description METHOD TO DETERMINE HOP COLOR
    * @param {*} type TYPE
-   * @param {*} data DATA
    * @returns {String} COLOR
    */
-  const determineHopChipColor = (type, data) => {
+  const determineHopChipColor = (type) => {
     // SETTING LOCAL VARIABLES
     let chipColor
-    const privateCondition =
-      data?.city === 'PRIVATE' || data?.city.toUpperCase() === 'RESERVED'
 
-    if (data !== undefined) {
-      if (!privateCondition) chipColor = 'primary'
-      else if (privateCondition) chipColor = 'error'
-      else if (type === 'UNTRACEROUTABLE') chipColor = 'warning'
-      else chipColor = 'error'
-    } else {
-      chipColor = 'warning'
-    }
+    if (type === 'GEOLOCATED') chipColor = 'primary'
+    else if (type === 'UNGEOLOCATED') chipColor = 'error'
+    else if (type === 'UNTRACEROUTABLE') chipColor = 'warning'
+    else chipColor = 'error'
 
     return {
       color: `${chipColor}.main`,
       bgColor: `${chipColor}.400`,
     }
-  }
-
-  /**
-   * @name determineHopChipText
-   * @description METHOD TO DETERMINE TEXT THAT GOES WITHIN THE HOP CHIP
-   * @param {*} type TYPE
-   * @param {*} data DATA
-   * @returns {String} TYPE
-   */
-  const determineHopChipText = (type, data) => {
-    // SETTING LOCAL VARIABLES
-    let chipText
-    const privateCondition =
-      data?.city === 'PRIVATE' || data?.city.toUpperCase() === 'RESERVED'
-
-    if (data !== undefined) {
-      if (type === 'UNTRACEROUTABLE') chipText = 'Untraceroutable'
-      else if (!privateCondition) chipText = 'Geolocated'
-      else if (privateCondition) chipText = 'Private'
-      else chipText = capitalise(type)
-    } else {
-      if (type === 'UNTRACEROUTABLE') chipText = 'Untraceroutable'
-    }
-    return chipText
   }
 
   return (
@@ -141,36 +111,34 @@ const HopTimeline = ({ hops, ...props }) => {
                     <Typography variant="h5" className="hop-ip">
                       {hop.ip === '*' ? 'xxx.xxx.xxx.xxx' : hop.ip}
                     </Typography>
-                    {determineHopChipText(hop.type, hop.data).toUpperCase() ===
-                      'GEOLOCATED' && (
+                    {hop.type === 'GEOLOCATED' && (
                       <>
-                        <Typography variant="body2" color="grey">
-                          {capitalise(hop.data.city)},{' '}
-                          {capitalise(hop.data.country)}
-                        </Typography>
+                        {hop.data.country && (
+                          <Typography variant="body2" color="grey">
+                            {hop.data.city && capitalise(hop.data.city + ', ')}
+                            {capitalise(hop.data.country)}
+                          </Typography>
+                        )}
                         <Typography variant="body2" color="grey">
                           {hop.data.latitude}, {hop.data.longitude}
                         </Typography>
                       </>
                     )}
-                    {determineHopChipText(hop.type, hop.data).toUpperCase() ===
-                      'UNGEOLOCATED' && (
+                    {hop.type === 'UNGEOLOCATED' && (
                       <>
                         <Typography variant="body2" color="grey">
                           This IP address cannot be geolocated
                         </Typography>
                       </>
                     )}
-                    {determineHopChipText(hop.type, hop.data).toUpperCase() ===
-                      'PRIVATE' && (
+                    {hop.type === 'PRIVATE' && (
                       <>
                         <Typography variant="body2" color="grey">
                           This is a private IP address & it cannot be geolocated
                         </Typography>
                       </>
                     )}
-                    {determineHopChipText(hop.type, hop.data).toUpperCase() ===
-                      'UNTRACEROUTABLE' && (
+                    {hop.type === 'UNTRACEROUTABLE' && (
                       <>
                         <Typography variant="body2" color="grey">
                           Cannot ascertain IP address because the router blocks
@@ -196,7 +164,7 @@ const HopTimeline = ({ hops, ...props }) => {
                       sx={determineHopChipColor(hop.type, hop.data)}
                       label={
                         <Typography variant="body2">
-                          {determineHopChipText(hop.type, hop.data)}
+                          {hop.type !== undefined && capitalise(hop.type)}
                         </Typography>
                       }
                       size="small"
