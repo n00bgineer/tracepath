@@ -7,15 +7,9 @@ const CREATE_REPORT_MUTATION = gql`
   mutation CreateReportMutation($input: CreateReportInput!) {
     createReport(input: $input) {
       id
-      userId
-      createdAt
-      updateAt
       reportVersion
       lhVersion
       executionTime
-      isPrivate
-      isTracerouteError
-      isLighthouseError
       regionName
       url
       finalUrl
@@ -39,6 +33,12 @@ const CREATE_REPORT_MUTATION = gql`
       bootupTimeSummary
       thirdPartyItems
       thirdPartySummary
+      User {
+        userName
+      }
+      Region {
+        name
+      }
     }
   }
 `

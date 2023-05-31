@@ -1,3 +1,4 @@
+// IMPORTING PACKAGES/MODULES
 import { Link, routes } from '@redwoodjs/router'
 
 import Reports from 'src/components/Report/Reports'
@@ -6,15 +7,9 @@ export const QUERY = gql`
   query FindReports {
     reports {
       id
-      userId
-      createdAt
-      updateAt
       reportVersion
       lhVersion
       executionTime
-      isPrivate
-      isTracerouteError
-      isLighthouseError
       regionName
       url
       finalUrl
@@ -38,6 +33,12 @@ export const QUERY = gql`
       bootupTimeSummary
       thirdPartyItems
       thirdPartySummary
+      User {
+        userName
+      }
+      Region {
+        name
+      }
     }
   }
 `

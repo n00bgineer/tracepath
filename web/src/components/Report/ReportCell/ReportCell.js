@@ -1,18 +1,13 @@
+// IMPORTING PACKAGES/MODULES
 import Report from 'src/components/Report/Report'
 
 export const QUERY = gql`
   query FindReportById($id: String!) {
     report: report(id: $id) {
       id
-      userId
-      createdAt
-      updateAt
       reportVersion
       lhVersion
       executionTime
-      isPrivate
-      isTracerouteError
-      isLighthouseError
       regionName
       url
       finalUrl
@@ -36,6 +31,12 @@ export const QUERY = gql`
       bootupTimeSummary
       thirdPartyItems
       thirdPartySummary
+      User {
+        userName
+      }
+      Region {
+        name
+      }
     }
   }
 `
