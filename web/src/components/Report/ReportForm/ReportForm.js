@@ -143,6 +143,7 @@ const ReportForm = ({ loading = true, onSave, error }) => {
             return {
               label: region.name,
               value: region.regionName,
+              disabled: region.status === 'OK' ? false : true,
               chipLabel: region.status === 'OK' ? '🟢 ONLINE' : '🔴 OFFLINE',
               chipColor: region.status === 'OK' ? 'primary' : 'error',
             }
