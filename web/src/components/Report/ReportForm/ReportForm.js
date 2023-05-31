@@ -212,7 +212,7 @@ const ReportForm = ({ loading = true, onSave, error }) => {
             />
             <Button
               type="submit"
-              margin="medium"
+              margin="small"
               fullWidth={true}
               variant="contained"
               size="small"
@@ -245,7 +245,7 @@ const ReportForm = ({ loading = true, onSave, error }) => {
         {/* REPORT OUTPUT */}
         {report && !loading && <ReportData data={report} />}
 
-        {/*  */}
+        {/* TODO: ADD EXLPORE SNIPPET */}
       </Box>
       <div className="report-globe-container" ref={globeContainerRef}>
         <Globe
