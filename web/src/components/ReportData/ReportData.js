@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 import { OpenInNew, Shield, ShutterSpeed } from '@mui/icons-material'
-import { Box, Tabs, Typography } from '@mui/material'
+import { Box, Tabs, Typography, useMediaQuery } from '@mui/material'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
@@ -16,10 +16,18 @@ const ReportData = ({ data, hideLink, ...props }) => {
   // SETTING LOCAL STATES
   const [tabValue, setTabValue] = useState(0)
 
+  // SETTING MEDIA QUERY
+  const isMobileViewport = useMediaQuery('(min-width:900px)')
+
   // METHODS
-  const setTab = (event, value) => {
-    setTabValue(value)
-  }
+  /**
+   * @name setTab
+   * @description METHOD TO SET TAB VALUE
+   * @param {*} event EVENT OBJECT
+   * @param {*} value VALUE
+   * @returns {undefined} undefined
+   */
+  const setTab = (event, value) => setTabValue(value)
 
   return (
     <Box
@@ -73,7 +81,7 @@ const ReportData = ({ data, hideLink, ...props }) => {
             iconPosition="start"
           />
           <Tab
-            label="Security Tracerouting"
+            label={!isMobileViewport ? 'Tracerouting' : 'Security Tracerouting'}
             icon={<Shield fontSize="small" />}
             iconPosition="start"
           />
