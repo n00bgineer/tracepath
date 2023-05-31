@@ -83,13 +83,16 @@ const HopTimeline = ({ hops, ...props }) => {
     // SETTING LOCAL VARIABLES
     let chipColor
     const privateCondition =
-      data !== undefined &&
-      (data.city === 'PRIVATE' || data.city.toUpperCase() === 'RESERVED')
+      data?.city === 'PRIVATE' || data?.city.toUpperCase() === 'RESERVED'
 
-    if (type === 'UNTRACEROUTABLE') chipColor = 'warning'
-    else if (!privateCondition) chipColor = 'primary'
-    else if (privateCondition) chipColor = 'error'
-    else chipColor = 'error'
+    if (data !== undefined) {
+      if (!privateCondition) chipColor = 'primary'
+      else if (privateCondition) chipColor = 'error'
+      else if (type === 'UNTRACEROUTABLE') chipColor = 'warning'
+      else chipColor = 'error'
+    } else {
+      chipColor = 'warning'
+    }
 
     return {
       color: `${chipColor}.main`,
@@ -108,13 +111,16 @@ const HopTimeline = ({ hops, ...props }) => {
     // SETTING LOCAL VARIABLES
     let chipText
     const privateCondition =
-      data !== undefined &&
-      (data.city === 'PRIVATE' || data.city.toUpperCase() === 'RESERVED')
+      data?.city === 'PRIVATE' || data?.city.toUpperCase() === 'RESERVED'
 
-    if (type === 'UNTRACEROUTABLE') chipText = 'Untraceroutable'
-    else if (!privateCondition) chipText = 'Geolocated'
-    else if (privateCondition) chipText = 'Private'
-    else chipText = capitalise(type)
+    if (data !== undefined) {
+      if (type === 'UNTRACEROUTABLE') chipText = 'Untraceroutable'
+      else if (!privateCondition) chipText = 'Geolocated'
+      else if (privateCondition) chipText = 'Private'
+      else chipText = capitalise(type)
+    } else {
+      if (type === 'UNTRACEROUTABLE') chipText = 'Untraceroutable'
+    }
     return chipText
   }
 
