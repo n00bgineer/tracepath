@@ -35,7 +35,7 @@ const TimelineCard = styled(Card)(({ theme }) => ({
   },
 }))
 const Timeline = styled(MuiTimeline)(() => ({
-  '&.MuiTime-root': {
+  '&.MuiTimeline-root': {
     padding: '0px',
   },
 }))
