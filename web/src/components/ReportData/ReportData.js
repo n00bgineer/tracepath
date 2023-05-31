@@ -9,6 +9,7 @@ import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 import './reportData.css'
 import HopTimeline from '../HopTimeline/HopTimeline'
 import IconButton from '../IconButton/IconButton'
+import SiteMetaCard from '../SiteMetaCard/SiteMetaCard'
 import Tab from '../Tab/Tab'
 import TabPanel from '../TabPanel/TabPanel'
 
@@ -67,6 +68,12 @@ const ReportData = ({ data, hideLink, ...props }) => {
         </>
       )}
       <Box className="report-tabs-container">
+        <SiteMetaCard
+          url={data.url}
+          finalUrl={data.finalUrl}
+          siteMeta={data.siteMeta}
+          Region={data.Region}
+        />
         <Tabs
           value={tabValue}
           onChange={setTab}
