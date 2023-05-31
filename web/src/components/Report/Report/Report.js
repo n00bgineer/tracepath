@@ -1,5 +1,5 @@
 // IMPORTING PACKAGES/MODULES
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import Globe from 'react-globe.gl'
@@ -12,6 +12,11 @@ const Report = ({ report }) => {
   // SETTING REF
   const globeContainerRef = useRef(null)
 
+  useEffect(() => {
+    globeContainerRef.current = document.getElementsByClassName(
+      'report-globe-container'
+    )
+  }, [window.innerWidth])
   return (
     <Box className="dashboard report-form-globe-container">
       <Box
@@ -36,12 +41,13 @@ const Report = ({ report }) => {
       </Box>
       <div className="report-globe-container" ref={globeContainerRef}>
         <Globe
+          projection="equirectangular"
           globeImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685334753/earth-blue-marble_ype7nq.jpg"
           bumpImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335416/earth-topology_q6brg8.png"
           backgroundImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335571/night-sky_hplesi.png"
-          width={globeContainerRef.current?.offsetWidth}
+          width={(window.innerWidth - 81) * 0.667}
           height={globeContainerRef.current?.offsetHeight}
-          center={{ lat: 23.3441, lng: 85.3096 }}
+          showAtmosphere={true}
         />
       </div>
     </Box>
