@@ -13,6 +13,7 @@ export const schema = gql`
     regionName: String!
     url: String!
     finalUrl: String
+    siteMeta: JSON
     traceroute: JSON
     fcpScore: Float
     fcpValue: Float

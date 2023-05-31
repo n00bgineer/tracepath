@@ -33,6 +33,7 @@ const CREATE_REPORT_MUTATION = gql`
       bootupTimeSummary
       thirdPartyItems
       thirdPartySummary
+      siteMeta
       User {
         userName
       }

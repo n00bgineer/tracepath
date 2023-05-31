@@ -31,6 +31,7 @@ export const QUERY = gql`
       bootupTimeSummary
       thirdPartyItems
       thirdPartySummary
+      siteMeta
       User {
         userName
       }

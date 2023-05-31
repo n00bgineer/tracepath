@@ -66,6 +66,7 @@ model Report {
   regionName        String
   url               String
   finalUrl          String?
+  siteMeta          Json?
 
   // DETAILS
   traceroute        Json? // Tracerouting Data
