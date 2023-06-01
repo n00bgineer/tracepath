@@ -30,6 +30,30 @@ const validateUrl = (url) => {
 
 const ReportForm = ({ loading = true, onSave, error }) => {
   // SETTING LOCAL VARIABLES
+  // STORING HTML MARKER
+  const markerSvg = `<div class="blinking-dot"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="70" height="70" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);">
+  <defs>
+    <clipPath id="__lottie_element_2">
+      <rect width="20" height="20" x="0" y="0"></rect>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#__lottie_element_2)">
+    <g transform="matrix(0.015766000375151634,0,0,0.015766000375151634,9.850639343261719,10.036055564880371)" opacity="0.77" style="display: block;">
+      <g opacity="1" transform="matrix(0.9719499945640564,0,0,0.9719499945640564,11.178000450134277,-2.697000026702881)">
+        <path fill="#ed6c02" fill-opacity="1" d="M0,-165.92750549316406 C91.57539367675781,-165.92750549316406 165.92750549316406,-91.57539367675781 165.92750549316406,0 C165.92750549316406,91.57539367675781 91.57539367675781,165.92750549316406 0,165.92750549316406 C-91.57539367675781,165.92750549316406 -165.92750549316406,91.57539367675781 -165.92750549316406,0 C-165.92750549316406,-91.57539367675781 -91.57539367675781,-165.92750549316406 0,-165.92750549316406z"></path>
+        <path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="#ed6c02" stroke-opacity="1" stroke-width="0" d="M0,-165.92750549316406 C91.57539367675781,-165.92750549316406 165.92750549316406,-91.57539367675781 165.92750549316406,0 C165.92750549316406,91.57539367675781 91.57539367675781,165.92750549316406 0,165.92750549316406 C-91.57539367675781,165.92750549316406 -165.92750549316406,91.57539367675781 -165.92750549316406,0 C-165.92750549316406,-91.57539367675781 -91.57539367675781,-165.92750549316406 0,-165.92750549316406z"></path>
+      </g>
+    </g>
+    <g transform="matrix(0.024961085990071297,0,0,0.024961085990071297,9.703012466430664,10.071656227111816)" opacity="0.27" style="display: block;">
+      <g opacity="1" transform="matrix(0.9719499945640564,0,0,0.9719499945640564,11.178000450134277,-2.697000026702881)">
+        <path fill="#ed6c02" fill-opacity="1" d="M0,-165.92750549316406 C91.57539367675781,-165.92750549316406 165.92750549316406,-91.57539367675781 165.92750549316406,0 C165.92750549316406,91.57539367675781 91.57539367675781,165.92750549316406 0,165.92750549316406 C-91.57539367675781,165.92750549316406 -165.92750549316406,91.57539367675781 -165.92750549316406,0 C-165.92750549316406,-91.57539367675781 -91.57539367675781,-165.92750549316406 0,-165.92750549316406z"></path>
+        <path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="#ed6c02" stroke-opacity="1" stroke-width="0" d="M0,-165.92750549316406 C91.57539367675781,-165.92750549316406 165.92750549316406,-91.57539367675781 165.92750549316406,0 C165.92750549316406,91.57539367675781 91.57539367675781,165.92750549316406 0,165.92750549316406 C-91.57539367675781,165.92750549316406 -165.92750549316406,91.57539367675781 -165.92750549316406,0 C-165.92750549316406,-91.57539367675781 -91.57539367675781,-165.92750549316406 0,-165.92750549316406z"></path>
+      </g>
+    </g>
+  </g>
+</svg></div>`
+
+  // STORING LOADING CONTAINER ITEMS
   const loadingContainerItems = [
     {
       label: "It might take a minute to load your report, so here's a Panda",
@@ -53,6 +77,8 @@ const ReportForm = ({ loading = true, onSave, error }) => {
 
   // SETTING LOCAL STATE
   const [url, setUrl] = useState('') // SETTING URL
+  const [arcsData, setArcsData] = useState([]) // STORING ARC INFO
+  const [pointData, setPointData] = useState([]) // STORING POINTS DATA
   const [selectedRegion, setSelectedRegion] = useState('default') // SETTING SELECTED REGION
 
   // INPUT FIELD VALIDATION STATES
@@ -62,10 +88,135 @@ const ReportForm = ({ loading = true, onSave, error }) => {
   // INITIALISING APOLLO CLIENT
   const client = useApolloClient()
 
-  // SETTING REF
+  // SETTING REFERENCES
   const globeContainerRef = useRef(null)
 
   // METHODS
+  /**
+   * @name transformHopData
+   * @description METHOD TO TRANSFORM HOP DATA
+   * @returns {undefined} undefined
+   */
+  const transformHopData = () => {
+    const hops = report.traceroute.hops
+    // FILTERING OUT NON-GEOLOCATED ADDRESSES
+    const geolocatedAddresses = hops.filter((hop) => {
+      if (hop.type === 'GEOLOCATED') return true
+    })
+
+    // FILTERING OUT UNDEFINED VALUES
+    let arcsData = geolocatedAddresses.filter((arcDatum) => {
+      if (arcDatum !== undefined) return true
+    })
+
+    // ITERATING THROUGH INDIVIDUAL LAT & LONG AND STORING UNIQUE COORDINATES
+    const uniqueCoordinates = []
+    arcsData.forEach((arcsDatum) => {
+      const { latitude, longitude } = arcsDatum.data
+      if (latitude !== undefined && longitude !== undefined) {
+        const coordinate = { lat: latitude, lng: longitude }
+        if (
+          !uniqueCoordinates.some(
+            (coord) => coord.lat === latitude && coord.lng === longitude
+          )
+        ) {
+          uniqueCoordinates.push(coordinate)
+        }
+      }
+    })
+
+    // TRANSFORMING ARC DATA INTO REQUIRED FORM
+    arcsData = arcsData
+      .map((arcDatum, index, arcData) => {
+        if (index !== arcData.length - 1) {
+          return {
+            startLat: arcDatum.data.latitude,
+            startLng: arcDatum.data.longitude,
+            endLat: arcData[index + 1].data.latitude,
+            endLng: arcData[index + 1].data.longitude,
+            color: '#ed6c02',
+          }
+        }
+      })
+      .filter((arcDatum) => {
+        if (arcDatum !== undefined) return true
+      })
+
+    // SETTING POINTS
+    setPointData(uniqueCoordinates)
+
+    // SETTING ARCS
+    setArcsData(arcsData)
+  }
+
+  /**
+   * @name findCoordinateByIndex
+   * @description METHOD TO RETURN ARRAY INDEX FOR GIVEN COORDINATE VALUE
+   * @param {*} coordinates COORDINATES ARRAY
+   * @param {*} coordinate COORDINATE OBJECT
+   * @returns {Int} INDEX
+   */
+  const findCoordinateByIndex = (coordinates, coordinate) => {
+    for (let index = 0; index < coordinates.length; index++) {
+      if (
+        coordinates[index].lat === coordinate.lat &&
+        coordinates[index].lng === coordinate.lng &&
+        coordinates[index].city === coordinate.city &&
+        coordinates[index].country === coordinate.country
+      )
+        return index
+    }
+    return -1 // Object not found
+  }
+
+  /**
+   * @name setHTMLElement
+   * @description METHOD TO SET HTML ELEMENT
+   * @param {*} d DATA
+   * @returns {Node} HTML ELEMENT
+   */
+  const setHTMLElement = (d) => {
+    const index = findCoordinateByIndex(pointData, d)
+    const element = document.createElement('div')
+    element.classList.add(`marker-container${index}`)
+    element.innerHTML = markerSvg
+
+    element.style.color = d.color
+    element.style.width = `${d.size}px`
+    element.style['pointer-events'] = 'auto'
+    element.style.cursor = 'pointer'
+    element.onmouseover = () => {
+      const markerSubcontainerElement = document.querySelector(
+        `.marker-container${index} .marker-subcontainer`
+      )
+      const cityElement = document.querySelector(
+        `.marker-container${index} .city`
+      )
+      const countryElement = document.querySelector(
+        `.marker-container${index} .country`
+      )
+      const latElement = document.querySelector(
+        `.marker-container${index} .lat`
+      )
+      const longElement = document.querySelector(
+        `.marker-container${index} .long`
+      )
+      if (d.city) cityElement.innerHTML = `${d.city}, `
+      if (d.city) countryElement.innerHTML = `${d.country}`
+      if (d.lat) latElement.innerHTML = `${d.lat}, `
+      if (d.lng) longElement.innerHTML = `${d.lng}`
+      markerSubcontainerElement.style.visibility = 'visible'
+    }
+    element.onmouseout = () => {
+      const markerSubcontainerElement = document.querySelector(
+        `.marker-container${index} .marker-subcontainer`
+      )
+      markerSubcontainerElement.style.visibility = 'hidden'
+    }
+
+    return element
+  }
+
   /**
    * @name setUrlField
    * @description METHOD TO SET EMAIL VALUE
@@ -98,6 +249,8 @@ const ReportForm = ({ loading = true, onSave, error }) => {
   const onSubmit = async (event) => {
     event.preventDefault()
     setSubmitErrorText('')
+    setArcsData([])
+    setPointData([])
     if (selectedRegion === null || selectedRegion === 'default')
       setSubmitErrorText('Please select a region to continue')
     else if (urlErrorText !== '' || url.length === 0)
@@ -157,12 +310,15 @@ const ReportForm = ({ loading = true, onSave, error }) => {
 
   // SETTING SIDE EFFECTS
   useEffect(() => {
-    // SETTING GLOBE CONTAINER REF
+    // SETTING GLOBE CONTAINER REFERENCE
     globeContainerRef.current = document.getElementsByClassName(
       'report-globe-container'
     )
     // LOADING REGIONS DATA
     if (regions === null) setRegionsLoad()
+
+    // SHOWING TRANSFORMATION DATA
+    if (report !== null) transformHopData()
   }, [])
 
   return (
@@ -261,7 +417,17 @@ const ReportForm = ({ loading = true, onSave, error }) => {
           backgroundImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335571/night-sky_hplesi.png"
           width={(window.innerWidth - 81) * 0.667}
           height={globeContainerRef.current?.offsetHeight}
-          center={{ lat: 23.3441, lng: 85.3096 }}
+          showAtmosphere={true}
+          center={{ lat: 11, lng: 11 }}
+          arcsData={arcsData}
+          arcColor="color"
+          arcDashLength={3}
+          arcDashGap={0.5}
+          arcStroke={0.65}
+          arcDashAnimateTime={500}
+          htmlElementsData={pointData}
+          htmlElement={setHTMLElement}
+          pointAltitude={0}
         />
       </div>
     </Box>

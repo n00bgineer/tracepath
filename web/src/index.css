@@ -20,7 +20,12 @@
 
 /* SETTING MAP MARKER STYLES */
 .blinking-dot {
-  animation: blink 2s infinite;
+  align-items: center;
+  /* animation: blink 2s infinite; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
 
 @keyframes blink {
@@ -33,4 +38,27 @@
   100% {
     opacity: 0;
   }
+}
+
+.marker-subcontainer{
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 1);
+  border: 5px solid #ed6c02;
+  border-radius: 15px;
+  font-family: 'Source Sans Pro';
+  margin-bottom: -40px;
+  margin-left: 160px;
+  max-width: fit-content;
+  min-width: 125px;
+  padding: 5px;
+  position: absolute;
+  top: 0px;
+  visibility: hidden;
+}
+.marker-subcontainer > .city-country{
+  font-size: 14px;
+  font-weight: bold;
+}
+.marker-subcontainer > .lat-long{
+  font-size: 12px;
 }
