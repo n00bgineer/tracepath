@@ -7,8 +7,8 @@ import './dataLoading.css'
 const DataLoading = ({ imgUrl, title, subtitle, small, gray, ...props }) => {
   // SETTING LOCAL VARIABLES
   // SETTING LOADING CONTAINER SIZE
-  let loadingContainerSizeClass = 'loading-container-large'
-  if (small === true) loadingContainerSizeClass = 'loading-container-small'
+  let loadingContainerSizeClass = 'data-loading-container-large'
+  if (small === true) loadingContainerSizeClass = 'data-loading-container-small'
 
   return (
     <Box
@@ -24,18 +24,24 @@ const DataLoading = ({ imgUrl, title, subtitle, small, gray, ...props }) => {
       }}
       className={
         props.className
-          ? props.className + ' loading-container ' + loadingContainerSizeClass
-          : 'loading-container ' + loadingContainerSizeClass
+          ? props.className +
+            ' data-loading-container ' +
+            loadingContainerSizeClass
+          : 'data-loading-container ' + loadingContainerSizeClass
       }
     >
       {imgUrl && (
-        <img src={imgUrl} alt={subtitle} className="loading-container-image" />
+        <img
+          src={imgUrl}
+          alt={subtitle}
+          className="data-loading-container-image"
+        />
       )}
       <Box className="loading-text-container">
-        <Typography variant="h2" className="loading-container-title">
+        <Typography variant="h2" className="data-loading-container-title">
           {title}
         </Typography>
-        <Typography variant="body1" className="loading-container-subtitle">
+        <Typography variant="body1" className="data-loading-container-subtitle">
           {subtitle}
         </Typography>
       </Box>

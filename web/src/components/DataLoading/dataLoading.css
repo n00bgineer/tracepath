@@ -1,9 +1,9 @@
-.loading-container{
+.data-loading-container{
   border-radius: 25px;
   padding: 10px;
   margin: 10px auto;
 }
-.loading-container > .loading-container-image{
+.data-loading-container > .data-loading-container-image{
   max-height: 300px;
   margin: 0px auto;
   display: block;
@@ -12,13 +12,13 @@
   width: 75%;
   margin: 15px auto;
 }
-.loading-container-title{
+.data-loading-container-title{
   font-size: 1.25em!important;
   font-weight: bolder!important;
   text-align: center;
   /* margin-top: 10px!important; */
 }
-.loading-container-subtitle{
+.data-loading-container-subtitle{
   font-size: 0.9em!important;
   text-align: center;
   margin-top: 5px!important;
