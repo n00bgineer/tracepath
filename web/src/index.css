@@ -13,7 +13,24 @@
   margin: 5px 0px;
 }
 .dashboard .page-title{
-  font-weight: bolder!important;
   font-size: 1.5em!important;
+  font-weight: bolder!important;
   margin-bottom: 5px;
+}
+
+/* SETTING MAP MARKER STYLES */
+.blinking-dot {
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
