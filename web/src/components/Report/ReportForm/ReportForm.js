@@ -427,7 +427,9 @@ const ReportForm = ({ loading = true, onSave, error }) => {
         )}
 
         {/* REPORT OUTPUT */}
-        {report && !loading && <ReportData data={report} />}
+        {report && !loading && (
+          <ReportData data={report} pointData={pointData} />
+        )}
 
         {/* TODO: ADD EXLPORE SNIPPET */}
       </Box>

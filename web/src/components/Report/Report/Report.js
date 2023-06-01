@@ -212,7 +212,9 @@ const Report = ({ report }) => {
         </Box>
 
         {/* REPORT OUTPUT */}
-        {report && <ReportData data={report} hideLink={true} />}
+        {report && (
+          <ReportData data={report} hideLink={true} pointData={pointData} />
+        )}
       </Box>
       <div className="report-globe-container" ref={globeContainerRef}>
         <Globe

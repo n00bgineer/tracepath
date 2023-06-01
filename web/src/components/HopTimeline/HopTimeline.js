@@ -1,5 +1,4 @@
 // IMPORTING PACKAGES/MODULES
-import { useEffect, useState } from 'react'
 
 import styled from '@emotion/styled'
 import {
@@ -60,15 +59,12 @@ const TimelineContent = styled(MuiTimelineContent)(() => ({
   },
 }))
 
-const HopTimeline = ({ hops, ...props }) => {
+const HopTimeline = ({ hops, pointData, ...props }) => {
   // SETTING LOCAL VARIABLES
   const origDestColor = {
     color: `info.main`,
     bgColor: `info.400`,
   } // ORIGIN AND DESTINATION COLOR
-
-  // SETTING LOCAL STATES
-  const [pointData, setPointData] = useState([]) // STORING POINTS DATA
 
   // METHODS
   /**
@@ -101,47 +97,6 @@ const HopTimeline = ({ hops, ...props }) => {
       bgColor: `${chipColor}.400`,
     }
   }
-
-  /**
-   * @name transformHopData
-   * @description METHOD TO TRANSFORM HOP DATA
-   * @returns {undefined} undefined
-   */
-  const transformHopData = () => {
-    // FILTERING OUT NON-GEOLOCATED ADDRESSES
-    const geolocatedAddresses = hops.filter((hop) => {
-      if (hop.type === 'GEOLOCATED') return true
-    })
-
-    // FILTERING OUT UNDEFINED VALUES
-    let arcsData = geolocatedAddresses.filter((arcDatum) => {
-      if (arcDatum !== undefined) return true
-    })
-
-    // ITERATING THROUGH INDIVIDUAL LAT & LONG AND STORING UNIQUE COORDINATES
-    const uniqueCoordinates = []
-    arcsData.forEach((arcsDatum) => {
-      const { latitude, longitude } = arcsDatum.data
-      if (latitude !== undefined && longitude !== undefined) {
-        const coordinate = { lat: latitude, lng: longitude }
-        if (
-          !uniqueCoordinates.some(
-            (coord) => coord.lat === latitude && coord.lng === longitude
-          )
-        ) {
-          uniqueCoordinates.push(coordinate)
-        }
-      }
-    })
-
-    // SETTING POINTS
-    setPointData(uniqueCoordinates)
-  }
-
-  // SETTING SIDE EFFECTS
-  useEffect(() => {
-    transformHopData()
-  }, [])
 
   return (
     <>

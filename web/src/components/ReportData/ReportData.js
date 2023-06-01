@@ -13,7 +13,7 @@ import SiteMetaCard from '../SiteMetaCard/SiteMetaCard'
 import Tab from '../Tab/Tab'
 import TabPanel from '../TabPanel/TabPanel'
 
-const ReportData = ({ data, hideLink, ...props }) => {
+const ReportData = ({ data, hideLink, pointData, ...props }) => {
   // SETTING LOCAL STATES
   const [tabValue, setTabValue] = useState(0)
 
@@ -97,7 +97,9 @@ const ReportData = ({ data, hideLink, ...props }) => {
           abcd
         </TabPanel>
         <TabPanel value={1} index={tabValue}>
-          {data.traceroute && <HopTimeline hops={data.traceroute.hops} />}
+          {data.traceroute && (
+            <HopTimeline hops={data.traceroute.hops} pointData={pointData} />
+          )}
         </TabPanel>
       </Box>
     </Box>
