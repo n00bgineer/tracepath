@@ -1,6 +1,6 @@
 import { render } from '@redwoodjs/testing/web'
 
-import Loading from './Loading'
+import DataLoading from './DataLoading'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
@@ -8,7 +8,7 @@ import Loading from './Loading'
 describe('Loading', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<Loading />)
+      render(<DataLoading />)
     }).not.toThrow()
   })
 })

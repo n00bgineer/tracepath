@@ -10,8 +10,8 @@ import './reportForm.css'
 
 import Alert from 'src/components/Alert/Alert'
 import Button from 'src/components/Button/Button'
+import DataLoading from 'src/components/DataLoading/DataLoading'
 import Input from 'src/components/Input/Input'
-import Loading from 'src/components/Loading/Loading'
 import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/RegionsCell'
 import ReportData from 'src/components/ReportData/ReportData'
 import Select from 'src/components/Select/Select'
@@ -396,7 +396,7 @@ const ReportForm = ({ loading = true, onSave, error }) => {
 
         {/* LOADING CONTAINER */}
         {loading && (
-          <Loading
+          <DataLoading
             title="Generating report"
             subtitle={randomLoadingContainerItem.label}
             gray={true}

@@ -3,16 +3,16 @@
 //
 // ```jsx
 // export const generated = (args) => {
-//   return <Loading {...args} />
+//   return <DataLoading {...args} />
 // }
 // ```
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import Loading from './Loading'
+import DataLoading from './DataLoading'
 
 export const generated = () => {
-  return <Loading />
+  return <DataLoading />
 }
 
 export default {

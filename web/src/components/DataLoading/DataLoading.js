@@ -2,9 +2,9 @@
 import React from 'react'
 
 import { Box, Typography } from '@mui/material'
-import './loading.css'
+import './dataLoading.css'
 
-const Loading = ({ imgUrl, title, subtitle, small, gray, ...props }) => {
+const DataLoading = ({ imgUrl, title, subtitle, small, gray, ...props }) => {
   // SETTING LOCAL VARIABLES
   // SETTING LOADING CONTAINER SIZE
   let loadingContainerSizeClass = 'loading-container-large'
@@ -43,4 +43,4 @@ const Loading = ({ imgUrl, title, subtitle, small, gray, ...props }) => {
   )
 }
 
-export default Loading
+export default DataLoading
