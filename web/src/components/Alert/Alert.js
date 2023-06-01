@@ -7,12 +7,10 @@ const CustomAlert = styled(MuiAlert)(({ theme }) => ({
   // DEFAULT STYLES
   '&.MuiAlert-root': {
     borderRadius: '9999px',
-    padding: '10px',
     wordBreak: 'break-word',
   },
   '& .MuiAlert-icon': {
-    padding: '10px',
-    margin: '0px',
+    marginRight: '10px',
   },
 
   // FILLED STYLES
@@ -31,8 +29,13 @@ const CustomAlert = styled(MuiAlert)(({ theme }) => ({
 
   // MARGIN STYLES
   '&.MuiAlert-margin-small': { marginBottom: '5px' },
-  '&.MuiAlert-margin-medium': { marginBottom: '10px' },
+  '&.MuiAlert-margin-medium': { marginBottom: '15px' },
   '&.MuiAlert-margin-large': { marginBottom: '20px' },
+
+  // SIZE STYLES
+  '&.MuiAlert-small': { paddng: '5px' },
+  '&.MuiAlert-medium': { paddng: '10px' },
+  '&.MuiAlert-large': { paddng: '20px' },
 
   // FULLWIDTH CLASS
   '&.MuiAlert-fullwidth': {
@@ -40,7 +43,7 @@ const CustomAlert = styled(MuiAlert)(({ theme }) => ({
   },
 }))
 
-const Alert = ({ margin, fullWidth, ...props }) => {
+const Alert = ({ margin, fullWidth, size, ...props }) => {
   // SETTING LOCAL VARIABLES
   // SETTING MARGIN CLASS
   let marginClass = ''
@@ -48,20 +51,27 @@ const Alert = ({ margin, fullWidth, ...props }) => {
   else if (margin === 'medium') marginClass = 'MuiAlert-margin-medium'
   else if (margin === 'large') marginClass = 'MuiAlert-margin-large'
 
+  // SETTING SIZE CLASS
+  let sizeClass = 'MuiAlert-medium'
+  if (size === 'small') sizeClass = 'MuiAlert-small'
+  else if (size === 'large') sizeClass = 'MuiAlert-large'
+
   // SETTING FULLWIDTH CLASS
   let fullWidthClass = ''
   if (fullWidth) fullWidthClass = 'MuiAlert-fullwidth'
 
   return (
     <CustomAlert
-      {...props}
       variant="filled"
+      {...props}
       className={
         (props.className ? props.className : '') +
         ' ' +
         marginClass +
         ' ' +
-        fullWidthClass
+        fullWidthClass +
+        ' ' +
+        sizeClass
       }
     />
   )
