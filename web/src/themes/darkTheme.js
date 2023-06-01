@@ -11,6 +11,9 @@ const DarkTheme = createTheme({
     secondary: {
       main: '#b15c5b',
     },
+    grey: {
+      main: '#EDE7E3',
+    },
     background: {
       default: 'rgb(39 39 42)',
       paper: 'rgb(24 24 27)',

@@ -11,6 +11,9 @@ const LightTheme = createTheme({
     secondary: {
       main: '#b15c5b',
     },
+    grey: {
+      main: '#EDE7E3',
+    },
     background: {
       default: '#fff',
     },
