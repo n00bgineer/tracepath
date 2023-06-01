@@ -16282,6 +16282,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"javascript-time-ago@npm:^2.5.9":
+  version: 2.5.9
+  resolution: "javascript-time-ago@npm:2.5.9"
+  dependencies:
+    relative-time-format: ^1.1.6
+  checksum: c7a7aaf5fb5615c175ece1e77da8b2964f4924170b9d1cf4ae586343624f9e09141403f2548600ba95fad3175ebf30fe74e022a3ee4cfd83cc42c6bb028c0c5d
+  languageName: node
+  linkType: hard
+
 "jerrypick@npm:^1.1.1":
   version: 1.1.1
   resolution: "jerrypick@npm:1.1.1"
@@ -21689,6 +21698,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"relative-time-format@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "relative-time-format@npm:1.1.6"
+  checksum: d0784eda966ebf256c5585f67786435c611972406abcabebca0d4489e28cba7523a40c8c9725a7a089c5f33a20c16d537068a909ed91da275feed9d8607e70f0
+  languageName: node
+  linkType: hard
+
 "relay-runtime@npm:12.0.0":
   version: 12.0.0
   resolution: "relay-runtime@npm:12.0.0"
@@ -25445,6 +25461,7 @@ __metadata:
     "@redwoodjs/web": 5.1.2
     cobe: ^0.6.3
     humanize-string: 2.1.0
+    javascript-time-ago: ^2.5.9
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
