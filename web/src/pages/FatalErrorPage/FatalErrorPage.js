@@ -14,6 +14,11 @@ if (process.env.NODE_ENV === 'development') {
 export default RedwoodDevFatalErrorPage ||
   (() => {
     // METHODS
+    /**
+     * @name setRefresh
+     * @description METHOD TO REFRESH YOUR PAGE
+     * @returns {undefined} undefined
+     */
     const setRefresh = () => document.location.reload()
 
     return (
