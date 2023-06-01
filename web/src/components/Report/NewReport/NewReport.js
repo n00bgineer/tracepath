@@ -7,6 +7,7 @@ const CREATE_REPORT_MUTATION = gql`
   mutation CreateReportMutation($input: CreateReportInput!) {
     createReport(input: $input) {
       id
+      createdAt
       reportVersion
       lhVersion
       executionTime
