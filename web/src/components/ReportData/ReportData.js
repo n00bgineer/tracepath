@@ -14,6 +14,16 @@ import Tab from '../Tab/Tab'
 import TabPanel from '../TabPanel/TabPanel'
 
 const ReportData = ({ data, hideLink, pointData, ...props }) => {
+  // SETTING LOCAL VARIABLES
+  const scores = {
+    fcp: data.fcpScore,
+    lcp: data.lcpScore,
+    cls: data.clsScore,
+    tbt: data.tbtScore,
+    tti: data.ttiScore,
+    speedIndex: data.speedIndexScore,
+  }
+
   // SETTING LOCAL STATES
   const [tabValue, setTabValue] = useState(0)
 
@@ -73,6 +83,8 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
           finalUrl={data.finalUrl}
           siteMeta={data.siteMeta}
           Region={data.Region}
+          createdAt={data.createdAt}
+          scores={scores}
         />
         <Tabs
           value={tabValue}
