@@ -30,8 +30,9 @@ const validateUrl = (url) => {
 
 const ReportForm = ({ loading = true, onSave, error }) => {
   // SETTING LOCAL VARIABLES
-  // STORING HTML MARKER
-  const markerSvg = `<div class="blinking-dot"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="70" height="70" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);">
+  // STORING HTML
+  const markerSvg = `<div class="blinking-dot">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="70" height="70" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);">
   <defs>
     <clipPath id="__lottie_element_2">
       <rect width="20" height="20" x="0" y="0"></rect>
@@ -51,7 +52,18 @@ const ReportForm = ({ loading = true, onSave, error }) => {
       </g>
     </g>
   </g>
-</svg></div>`
+</svg>
+<div class="marker-subcontainer">
+  <div class="city-country">
+    <span class="city"></span>
+    <span class="country"></span>
+  </div>
+  <div class="lat-long">
+    <span class="lat"></span>
+    <span class="long"></span>
+  </div>
+</div>
+</div>`
 
   // STORING LOADING CONTAINER ITEMS
   const loadingContainerItems = [
@@ -112,9 +124,14 @@ const ReportForm = ({ loading = true, onSave, error }) => {
     // ITERATING THROUGH INDIVIDUAL LAT & LONG AND STORING UNIQUE COORDINATES
     const uniqueCoordinates = []
     arcsData.forEach((arcsDatum) => {
-      const { latitude, longitude } = arcsDatum.data
+      const { latitude, longitude, city, country } = arcsDatum.data
       if (latitude !== undefined && longitude !== undefined) {
-        const coordinate = { lat: latitude, lng: longitude }
+        const coordinate = {
+          lat: latitude,
+          lng: longitude,
+          city: city,
+          country: country,
+        }
         if (
           !uniqueCoordinates.some(
             (coord) => coord.lat === latitude && coord.lng === longitude
@@ -176,6 +193,7 @@ const ReportForm = ({ loading = true, onSave, error }) => {
    * @returns {Node} HTML ELEMENT
    */
   const setHTMLElement = (d) => {
+    console.log(d)
     const index = findCoordinateByIndex(pointData, d)
     const element = document.createElement('div')
     element.classList.add(`marker-container${index}`)
@@ -309,6 +327,7 @@ const ReportForm = ({ loading = true, onSave, error }) => {
   }
 
   // SETTING SIDE EFFECTS
+  // ON-LOAD SIDE EFFECT
   useEffect(() => {
     // SETTING GLOBE CONTAINER REFERENCE
     globeContainerRef.current = document.getElementsByClassName(
@@ -316,10 +335,13 @@ const ReportForm = ({ loading = true, onSave, error }) => {
     )
     // LOADING REGIONS DATA
     if (regions === null) setRegionsLoad()
+  }, [])
 
+  // REPORT LOAD SIDE EFFECT
+  useEffect(() => {
     // SHOWING TRANSFORMATION DATA
     if (report !== null) transformHopData()
-  }, [])
+  }, [report])
 
   return (
     <Box className="dashboard report-form-globe-container">
