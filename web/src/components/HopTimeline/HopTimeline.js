@@ -147,7 +147,7 @@ const HopTimeline = ({ hops, ...props }) => {
     <>
       {pointData.length < 2 && (
         <Alert fullWidth={true} margin="medium" size="small" severity="warning">
-          Could only identify zero or one locations
+          No more than one location found
         </Alert>
       )}
       <Timeline {...props}>
