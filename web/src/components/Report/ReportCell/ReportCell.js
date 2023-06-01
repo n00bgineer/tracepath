@@ -8,6 +8,7 @@ export const QUERY = gql`
   query FindReportById($id: String!) {
     report: report(id: $id) {
       id
+      createdAt
       reportVersion
       lhVersion
       executionTime
