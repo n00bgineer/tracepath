@@ -34,7 +34,7 @@ const ScreenLoading = ({
           </Typography>
         )}
         {subtitle && (
-          <Typography variant="body2" color="grey" className="page-subtitle">
+          <Typography variant="body2" className="page-subtitle">
             {subtitle}
           </Typography>
         )}
