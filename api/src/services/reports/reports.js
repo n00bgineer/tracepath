@@ -44,20 +44,28 @@ export const createReport = async ({ input }) => {
   }
 
   // CALLING ENDPOINT
-  const response = await fetch(url, options)
-  if (response.status === 200) {
-    const report = await response.json()
+  try {
+    const response = await fetch(url, options)
+    if (response.ok) {
+      // GETTING REPORT BODY
+      const report = await response.json()
 
-    // SENDING RESPONSE
-    return db.report.create({
-      data: {
-        ...report,
-        reportVersion: config.LATEST_REPORT_VERSION,
-        regionName: input.regionName,
-      },
-    })
-  } else {
-    throw new RedwoodGraphQLError('Booboo')
+      // SENDING RESPONSE
+      return db.report.create({
+        data: {
+          ...report,
+          reportVersion: config.LATEST_REPORT_VERSION,
+          regionName: input.regionName,
+        },
+      })
+    } else {
+      // GETTING ERROR RESPONSE BODY
+      const errorBody = await response.json()
+      const errorMessage = errorBody.message
+      throw errorMessage
+    }
+  } catch (err) {
+    throw new RedwoodGraphQLError(err)
   }
 }
 
