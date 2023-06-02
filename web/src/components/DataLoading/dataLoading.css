@@ -5,12 +5,12 @@
 }
 .data-loading-container > .data-loading-container-image{
   max-height: 300px;
-  margin: 0px auto;
+  margin: 10px auto 0px;
   display: block;
 }
 .loading-text-container{
   width: 75%;
-  margin: 15px auto;
+  margin: 15px auto 10px;
 }
 .data-loading-container-title{
   font-size: 1.25em!important;
@@ -21,5 +21,5 @@
 .data-loading-container-subtitle{
   font-size: 0.9em!important;
   text-align: center;
-  margin-top: 5px!important;
+  margin-top: 0px!important;
 }

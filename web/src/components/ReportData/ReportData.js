@@ -7,6 +7,7 @@ import { Box, Tabs, Typography, useMediaQuery } from '@mui/material'
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
 import './reportData.css'
+import DataLoading from '../DataLoading/DataLoading'
 import HopTimeline from '../HopTimeline/HopTimeline'
 import IconButton from '../IconButton/IconButton'
 import SiteMetaCard from '../SiteMetaCard/SiteMetaCard'
@@ -106,11 +107,23 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
           />
         </Tabs>
         <TabPanel value={0} index={tabValue}>
-          abcd
+          <DataLoading
+            title="Performance Analysis Error!"
+            subtitle="Performance analysis data is empty"
+            gray={true}
+            imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685743033/emptyPerformance_rbqkus.png"
+          />
         </TabPanel>
         <TabPanel value={1} index={tabValue}>
-          {data.traceroute && (
+          {data.traceroute ? (
             <HopTimeline hops={data.traceroute.hops} pointData={pointData} />
+          ) : (
+            <DataLoading
+              title="Tracerouting Error!"
+              subtitle="Security tracerouting data is empty"
+              gray={true}
+              imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685742401/emptyTracepath_fvhoxr.png"
+            />
           )}
         </TabPanel>
       </Box>
