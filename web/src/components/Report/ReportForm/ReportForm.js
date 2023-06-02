@@ -28,7 +28,7 @@ const validateUrl = (url) => {
   return urlPattern.test(url)
 }
 
-const ReportForm = ({ loading = true, onSave, error }) => {
+const ReportForm = ({ loading, onSave }) => {
   // SETTING LOCAL VARIABLES
   // STORING HTML
   const markerSvg = `<div class="blinking-dot">
