@@ -23,7 +23,8 @@ const ReportsList = ({ reports }) => {
             if (
               report.siteMeta.ogTitle ||
               report.siteMeta.ogDescription ||
-              report.siteMeta.twitterDescription
+              report.siteMeta.twitterDescription ||
+              report.siteMeta.description
             )
               return true
           })
