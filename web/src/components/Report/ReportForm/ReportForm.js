@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { useApolloClient } from '@apollo/client'
-import { Assessment, Link, Storage } from '@mui/icons-material'
+import { Assessment, Link, Refresh, Storage } from '@mui/icons-material'
 import { Box, Skeleton, Typography } from '@mui/material'
 import Globe from 'react-globe.gl'
 import { useRecoilState } from 'recoil'
@@ -11,6 +11,8 @@ import './reportForm.css'
 import Alert from 'src/components/Alert/Alert'
 import Button from 'src/components/Button/Button'
 import DataLoading from 'src/components/DataLoading/DataLoading'
+import { capitalise } from 'src/components/HopTimeline/HopTimeline'
+import IconButton from 'src/components/IconButton/IconButton'
 import Input from 'src/components/Input/Input'
 import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/RegionsCell'
 import ReportData from 'src/components/ReportData/ReportData'
@@ -28,7 +30,7 @@ const validateUrl = (url) => {
   return urlPattern.test(url)
 }
 
-const ReportForm = ({ loading, onSave }) => {
+const ReportForm = ({ loading, onSave, error }) => {
   // SETTING LOCAL VARIABLES
   // STORING HTML
   const markerSvg = `<div class="blinking-dot">
@@ -193,7 +195,6 @@ const ReportForm = ({ loading, onSave }) => {
    * @returns {Node} HTML ELEMENT
    */
   const setHTMLElement = (d) => {
-    console.log(d)
     const index = findCoordinateByIndex(pointData, d)
     const element = document.createElement('div')
     element.classList.add(`marker-container${index}`)
@@ -259,6 +260,29 @@ const ReportForm = ({ loading, onSave }) => {
   const setSelectedField = (event) => setSelectedRegion(event.target.value)
 
   /**
+   * @name resetReportStates
+   * @description METHOD TO RESET REPORT STATES
+   * @returns {undefined} undefined
+   */
+  const resetReportStates = () => {
+    // RESETTING STATES
+    setArcsData([])
+    setPointData([])
+  }
+
+  /**
+   * @name resetFormStates
+   * @description METHOD TO RESET FORM STATES
+   * @returns {undefined} undefined
+   */
+  const resetFormStates = () => {
+    // RESETTING STATES
+    setUrl('')
+    setSelectedRegion('default')
+    setSubmitErrorText('')
+  }
+
+  /**
    * @name onSubmit
    * @description METHOD TO SUBMIT DATA
    * @param {*} event EVENT OBJECT
@@ -267,11 +291,7 @@ const ReportForm = ({ loading, onSave }) => {
   const onSubmit = async (event) => {
     // PREVENTING DEFAULT ACTION
     event.preventDefault()
-
-    // RESETTING STATES
-    setArcsData([])
-    setPointData([])
-    setSubmitErrorText('')
+    resetReportStates()
 
     // BASIC CHECKS
     if (selectedRegion === null || selectedRegion === 'default')
@@ -284,18 +304,10 @@ const ReportForm = ({ loading, onSave }) => {
         url: url,
         regionName: selectedRegion,
       }
-      await onSave(data)
-        .then(({ data, errors }) => {
-          if (!errors) {
-            setSelectedRegion('default')
-            setUrl('')
-            setReport(data.createReport)
-          } else setSubmitErrorText(errors[0]['message'])
-        })
-        .catch((error) => {
-          console.log(error)
-          setSubmitErrorText('Something went wrong')
-        })
+      await onSave(data).then(({ data }) => {
+        if (!error) setReport(data.createReport)
+        else setSubmitErrorText(capitalise(error.message))
+      })
     }
   }
 
@@ -323,7 +335,7 @@ const ReportForm = ({ loading, onSave }) => {
         )
       })
       .catch((error) => {
-        console.error(error.message)
+        console.error(error)
       })
   }
 
@@ -397,7 +409,7 @@ const ReportForm = ({ loading, onSave }) => {
             />
             <Button
               type="submit"
-              margin="small"
+              margin="medium"
               fullWidth={true}
               variant="contained"
               size="small"
@@ -408,7 +420,20 @@ const ReportForm = ({ loading, onSave }) => {
               Get Insights
             </Button>
             {submitErrorText !== '' && (
-              <Alert fullWidth={true} margin="large" severity="error">
+              <Alert
+                fullWidth={true}
+                margin="large"
+                severity="error"
+                action={
+                  <IconButton
+                    size="small"
+                    sx={{ color: 'common.white' }}
+                    onClick={resetFormStates}
+                  >
+                    <Refresh />
+                  </IconButton>
+                }
+              >
                 {submitErrorText}
               </Alert>
             )}
