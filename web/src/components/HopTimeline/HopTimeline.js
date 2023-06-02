@@ -13,6 +13,17 @@ import { Box, Card, Chip, Typography } from '@mui/material'
 
 import Alert from '../Alert/Alert'
 
+// METHODS
+/**
+ * @name capitalise
+ * @description METHOD TO CAPITALISE TEXT
+ * @param {*} text TEXT
+ * @returns {String} CAPITALISED TEXT
+ */
+export const capitalise = (text) => {
+  return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase()
+}
+
 // CUSTOM COMPONENTS
 const TimelineCard = styled(Card)(({ theme }) => ({
   '&.MuiCard-root': {
@@ -67,16 +78,6 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
   } // ORIGIN AND DESTINATION COLOR
 
   // METHODS
-  /**
-   * @name capitalise
-   * @description METHOD TO CAPITALISE TEXT
-   * @param {*} text TEXT
-   * @returns {String} CAPITALISED TEXT
-   */
-  const capitalise = (text) => {
-    return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase()
-  }
-
   /**
    * @name determineHopChipColor
    * @description METHOD TO DETERMINE HOP COLOR
