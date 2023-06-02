@@ -14,7 +14,8 @@ const ReportsList = ({ reports }) => {
           Curated Reports
         </Typography>
         <Typography variant="body2" className="report-subtitle">
-          Explore curated performance and security reports for valuable insights
+          The color bar below the cards represents the performance metrics. The
+          more colorful the bar is, the worse the performance metrics are
         </Typography>
       </Box>
       <Box className="explore-content-container">

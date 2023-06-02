@@ -73,7 +73,7 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
           </Box>
           <Typography variant="body2" className="report-subtitle">
             Every report can be categorized into two parts: (a) Performance
-            Analysis & (b) Security Tracerouting.
+            Analysis & (b) Security Tracerouting
           </Typography>
         </>
       )}

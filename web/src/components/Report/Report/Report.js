@@ -207,7 +207,7 @@ const Report = ({ report }) => {
           </Typography>
           <Typography variant="body2" className="report-subtitle">
             Every report can be categorized into two parts: (a) Performance
-            Analysis & (b) Security Tracerouting.
+            Analysis & (b) Security Tracerouting
           </Typography>
         </Box>
 
