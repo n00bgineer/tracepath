@@ -1,25 +1,36 @@
 import { db } from 'src/lib/db'
 
 export const regions = () => {
-  return db.region.findMany().then(async (regions) => {
-    return await Promise.all(
-      regions.map(async (region) => {
-        try {
-          const response = await fetch(
-            `http://${region.ipAddress}:${region.portNo}/api/status`
-          )
+  return db.region
+    .findMany({
+      // REMOVE WHILE TESTING LOCALLY
+      where: {
+        NOT: {
+          regionName: {
+            contains: 'local',
+          },
+        },
+      },
+    })
+    .then(async (regions) => {
+      return await Promise.all(
+        regions.map(async (region) => {
+          try {
+            const response = await fetch(
+              `http://${region.ipAddress}:${region.portNo}/api/status`
+            )
 
-          if (response.status === 200) {
-            return { ...region, status: 'OK' }
-          } else {
+            if (response.status === 200) {
+              return { ...region, status: 'OK' }
+            } else {
+              return { ...region, status: 'NOK' }
+            }
+          } catch (error) {
             return { ...region, status: 'NOK' }
           }
-        } catch (error) {
-          return { ...region, status: 'NOK' }
-        }
-      })
-    )
-  })
+        })
+      )
+    })
 }
 
 export const region = ({ id }) => {
