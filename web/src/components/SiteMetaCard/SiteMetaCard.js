@@ -30,9 +30,12 @@ const Card = styled(MuiCard)(({ theme }) => ({
     borderRadius: '25px',
     border: `1px solid ${theme.palette.divider}`,
     marginBottom: '15px',
+    display: 'flex',
+    flexDirection: 'column',
   },
   '& .site-meta-content-container': {
     padding: '20px',
+    flexGrow: '1',
   },
   '& .site-meta-score-container': {
     height: '15px',
