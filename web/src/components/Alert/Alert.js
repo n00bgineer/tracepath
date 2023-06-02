@@ -8,6 +8,9 @@ const CustomAlert = styled(MuiAlert)(({ theme }) => ({
   '&.MuiAlert-root': {
     borderRadius: '9999px',
     wordBreak: 'break-word',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   '& .MuiAlert-icon': {
     marginRight: '10px',
