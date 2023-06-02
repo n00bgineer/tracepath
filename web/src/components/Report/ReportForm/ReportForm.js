@@ -265,36 +265,37 @@ const ReportForm = ({ loading = true, onSave, error }) => {
    * @returns {undefined} undefined
    */
   const onSubmit = async (event) => {
+    // PREVENTING DEFAULT ACTION
     event.preventDefault()
-    setSubmitErrorText('')
+
+    // RESETTING STATES
     setArcsData([])
     setPointData([])
+    setSubmitErrorText('')
+
+    // BASIC CHECKS
     if (selectedRegion === null || selectedRegion === 'default')
       setSubmitErrorText('Please select a region to continue')
     else if (urlErrorText !== '' || url.length === 0)
       setSubmitErrorText('Please enter an appropriate URL')
     else {
-      if (error) {
-        setSubmitErrorText(error.message)
-      } else {
-        // STORING FORM DATA
-        const data = {
-          url: url,
-          regionName: selectedRegion,
-        }
-        await onSave(data)
-          .then(({ data, errors }) => {
-            if (!errors) {
-              setSelectedRegion('default')
-              setUrl('')
-              setReport(data.createReport)
-            } else setSubmitErrorText(errors[0]['message'])
-          })
-          .catch((error) => {
-            console.log(error)
-            setSubmitErrorText('Something went wrong')
-          })
+      // STORING FORM DATA
+      const data = {
+        url: url,
+        regionName: selectedRegion,
       }
+      await onSave(data)
+        .then(({ data, errors }) => {
+          if (!errors) {
+            setSelectedRegion('default')
+            setUrl('')
+            setReport(data.createReport)
+          } else setSubmitErrorText(errors[0]['message'])
+        })
+        .catch((error) => {
+          console.log(error)
+          setSubmitErrorText('Something went wrong')
+        })
     }
   }
 
