@@ -1,3 +1,5 @@
+import { RedwoodGraphQLError } from '@redwoodjs/graphql-server'
+
 import config from 'src/global'
 import { db } from 'src/lib/db'
 
@@ -8,6 +10,10 @@ export const reports = () => {
         createdAt: 'desc',
       },
     ],
+    where: {
+      isLighthouseError: false,
+      isTracerouteError: false,
+    },
   })
 }
 
@@ -39,16 +45,20 @@ export const createReport = async ({ input }) => {
 
   // CALLING ENDPOINT
   const response = await fetch(url, options)
-  const report = await response.json()
+  if (response.status === 200) {
+    const report = await response.json()
 
-  // SENDING RESPONSE
-  return db.report.create({
-    data: {
-      ...report,
-      reportVersion: config.LATEST_REPORT_VERSION,
-      regionName: input.regionName,
-    },
-  })
+    // SENDING RESPONSE
+    return db.report.create({
+      data: {
+        ...report,
+        reportVersion: config.LATEST_REPORT_VERSION,
+        regionName: input.regionName,
+      },
+    })
+  } else {
+    throw new RedwoodGraphQLError('Booboo')
+  }
 }
 
 export const updateReport = ({ id, input }) => {
