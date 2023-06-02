@@ -2,7 +2,13 @@ import config from 'src/global'
 import { db } from 'src/lib/db'
 
 export const reports = () => {
-  return db.report.findMany()
+  return db.report.findMany({
+    orderBy: [
+      {
+        createdAt: 'desc',
+      },
+    ],
+  })
 }
 
 export const report = ({ id }) => {
