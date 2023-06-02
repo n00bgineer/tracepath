@@ -30,7 +30,7 @@ const validateUrl = (url) => {
   return urlPattern.test(url)
 }
 
-const ReportForm = ({ loading, onSave, error }) => {
+const ReportForm = ({ loading, onSave }) => {
   // SETTING LOCAL VARIABLES
   // STORING HTML
   const markerSvg = `<div class="blinking-dot">
@@ -268,6 +268,7 @@ const ReportForm = ({ loading, onSave, error }) => {
     // RESETTING STATES
     setArcsData([])
     setPointData([])
+    setSubmitErrorText('')
   }
 
   /**
@@ -304,9 +305,11 @@ const ReportForm = ({ loading, onSave, error }) => {
         url: url,
         regionName: selectedRegion,
       }
-      await onSave(data).then(({ data }) => {
-        if (!error) setReport(data.createReport)
-        else setSubmitErrorText(capitalise(error.message))
+      await onSave(data).then((response) => {
+        const data = response.data
+        const errors = response.errors
+        if (data) setReport(data.createReport)
+        else setSubmitErrorText(capitalise(errors.message))
       })
     }
   }
