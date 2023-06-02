@@ -117,11 +117,13 @@ const SiteMetaCard = ({
         </Typography>
         {(siteMeta.ogDescription ||
           siteMeta.twitterDescription ||
-          siteMeta.ogTitle) && (
+          siteMeta.ogTitle ||
+          siteMeta.description) && (
           <Typography variant="body2" className="site-meta-description">
             {siteMeta.twitterDescription ||
               siteMeta.ogDescription ||
-              siteMeta.ogTitle}
+              siteMeta.ogTitle ||
+              siteMeta.description}
           </Typography>
         )}
         <Typography variant="body2" color="grey">
