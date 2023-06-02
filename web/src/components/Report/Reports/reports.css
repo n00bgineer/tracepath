@@ -1,0 +1,30 @@
+.explore-container{
+  padding: 10px;
+}
+.explore-container > .dashboard{
+  margin: 5px 0px 10px;
+}
+.explore-content-container{
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 5px 0px;
+}
+.explore-content-container > *{
+  flex-grow: 1;
+  margin: 5px 10px 10px 0px;
+  min-width: 400px;
+  width: calc(33.333% - 30px);
+}
+.reports-card{
+  text-decoration: none;
+}
+
+@media screen and (max-width: 900px) {
+  .explore-content-container > *{
+    margin: 0px;
+    min-width: 90%;
+  }
+}
