@@ -15,7 +15,7 @@ const ReportsList = ({ reports }) => {
         </Typography>
         <Typography variant="body2" className="report-subtitle">
           The color bar below the cards represents the performance metrics. The
-          more colorful the bar is, the worse the performance metrics are
+          more colorful the bar is, the better the performance metrics are
         </Typography>
       </Box>
       <Box className="explore-content-container">
