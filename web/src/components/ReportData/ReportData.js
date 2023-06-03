@@ -10,6 +10,7 @@ import './reportData.css'
 import DataLoading from '../DataLoading/DataLoading'
 import HopTimeline from '../HopTimeline/HopTimeline'
 import IconButton from '../IconButton/IconButton'
+import Performance from '../Performance/Performance'
 import SiteMetaCard from '../SiteMetaCard/SiteMetaCard'
 import Tab from '../Tab/Tab'
 import TabPanel from '../TabPanel/TabPanel'
@@ -132,13 +133,15 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
           />
         </Tabs>
         <TabPanel value={0} index={tabValue}>
-          {isValidPerformanceData(data) && (
+          {!isValidPerformanceData(data) ? (
             <DataLoading
               title="Performance Analysis Error!"
               subtitle="Performance analysis data is empty"
               gray={true}
               imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685743033/emptyPerformance_rbqkus.png"
             />
+          ) : (
+            <Performance data={data} />
           )}
         </TabPanel>
         <TabPanel value={1} index={tabValue}>
