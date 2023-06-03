@@ -41,6 +41,31 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
    */
   const setTab = (event, value) => setTabValue(value)
 
+  /**
+   * @name isValidPerformanceData
+   * @description METHOD TO CHECK VALIDITY OF PERFORMANCE METRICS
+   * @param {*} performanceData PERFORMANCE OBJECT
+   * @returns {Boolean} WHETHER OR NOT PERF DATA IS FALSE
+   */
+  const isValidPerformanceData = (performanceData) => {
+    // CHECKING RESPONSE BY TESTING AGAINST FIVE SCORE VALUES
+    return !(
+      performanceData &&
+      (performanceData.fcpScore == null ||
+        performanceData.fcpScore == undefined) &&
+      (performanceData.lcpScore == null ||
+        performanceData.lcpScore == undefined) &&
+      (performanceData.tbtScore == null ||
+        performanceData.tbtScore == undefined) &&
+      (performanceData.ttiScore == null ||
+        performanceData.ttiScore == undefined) &&
+      (performanceData.speedIndexScore == null ||
+        performanceData.speedIndexScore == undefined) &&
+      (performanceData.clsScore == null ||
+        performanceData.clsScore == undefined)
+    )
+  }
+
   return (
     <Box
       {...props}
@@ -107,12 +132,14 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
           />
         </Tabs>
         <TabPanel value={0} index={tabValue}>
-          <DataLoading
-            title="Performance Analysis Error!"
-            subtitle="Performance analysis data is empty"
-            gray={true}
-            imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685743033/emptyPerformance_rbqkus.png"
-          />
+          {isValidPerformanceData(data) && (
+            <DataLoading
+              title="Performance Analysis Error!"
+              subtitle="Performance analysis data is empty"
+              gray={true}
+              imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685743033/emptyPerformance_rbqkus.png"
+            />
+          )}
         </TabPanel>
         <TabPanel value={1} index={tabValue}>
           {data.traceroute ? (
