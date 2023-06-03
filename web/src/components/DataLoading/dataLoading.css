@@ -23,3 +23,9 @@
   text-align: center;
   margin-top: 0px!important;
 }
+
+@media screen and (max-width: 900px) {
+  .loading-text-container{
+    width: 100%;
+  }
+}
