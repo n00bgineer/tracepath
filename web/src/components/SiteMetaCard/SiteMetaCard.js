@@ -17,7 +17,7 @@ TimeAgo.addDefaultLocale(en)
 const timeAgo = new TimeAgo('en-US')
 
 // CUSTOM COMPONENTS
-const Tooltip = styled(MuiTooltip)(() => ({
+export const Tooltip = styled(MuiTooltip)(() => ({
   '& .MuiTooltip-tooltip': {
     width: '100px',
     maxWidth: '100px',
@@ -132,7 +132,7 @@ const SiteMetaCard = ({
       </Box>
       <Box className="site-meta-score-container">
         <Tooltip
-          title={`SI score is ${speedIndex}. Value close to zero is better.`}
+          title={`SI score is ${speedIndex}. Value close to one is better.`}
         >
           <Box
             sx={(theme) => {
@@ -142,21 +142,21 @@ const SiteMetaCard = ({
             }}
           ></Box>
         </Tooltip>
-        <Tooltip title={`FCP score is ${fcp}. Value close to zero is better.`}>
+        <Tooltip title={`FCP score is ${fcp}. Value close to one is better.`}>
           <Box
             sx={(theme) => {
               return { bgcolor: theme.palette.secondary[setColorValue(fcp)] }
             }}
           ></Box>
         </Tooltip>
-        <Tooltip title={`LCP score is ${lcp}. Value close to zero is better.`}>
+        <Tooltip title={`LCP score is ${lcp}. Value close to one is better.`}>
           <Box
             sx={(theme) => {
               return { bgcolor: theme.palette.grey[setColorValue(lcp)] }
             }}
           ></Box>
         </Tooltip>
-        <Tooltip title={`CLS score is ${cls}. Value close to zero is better.`}>
+        <Tooltip title={`CLS score is ${cls}. Value close to one is better.`}>
           <Box
             sx={(theme) => {
               return { bgcolor: theme.palette.warning[setColorValue(cls)] }
@@ -164,7 +164,7 @@ const SiteMetaCard = ({
           ></Box>
         </Tooltip>
 
-        <Tooltip title={`TBT score is ${tbt}. Value close to zero is better.`}>
+        <Tooltip title={`TBT score is ${tbt}. Value close to one is better.`}>
           <Box
             sx={(theme) => {
               return { bgcolor: theme.palette.error[setColorValue(tbt)] }
@@ -172,7 +172,7 @@ const SiteMetaCard = ({
           ></Box>
         </Tooltip>
 
-        <Tooltip title={`TTI score is ${tti}.\nValue close to zero is better.`}>
+        <Tooltip title={`TTI score is ${tti}.\nValue close to one is better.`}>
           <Box
             sx={(theme) => {
               return { bgcolor: theme.palette.info[setColorValue(tti)] }
