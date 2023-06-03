@@ -20,6 +20,7 @@ const DataLoading = ({ imgUrl, title, subtitle, small, gray, ...props }) => {
                 ? 'grey.200'
                 : 'background.default'
               : 'background.paper',
+          border: `1px solid ${theme.palette.divider}`,
         }
       }}
       className={
