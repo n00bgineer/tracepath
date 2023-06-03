@@ -3,6 +3,9 @@ import { IconButton as MuiIconButton } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 const IconButton = styled(MuiIconButton)(({ theme }) => ({
+  '&.MuiIconButton-root': {
+    borderRadius: '40%',
+  },
   '&.primary-grad': {
     background: `linear-gradient(to top, ${theme.palette.primary.dark}, ${theme.palette.primary.main}, ${theme.palette.primary.main})`,
   },
