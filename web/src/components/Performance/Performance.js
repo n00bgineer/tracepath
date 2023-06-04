@@ -98,9 +98,8 @@ const SpeedCard = ({
     }
     // FOR TTI
     else if (metricType === 'tti') {
-      if (normalisedScore < 1) return colors.high
-      else if (normalisedScore >= 1 && normalisedScore <= 3) return colors.mid
-      else if (normalisedScore > 3) return colors.low
+      if (normalisedScore < 5) return colors.high
+      else if (normalisedScore >= 5) return colors.low
     }
     // FOR TBT
     else if (metricType === 'tbt') {
