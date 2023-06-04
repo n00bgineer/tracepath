@@ -36,6 +36,7 @@ const DataLoading = ({ imgUrl, title, subtitle, small, gray, ...props }) => {
           src={imgUrl}
           alt={subtitle}
           className="data-loading-container-image"
+          loading="lazy"
         />
       )}
       <Box className="loading-text-container">

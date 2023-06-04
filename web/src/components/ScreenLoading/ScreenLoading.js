@@ -27,7 +27,9 @@ const ScreenLoading = ({
       }
     >
       <Box className="screen-loading-subcontainer">
-        {imgUrl && <img src={imgUrl} alt={title} className="logo" />}
+        {imgUrl && (
+          <img src={imgUrl} alt={title} className="logo" loading="lazy" />
+        )}
         {title && (
           <Typography variant="h5" className="page-title">
             {title}

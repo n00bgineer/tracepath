@@ -36,6 +36,7 @@ const SideNavigation = ({
         src={logoUrl}
         alt="app logo"
         className={['side-navigation-logo', logoSizeClass].join(' ')}
+        loading="lazy"
       />
       {topActions && (
         <Box className="side-navigation-top-actions">

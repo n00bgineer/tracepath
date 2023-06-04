@@ -30,6 +30,7 @@ export default RedwoodDevFatalErrorPage ||
                 src="https://res.cloudinary.com/dgu9rv3om/image/upload/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
                 alt="Tracepath logo"
                 className="logo"
+                loading="lazy"
               />
               <Typography variant="body1" className="brand-name">
                 Tracepath
