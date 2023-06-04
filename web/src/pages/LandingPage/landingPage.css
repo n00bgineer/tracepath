@@ -58,6 +58,16 @@ section{
   justify-content: center;
   margin-top: 20px;
 }
+.hero-img-container{
+  border-radius: 25px;
+  margin: 50px auto 0px;
+  width: calc(80% - 40px);
+}
+.hero-img-container > .hero-img{
+  border-radius: 25px;
+  display: block;
+  width: 100%;
+}
 
 @media screen and (max-width: 1300px) {
   .hero-content-container{
