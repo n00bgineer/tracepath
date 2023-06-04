@@ -44,14 +44,7 @@ const FeaturesCard = ({ title, content, image, tags, link }) => {
           </IconButton>
         )}
       </Box>
-      {image && (
-        <img
-          src={image}
-          className="feature-card-image"
-          alt={title}
-          loading="lazy"
-        />
-      )}
+      {image && <img src={image} className="feature-card-image" alt={title} />}
     </Card>
   )
 }
