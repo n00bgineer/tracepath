@@ -92,7 +92,7 @@ const NavigationLayout = ({ children }) => {
         <BottomNavigation topActions={topActions} />
       ) : (
         <SideNavigation
-          logoUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
+          logoUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
           topActions={topActions}
           bottomActions={bottomActions}
           size="large"

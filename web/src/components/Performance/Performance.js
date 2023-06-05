@@ -233,8 +233,7 @@ const Performance = ({ data, ...props }) => {
         metricType="cls"
         metricScore={data.clsScore}
         metricQuestion="How often do users experience unexpected layout shifts on the app?"
-        metricDesc1="A layout shift occurs when a visible element on a web page changes it's position from one rendered frame to another. Cumulative Layout Shift (CLS) in a unitless metrics which measures layout shifts."
-        metricDesc2="."
+        metricDesc1="A layout shift occurs when a visible element on a web page changes it's position from one rendered frame to another. Cumulative Layout Shift (CLS) in a unitless metrics which measures layout shifts. Lower the value, better will be the user experience."
         tooltipText="Value close to zero is better"
       />
     </Box>

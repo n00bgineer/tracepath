@@ -219,9 +219,9 @@ const Report = ({ report }) => {
       <div className="report-globe-container" ref={globeContainerRef}>
         <Globe
           projection="equirectangular"
-          globeImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685334753/earth-blue-marble_ype7nq.jpg"
-          bumpImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335416/earth-topology_q6brg8.png"
-          backgroundImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335571/night-sky_hplesi.png"
+          globeImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685334753/earth-blue-marble_ype7nq.jpg"
+          bumpImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685335416/earth-topology_q6brg8.png"
+          backgroundImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685335571/night-sky_hplesi.png"
           width={(window.innerWidth - 81) * 0.667}
           height={globeContainerRef.current?.offsetHeight}
           showAtmosphere={true}
