@@ -54,13 +54,13 @@ const PriceCard = ({
       </Typography>
       {features && (
         <Box component="ul" className="feature-list">
-          {features.map((feature) => {
+          {features.map((feature, index) => {
             return (
               <Typography
-                component="li"
-                key={feature}
+                key={index}
                 variant="body1"
                 className="feature-list-item"
+                component="div"
               >
                 {feature}
               </Typography>
@@ -75,7 +75,7 @@ const PriceCard = ({
           size="large"
           to={link}
           disabled={linkDisabled}
-          linkStartIcon={linkStartIcon}
+          startIcon={linkStartIcon}
           fullWidth
         >
           Get Started

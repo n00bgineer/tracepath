@@ -15,6 +15,7 @@ const FeaturesCard = ({ title, content, image, tags, link }) => {
       className="features-card"
       sx={(theme) => {
         return {
+          border: '1px solid',
           borderColor:
             theme.palette.mode === 'light'
               ? 'hsl(214.3 31.8% 91.4)'

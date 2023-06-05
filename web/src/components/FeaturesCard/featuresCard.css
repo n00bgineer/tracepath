@@ -9,10 +9,6 @@
   min-width: 400px;
   padding: 25px!important;
   position: relative;
-  transition: transform 0.3s ease-in-out;
-}
-.features-card:hover{
-  transform: scale(1.05);
 }
 .feature-card-title{
   font-weight: normal!important;
