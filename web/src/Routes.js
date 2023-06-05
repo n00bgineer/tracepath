@@ -21,9 +21,7 @@ const Routes = () => {
           <Route path="/generate" page={ReportNewReportPage} name="generate" />
           <Route path="/report/{id}" page={ReportReportPage} name="report" />
           <Route path="/explore" page={ReportReportsPage} name="explore" />
-          <Route path="/user/{id}" page={UserUserPage} name="user" />
-          <Route path="/users/new" page={UserNewUserPage} name="newUser" />
-          {/* <Route path="/users/{id}/edit" page={UserEditUserPage} name="editUser" /> */}
+          <Route path="/profile" page={UserUserPage} name="profile" />
         </Set>
         <Route path="/" page={LandingPage} name="landing" prerender={true} />
         <Route path="/tos" page={ToSPage} name="tos" prerender={true} />
