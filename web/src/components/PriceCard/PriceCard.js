@@ -26,7 +26,7 @@ const PriceCard = ({
             theme.palette.mode === 'light'
               ? selected
                 ? 'primary.main'
-                : 'hsl(214.3 31.8% 91.4)'
+                : 'rgb(56, 68, 77)'
               : selected
               ? 'primary.main'
               : 'rgba(230,230,230,0.4)',

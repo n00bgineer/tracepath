@@ -18,7 +18,7 @@ const FeaturesCard = ({ title, content, image, tags, link }) => {
           border: '1px solid',
           borderColor:
             theme.palette.mode === 'light'
-              ? 'hsl(214.3 31.8% 91.4)'
+              ? 'rgb(56, 68, 77)'
               : 'rgba(230,230,230,0.4)',
           backdropFilter: 'blur(10px)',
         }
