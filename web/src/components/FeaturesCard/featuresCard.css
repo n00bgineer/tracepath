@@ -11,7 +11,7 @@
   position: relative;
 }
 .feature-card-title{
-  font-weight: normal!important;
+  font-weight: bold!important;
   text-align: left!important;
 }
 .feature-card-subtitle{
