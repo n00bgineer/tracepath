@@ -2,8 +2,9 @@
 import { useEffect, useRef } from 'react'
 
 import { FreeBreakfast, Paid } from '@mui/icons-material'
-import { Box, Chip, Typography } from '@mui/material'
+import { Box, Chip, Typography, useMediaQuery } from '@mui/material'
 import createGlobe from 'cobe'
+import { useRecoilState } from 'recoil'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -15,13 +16,22 @@ import FeaturesCard from 'src/components/FeaturesCard/FeaturesCard'
 import Footer from 'src/components/Footer/Footer'
 import Header from 'src/components/Header/Header'
 import PriceCard from 'src/components/PriceCard/PriceCard'
+import { darkThemeAtom } from 'src/contexts/atoms'
 
 const LandingPage = () => {
+  // SETTING REFERENCES
   const canvasRef = useRef()
 
-  useEffect(() => {
-    let phi = 0
+  // GETTING ATOMIC STATES
+  const [isDarkMode] = useRecoilState(darkThemeAtom)
 
+  // SETTING MEDIA QUERY
+  const isMobileViewport = useMediaQuery('(min-width:700px)')
+
+  // SETTING SIDE EFFECTS
+  useEffect(() => {
+    // SETTING GLOBE OBJECT
+    let phi = 0
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
       width: 600 * 2,
@@ -36,13 +46,10 @@ const LandingPage = () => {
       markerColor: [0.1, 0.8, 1],
       glowColor: [1, 1, 1],
       markers: [
-        // longitude latitude
         { location: [37.7595, -122.4367], size: 0.03 },
         { location: [40.7128, -74.006], size: 0.1 },
       ],
       onRender: (state) => {
-        // Called on every animation frame.
-        // `state` will be an empty object, return updated params.
         state.phi = phi
         phi += 0.01
       },
@@ -67,8 +74,8 @@ const LandingPage = () => {
               Application Monitoring Simplified
             </Typography>
             <Typography variant="body1" className="hero-subheadline">
-              Tracepath generates simplified performance reports for your web
-              apps from multiple locations across the world
+              Tracepath generates simplified performance & security reports for
+              your web apps from multiple locations across the world
             </Typography>
             <Box className="hero-cta-container">
               <Button
@@ -77,11 +84,48 @@ const LandingPage = () => {
                 size="large"
                 to={routes.signup()}
               >
-                Generate your app&rsquo;s report
+                {isMobileViewport
+                  ? "Generate your app's report"
+                  : 'Generate report'}
               </Button>
             </Box>
           </Box>
-          {/* <img src="https://example.com/hero.png" alt="Tracepath Hero " /> */}
+          <Box
+            className="hero-img-container"
+            sx={(theme) => {
+              return {
+                border:
+                  theme.palette.mode === 'light'
+                    ? '1px solid rgb(56, 68, 77)'
+                    : '1px solid rgba(230,230,230,0.4)',
+                boxShadow:
+                  theme.palette.mode === 'light'
+                    ? '0 0 10px rgb(56, 68, 77)'
+                    : '0 0 10px rgba(230,230,230,0.4)',
+              }
+            }}
+          >
+            <img
+              src={
+                isDarkMode
+                  ? 'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685827597/demo-dark_t2rsk2.png'
+                  : 'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685827581/demo-light_dvuhln.png'
+              }
+              alt="Tracepath Desktop Hero"
+              className="hero-desktop-img"
+              loading="lazy"
+            />
+            <img
+              src={
+                isDarkMode
+                  ? 'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685900422/demo-dark-mobile_nczznz.png'
+                  : 'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685900398/demo-light-mobile_rzbpok.png'
+              }
+              alt="Tracepath Mobile Hero"
+              className="hero-mobile-img"
+              loading="lazy"
+            />
+          </Box>
         </Box>
         <Box id="features" component="section">
           <Box className="section-title-container">
@@ -98,38 +142,38 @@ const LandingPage = () => {
           <Box className="features-card-container card-container">
             <FeaturesCard
               title="Simplified Metrics"
-              content="Tracepath simplifies metrics for effortless optimization and makes it accessible to even non-technical stakeholders. Track, analyze, and improve performance indicators with ease."
-              image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684180433/tracepath/assets/Fractal_Cube_4_0001_uwjnom.png"
+              content="Tracepath shows performance reports simplifies metrics & deep dives for effortless optimization and makes it accessible to even non-technical stakeholders. Track, analyze, and improve performance indicators with ease."
+              image="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1684180433/tracepath/assets/Fractal_Cube_4_0001_uwjnom.png"
               link={routes.signup()}
             />
             <FeaturesCard
-              title="Visual Tracerouting"
-              content="You can visualize the routing path of your network packets along with it's geographic location, allowing you to identify any potential bottlenecks or performance issues along the way."
-              image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684179759/tracepath/assets/Atom_Bucky_1__R_tjxtpa.png"
+              title="Security Tracerouting"
+              content="Tracepath visualizes the routing path of your network packets along with it's geographic location & the reputation score which checks whether the packets are hopping through shady IP addresses."
+              image="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1684179759/tracepath/assets/Atom_Bucky_1__R_tjxtpa.png"
               link={routes.signup()}
             />
             <FeaturesCard
-              title="Multiple Servers"
-              content="Tracepath allows you to generate comprehensive reports across global locations, from Tokyo to New York. Gain valuable insights into application behavior from different geographical regions. "
-              image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684181735/tracepath/assets/Torus_Stack_Taper_R_hnkmsm.png"
-              link={routes.signup()}
+              title="Authenticated Routes"
+              content="Tracepath currently offers report generations on non-authenticated routes, but the authenticated routes feature will allow to generate reports even on pages which requires authentication for access."
+              image="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1684181735/tracepath/assets/Torus_Stack_Taper_R_hnkmsm.png"
+              tags={['🚧 In Progress']}
             />
             <FeaturesCard
               title="Competitor Analysis"
-              content="Tracepath's competitor analysis feature, allows you to comparing your product's performance metrics against industry rivals. Gain valuable insights & surpass the competition."
-              image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684180239/tracepath/assets/Block_Matrix_x3_0003_cvgebh.png"
+              content="Tracepath's competitor analysis feature, allows you to compare your product's performance metrics against industry rivals. Gain valuable insights & surpass the competition."
+              image="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1684180239/tracepath/assets/Block_Matrix_x3_0003_cvgebh.png"
               tags={['🚧 In Progress']}
             />
             <FeaturesCard
               title="Project-level tracking"
               content="Tracepath tracks performance metrics across multiple applications. Gain comprehensive insights into the performance of each app and optimize their performance."
-              image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684181079/tracepath/assets/Platonic_3_-_Icosa0003_g4lqsk.png"
+              image="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1684181079/tracepath/assets/Platonic_3_-_Icosa0003_g4lqsk.png"
               tags={['🚧 In Progress']}
             />
             <FeaturesCard
-              title="TraceScore&trade;"
-              content="Tracepath evaluates and benchmarks your app's performance against multiple locations and uses multiple metrics like latency, response times, etc to create your app's TraceScore&trade;."
-              image="https://res.cloudinary.com/dgu9rv3om/image/upload/v1684181893/tracepath/assets/Cylinder_Short_Stack_x5_0003_y4w3f7.png"
+              title="TraceScore"
+              content="Tracepath evaluates and benchmarks your app's performance against multiple locations and uses multiple metrics like latency, response times, etc to create your app's TraceScore."
+              image="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1684181893/tracepath/assets/Cylinder_Short_Stack_x5_0003_y4w3f7.png"
               tags={['🚧 In Progress']}
             />
           </Box>
@@ -156,13 +200,21 @@ const LandingPage = () => {
                 '- Only 3 reports/mo',
                 '- Manual execution',
                 '- Access to a limited number of servers',
-                <Typography key="TraceScore" variant="body1">
-                  - TraceScore&trade; isn&rsquo;t available{' '}
-                  <Chip color="default" label="🚧 In Progress" />
+                <Typography component="div" key="TraceScore" variant="body1">
+                  - TraceScore isn&rsquo;t available{' '}
+                  <Chip
+                    component="div"
+                    color="default"
+                    label="🚧 In Progress"
+                  />
                 </Typography>,
-                <Typography key="CompAnal" variant="body1">
+                <Typography component="div" key="CompAnal" variant="body1">
                   - No Competitor Analysis{' '}
-                  <Chip color="default" label="🚧 In Progress" />
+                  <Chip
+                    component="div"
+                    color="default"
+                    label="🚧 In Progress"
+                  />
                 </Typography>,
               ]}
               link={routes.signup()}
@@ -178,11 +230,11 @@ const LandingPage = () => {
                 '- Upto 50 reports/mo',
                 '- Schedule weekly reports',
                 '- Access to all the servers',
-                <Typography key="TraceScore" variant="TraceScore">
-                  - TraceScore&trade; is available{' '}
+                <Typography key="TraceScorePro" variant="TraceScore">
+                  - TraceScore is available{' '}
                   <Chip color="default" label="🚧 In Progress" />
                 </Typography>,
-                <Typography key="CompAnal" variant="body1">
+                <Typography key="CompAnalPro" variant="body1">
                   - Competitor Analysis is available{' '}
                   <Chip color="default" label="🚧 In Progress" />
                 </Typography>,
@@ -213,7 +265,7 @@ const LandingPage = () => {
               answer="Yes, Tracepath generates performance reports from multiple locations across the globe, offering insights into how an application performs in different geographical regions."
             />
             <FaqCard
-              question="Is Tracepath suitable for non-technical users?"
+              question="Is Tracepath's performance reports suitable for non-technical stackeholders?"
               answer="Absolutely! Tracepath offers a user-friendly interface and simplified metrics, making it accessible and easy to use for both technical and non-technical users."
             />
             <FaqCard
@@ -221,8 +273,8 @@ const LandingPage = () => {
               answer="It's WIP, but Tracepath provides a competitor analysis feature that allows you to compare your application's performance metrics against industry rivals, giving you insights to outperform the competition."
             />
             <FaqCard
-              question="Can Tracepath monitor both web-based and mobile applications?"
-              answer="Unfortunately, it only works for web applications for now."
+              question="Can Tracepath generate performance reports fpr native mobile applications (e.g. React Native, etc)?"
+              answer="Unfortunately, the performance analysis only works for web applications for which a URL has been provided. Currently, we don't even accept IP addresses as an input."
             />
           </Box>
         </Box>
