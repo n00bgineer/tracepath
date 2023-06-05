@@ -50,7 +50,7 @@ export const Loading = () => {
   return (
     <ScreenLoading
       imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
-      title="Loading Report"
+      title="Loading report"
       subtitle="Unlock insights into your web app's performance and fortify its security"
     />
   )
