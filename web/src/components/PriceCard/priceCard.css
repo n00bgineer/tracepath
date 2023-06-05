@@ -9,7 +9,7 @@
   position: relative;
 }
 .price-card-title{
-  font-weight: normal!important;
+  font-weight: bold!important;
   text-align: center!important;
 }
 .price-card-subtitle{
