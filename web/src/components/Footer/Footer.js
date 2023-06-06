@@ -1,7 +1,7 @@
 // IMPORTING PACKAGES/MODULES
 import { Box, Divider, Link, Typography } from '@mui/material'
 
-import { Link as RedwoodLink, routes } from '@redwoodjs/router'
+import { routes } from '@redwoodjs/router'
 import './footer.css'
 
 const Footer = () => {
