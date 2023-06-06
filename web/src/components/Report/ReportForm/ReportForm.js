@@ -85,7 +85,7 @@ const ReportForm = ({ loading, onSave }) => {
       Math.floor(Math.random() * loadingContainerItems.length)
     ]
 
-  // GETTING ATOMIC CONTEXT
+  // GETTING ATOMIC STATES
   const [report, setReport] = useRecoilState(reportAtom)
   const [regions, setRegions] = useRecoilState(regionsAtom)
 

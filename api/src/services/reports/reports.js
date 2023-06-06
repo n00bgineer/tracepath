@@ -17,6 +17,19 @@ export const reports = () => {
   })
 }
 
+export const userReports = ({ id }) => {
+  return db.report.findMany({
+    orderBy: [
+      {
+        createdAt: 'desc',
+      },
+    ],
+    where: {
+      userId: id,
+    },
+  })
+}
+
 export const report = ({ id }) => {
   return db.report.findUnique({
     where: { id },

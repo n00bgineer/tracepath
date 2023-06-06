@@ -41,6 +41,7 @@ export const schema = gql`
   type Query {
     reports: [Report!]! @requireAuth
     report(id: String!): Report @requireAuth
+    userReports(id: String!): [Report!]! @requireAuth
   }
 
   input CreateReportInput {
