@@ -25,7 +25,7 @@
 
 /* AUTH FORM STYLES */
 .auth-form{
-  padding: 20px 10px!important;
+  padding: 20px 10px 0px!important;
   width: 100%!important;
 }
 .auth-separator{
