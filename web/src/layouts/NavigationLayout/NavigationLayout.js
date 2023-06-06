@@ -53,8 +53,8 @@ const NavigationLayout = ({ children }) => {
       label: 'Account',
       selectedIcon: <AccountCircle />,
       unselectedIcon: <AccountCircleOutlined />,
-      link: routes.profile(),
-      isSelected: pathname === routes.profile(),
+      link: routes.account(),
+      isSelected: pathname === routes.account(),
     },
   ]
 

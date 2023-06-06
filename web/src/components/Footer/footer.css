@@ -84,7 +84,7 @@ footer .brand-info-container > .brand-description{
     margin-right: 20px;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   footer .brand-info-container > .brand-description{
     max-width: 100%!important;
   }
