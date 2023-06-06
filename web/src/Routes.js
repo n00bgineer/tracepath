@@ -1,4 +1,6 @@
 // IMPORTING PACKAGES/MODULES
+import { useEffect } from 'react'
+
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { useRecoilState } from 'recoil'
 
@@ -12,7 +14,25 @@ import LightTheme from './themes/lightTheme'
 
 const Routes = () => {
   // GETTING ATOMIC STATES
-  const [isDarkTheme] = useRecoilState(darkThemeAtom)
+  const [isDarkMode, setDarkMode] = useRecoilState(darkThemeAtom)
+
+  /**
+   * @name setLocalStorage
+   * @description METHOD TO DO SET LOCAL STORAGE STORAGE
+   * @returns {undefined} undefined
+   */
+  const setLocalStorage = () => {
+    // SETTING THEME STATE TO SET THEME
+    if (window.localStorage.getItem('isDarkMode') === null) {
+      window.localStorage.setItem('isDarkMode', `${isDarkMode}`)
+    } else {
+      setDarkMode(Boolean(window.localStorage.getItem('isDarkMode')))
+    }
+  }
+
+  useEffect(() => {
+    setLocalStorage()
+  }, [])
 
   return (
     <ThemeProvider theme={isDarkTheme === true ? DarkTheme : LightTheme}>
