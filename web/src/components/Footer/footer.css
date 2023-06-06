@@ -5,8 +5,7 @@ footer{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 20px auto;
-  padding: 30px;
+  padding: 50px 30px;
 }
 
 /* STYLING BRAND INFO (e.g. LOGO, NAME, etc) */
@@ -51,7 +50,7 @@ footer .brand-info-container > .brand-description{
   justify-content: center;
 }
 .footer-links-subcontainer{
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

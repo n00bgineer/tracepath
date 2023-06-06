@@ -10,9 +10,14 @@ const Footer = () => {
       <Divider />
       <Box
         component="footer"
-        sx={() => {
+        sx={(theme) => {
           return {
-            color: 'common.black',
+            color:
+              theme.palette.mode === 'light' ? 'common.black' : 'common.white',
+            bgcolor:
+              theme.palette.mode === 'light'
+                ? 'background.default'
+                : 'background.paper',
           }
         }}
       >
@@ -45,7 +50,14 @@ const Footer = () => {
               component="a"
               className="footer-link"
               href={`${window.location.origin}/#features`}
-              sx={{ color: 'common.black' }}
+              sx={(theme) => {
+                return {
+                  color:
+                    theme.palette.mode === 'light'
+                      ? 'common.black'
+                      : 'common.white',
+                }
+              }}
             >
               Features
             </Link>
@@ -53,7 +65,14 @@ const Footer = () => {
               component="a"
               className="footer-link"
               href={`${window.location.origin}/#pricing`}
-              sx={{ color: 'common.black' }}
+              sx={(theme) => {
+                return {
+                  color:
+                    theme.palette.mode === 'light'
+                      ? 'common.black'
+                      : 'common.white',
+                }
+              }}
             >
               Pricing
             </Link>
@@ -61,7 +80,14 @@ const Footer = () => {
               component="a"
               className="footer-link"
               href={`${window.location.origin}/#faq`}
-              sx={{ color: 'common.black' }}
+              sx={(theme) => {
+                return {
+                  color:
+                    theme.palette.mode === 'light'
+                      ? 'common.black'
+                      : 'common.white',
+                }
+              }}
             >
               FAQ
             </Link>
@@ -74,7 +100,14 @@ const Footer = () => {
               component="a"
               className="footer-link"
               href={routes.privacy()}
-              sx={{ color: 'common.black' }}
+              sx={(theme) => {
+                return {
+                  color:
+                    theme.palette.mode === 'light'
+                      ? 'common.black'
+                      : 'common.white',
+                }
+              }}
             >
               Privacy
             </Link>
@@ -82,7 +115,14 @@ const Footer = () => {
               component="a"
               className="footer-link"
               href={routes.tos()}
-              sx={{ color: 'common.black' }}
+              sx={(theme) => {
+                return {
+                  color:
+                    theme.palette.mode === 'light'
+                      ? 'common.black'
+                      : 'common.white',
+                }
+              }}
             >
               Terms
             </Link>
