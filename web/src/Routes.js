@@ -35,7 +35,7 @@ const Routes = () => {
   }, [])
 
   return (
-    <ThemeProvider theme={isDarkTheme === true ? DarkTheme : LightTheme}>
+    <ThemeProvider theme={isDarkMode === true ? DarkTheme : LightTheme}>
       <CssBaseline />
       <Router useAuth={useAuth}>
         <Set wrap={NavigationLayout}>
