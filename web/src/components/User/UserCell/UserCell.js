@@ -24,7 +24,7 @@ export const Loading = () => {
     <ScreenLoading
       imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
       title="Loading account"
-      subtitle="Retrieving your profile information"
+      subtitle="Retrieving your account information"
     />
   )
 }
