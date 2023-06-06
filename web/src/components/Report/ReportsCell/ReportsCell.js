@@ -28,6 +28,31 @@ export const QUERY = gql`
     }
   }
 `
+export const QUERY1 = gql`
+  query FindUserReports($id: String!) {
+    userReports(id: $id) {
+      id
+      url
+      userId
+      createdAt
+      finalUrl
+      fcpScore
+      lcpScore
+      tbtScore
+      ttiScore
+      clsScore
+      speedIndexScore
+      bootupTimeScore
+      siteMeta
+      User {
+        userName
+      }
+      Region {
+        name
+      }
+    }
+  }
+`
 
 export const Loading = () => {
   return (
