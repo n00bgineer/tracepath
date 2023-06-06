@@ -25,7 +25,7 @@ export const schema = gql`
   }
 
   type Query {
-    regions: [Region!]! @skipAuth
+    regions: [Region!]! @requireAuth
     region(id: String!): Region @requireAuth
   }
 

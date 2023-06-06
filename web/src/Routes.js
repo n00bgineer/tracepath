@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil'
 
 import { Router, Route, Set } from '@redwoodjs/router'
 
+import { useAuth } from './auth'
 import { darkThemeAtom } from './contexts/atoms'
 import NavigationLayout from './layouts/NavigationLayout/NavigationLayout'
 import DarkTheme from './themes/darkTheme'
@@ -16,7 +17,7 @@ const Routes = () => {
   return (
     <ThemeProvider theme={isDarkTheme === true ? DarkTheme : LightTheme}>
       <CssBaseline />
-      <Router>
+      <Router useAuth={useAuth}>
         <Set wrap={NavigationLayout}>
           <Route path="/generate" page={ReportNewReportPage} name="generate" />
           <Route path="/report/{id}" page={ReportReportPage} name="report" />
