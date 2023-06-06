@@ -1,0 +1,85 @@
+:root{
+  --desktop-img-header-height: 200px;
+  --mobile-img-header-height: 175px;
+}
+.user-account-container {
+  padding: 10px;
+  width: 100%;
+}
+.user-account-header-image-container{
+  border-radius: 15px;
+  max-height: var(--desktop-img-header-height);
+  overflow: hidden;
+}
+.user-account-header-image-container > .user-header-img{
+  height: var(--desktop-img-header-height);
+  object-fit: cover;
+  width: 100%;
+}
+.user-avatar-info-container{
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 25px;
+  margin-top: -40px;
+}
+.user-avatar-img {
+  aspect-ratio: 1/1;
+  border-radius: 25px;
+  display: block;
+  max-height: 125px;
+}
+.user-info-container{
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 15px;
+}
+.user-display-name{
+  font-weight: 900!important;
+}
+.user-account-body{
+  margin: 20px auto 0px;
+  width: calc(100% - 50px);
+}
+.user-data-skeleton{
+  height: 400px!important;
+  width: 100%;
+  border-radius: 25px;
+  margin-top: 10px!important;
+}
+.user-tab{
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .user-account-header-image-container{
+    max-height: var(--mobile-img-header-height);
+  }
+  .user-account-header-image-container > .user-header-img{
+    height: var(--mobile-img-header-height);
+  }
+  .user-avatar-info-container{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: -45px auto 0px;
+  }
+  .user-avatar-img {
+    max-height: 80px;
+  }
+  .user-info-container{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: unset;
+    margin-top: 5px;
+  }
+  .user-account-body{
+    margin: 10px auto 0px;
+    width: calc(100%);
+  }
+}
