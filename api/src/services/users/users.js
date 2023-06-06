@@ -1,4 +1,6 @@
+// IMPORTING PACKAGES/MODULES
 import { db } from 'src/lib/db'
+import generateUsername from 'src/methods/generateUsername'
 
 export const users = () => {
   return db.user.findMany()
@@ -10,9 +12,12 @@ export const user = ({ id }) => {
   })
 }
 
-export const createUser = ({ input }) => {
+export const createUser = async ({ input }) => {
+  // SETTING USER NAME
+  const userName = await generateUsername(input.email, input.guid)
+
   return db.user.create({
-    data: input,
+    data: { ...input, username: userName },
   })
 }
 
