@@ -1,5 +1,4 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
@@ -11,28 +10,20 @@ export const QUERY = gql`
       id
       guid
       createdAt
-      updateAt
-      lastLoginAt
-      roleType
       accountType
-      subscriptionType
       userName
       email
       displayName
     }
   }
 `
-const UPDATE_USER_MUTATION = gql`
+export const UPDATE_USER_MUTATION = gql`
   mutation UpdateUserMutation($id: String!, $input: UpdateUserInput!) {
     updateUser(id: $id, input: $input) {
       id
       guid
       createdAt
-      updateAt
-      lastLoginAt
-      roleType
       accountType
-      subscriptionType
       userName
       email
       displayName

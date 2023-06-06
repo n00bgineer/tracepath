@@ -4,10 +4,16 @@ import { toast } from '@redwoodjs/web/toast'
 
 import UserForm from 'src/components/User/UserForm'
 
-const CREATE_USER_MUTATION = gql`
+export const CREATE_USER_MUTATION = gql`
   mutation CreateUserMutation($input: CreateUserInput!) {
     createUser(input: $input) {
       id
+      guid
+      createdAt
+      accountType
+      userName
+      email
+      displayName
     }
   }
 `
