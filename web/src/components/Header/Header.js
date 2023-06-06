@@ -2,9 +2,14 @@
 import { Box, Link, Typography } from '@mui/material'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
+
 import './header.css'
+import { useAuth } from 'src/auth'
 
 const Header = () => {
+  // GETTING AUTH CONTEXT
+  const { isAuthenticated } = useAuth()
+
   return (
     <Box component="header">
       <Box
@@ -54,9 +59,15 @@ const Header = () => {
           }
         }}
       >
-        <Link component={RedwoodLink} to={routes.signup()}>
-          Signup
-        </Link>
+        {isAuthenticated ? (
+          <Link component={RedwoodLink} to={routes.generate()}>
+            Dashboard
+          </Link>
+        ) : (
+          <Link component={RedwoodLink} to={routes.signup()}>
+            Signup
+          </Link>
+        )}
       </Box>
     </Box>
   )
