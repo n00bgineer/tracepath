@@ -39,8 +39,8 @@ export const schema = gql`
   }
 
   type Query {
-    reports: [Report!]! @requireAuth
-    report(id: String!): Report @requireAuth
+    reports: [Report!]! @skipAuth
+    report(id: String!): Report @skipAuth
     userReports(id: String!): [Report!]! @requireAuth
   }
 
