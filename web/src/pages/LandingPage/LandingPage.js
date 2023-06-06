@@ -142,7 +142,7 @@ const LandingPage = () => {
           <Box className="features-card-container card-container">
             <FeaturesCard
               title="Simplified Metrics"
-              content="Tracepath shows performance reports simplifies metrics & deep dives for effortless optimization and makes it accessible to even non-technical stakeholders. Track, analyze, and improve performance indicators with ease."
+              content="Tracepath shows performance reports with simplifies metrics & deep dives for effortless optimization and makes it accessible to even non-technical stakeholders to analyze and improve performance indicators with ease."
               image="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1684180433/tracepath/assets/Fractal_Cube_4_0001_uwjnom.png"
               link={routes.signup()}
             />
