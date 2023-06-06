@@ -2,7 +2,7 @@
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { useRecoilState } from 'recoil'
 
-import { Router, Route, Set } from '@redwoodjs/router'
+import { Router, Route, Set, Private } from '@redwoodjs/router'
 
 import { useAuth } from './auth'
 import { darkThemeAtom } from './contexts/atoms'
@@ -19,10 +19,12 @@ const Routes = () => {
       <CssBaseline />
       <Router useAuth={useAuth}>
         <Set wrap={NavigationLayout}>
-          <Route path="/generate" page={ReportNewReportPage} name="generate" />
-          <Route path="/report/{id}" page={ReportReportPage} name="report" />
+          <Private unauthenticated="landing">
+            <Route path="/generate" page={ReportNewReportPage} name="generate" />
+            <Route path="/account" page={UserUserPage} name="account" />
+          </Private>
           <Route path="/explore" page={ReportReportsPage} name="explore" />
-          <Route path="/account" page={UserUserPage} name="account" />
+          <Route path="/report/{id}" page={ReportReportPage} name="report" />
         </Set>
         <Route path="/" page={LandingPage} name="landing" prerender={true} />
         <Route path="/tos" page={ToSPage} name="tos" prerender={true} />
