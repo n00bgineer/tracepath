@@ -1,21 +1,22 @@
 /* FOOTER SECTION */
 footer{
   align-items: flex-start;
-  border-radius: 25px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 30px;
-  width: 95%;
 }
 
 /* STYLING BRAND INFO (e.g. LOGO, NAME, etc) */
 footer > .brand-info-container{
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   margin-right: 25px;
+  max-width: 400px;
 }
 footer .brand-logo-container{
   align-items: center;
@@ -32,10 +33,9 @@ footer .brand-logo-container > .brand-name{
   font-weight: bolder!important;
 }
 footer .brand-info-container > .brand-description{
-  margin: 10px auto!important;
+  margin: 10px 0px!important;
   margin-top: 10px!important;
-  max-width: 40%!important;
-  text-align: center!important;
+  max-width: 80%!important;
 }
 .footer-copyright{
   font-weight: 900!important;
@@ -47,7 +47,6 @@ footer .brand-info-container > .brand-description{
   align-items: stretch;
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
   flex-wrap: wrap;
   justify-content: center;
 }
