@@ -20,7 +20,7 @@ import './navigationLayout.css'
 import BottomNavigation from 'src/components/BottomNavigation/BottomNavigation'
 import PositionedScreen from 'src/components/PositionedScreen/PositionedScreen'
 import SideNavigation from 'src/components/SideNavigation/SideNavigation'
-import { darkThemeAtom } from 'src/contexts/atoms'
+import { darkModeAtom } from 'src/contexts/atoms'
 
 const NavigationLayout = ({ children }) => {
   // SETTING LOCAL VARIABLES
@@ -28,7 +28,7 @@ const NavigationLayout = ({ children }) => {
   const { pathname } = window.location
 
   // GETTING ATOMIC STATES
-  const [isDarkTheme, setDarkTheme] = useRecoilState(darkThemeAtom)
+  const [isDarkMode, setDarkTheme] = useRecoilState(darkModeAtom)
 
   // SETTING MEDIA QUERY
   const isMobileViewport = useMediaQuery('(min-width:900px)')
@@ -64,7 +64,7 @@ const NavigationLayout = ({ children }) => {
       label: 'Theme',
       selectedIcon: <DarkMode />,
       unselectedIcon: <LightMode />,
-      isSelected: isDarkTheme,
+      isSelected: isDarkMode,
       onClick: toggleDarkTheme,
     },
     {
@@ -83,7 +83,9 @@ const NavigationLayout = ({ children }) => {
    * @returns {undefined} undefined
    */
   function toggleDarkTheme() {
-    setDarkTheme(!isDarkTheme)
+    console.log(`${!isDarkMode}`)
+    window.localStorage.setItem('isDarkMode', `${!isDarkMode}`)
+    setDarkTheme(!isDarkMode)
   }
 
   return (

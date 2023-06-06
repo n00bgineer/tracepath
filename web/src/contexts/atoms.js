@@ -16,9 +16,9 @@ export const regionsAtom = atom({
   key: 'regions',
   default: null,
 })
-export const darkThemeAtom = atom({
+export const darkModeAtom = atom({
   key: 'darkTheme',
-  default: global.isDarkTheme,
+  default: global.isDarkMode,
 })
 export const userReportsAtom = atom({
   key: 'userReports',

@@ -16,14 +16,14 @@ import FeaturesCard from 'src/components/FeaturesCard/FeaturesCard'
 import Footer from 'src/components/Footer/Footer'
 import Header from 'src/components/Header/Header'
 import PriceCard from 'src/components/PriceCard/PriceCard'
-import { darkThemeAtom } from 'src/contexts/atoms'
+import { darkModeAtom } from 'src/contexts/atoms'
 
 const LandingPage = () => {
   // SETTING REFERENCES
   const canvasRef = useRef()
 
   // GETTING ATOMIC STATES
-  const [isDarkMode] = useRecoilState(darkThemeAtom)
+  const [isDarkMode] = useRecoilState(darkModeAtom)
 
   // SETTING MEDIA QUERY
   const isMobileViewport = useMediaQuery('(min-width:700px)')
