@@ -38,24 +38,10 @@ export const schema = gql`
 
   input CreateUserInput {
     guid: String!
-    updateAt: DateTime!
-    lastLoginAt: DateTime!
-    roleType: RoleType!
-    accountType: AccountType!
-    subscriptionType: SubscriptionType!
-    userName: String!
     email: String!
-    displayName: String
   }
 
   input UpdateUserInput {
-    guid: String
-    updateAt: DateTime
-    lastLoginAt: DateTime
-    roleType: RoleType
-    accountType: AccountType
-    subscriptionType: SubscriptionType
-    userName: String
     email: String
     displayName: String
   }
