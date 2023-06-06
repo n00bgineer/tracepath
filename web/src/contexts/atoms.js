@@ -4,7 +4,7 @@ import { atom } from 'recoil'
 // STORING MODAL TYPE
 export const darkThemeAtom = atom({
   key: 'darkTheme',
-  default: true,
+  default: false,
 })
 export const reportAtom = atom({
   key: 'recentReport',
