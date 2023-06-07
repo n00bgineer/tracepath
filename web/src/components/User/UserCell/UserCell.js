@@ -42,7 +42,7 @@ export const Empty = () => {
 }
 
 export const Failure = ({ error }) => {
-  console.log(error.message)
+  console.error(error.message)
   return (
     <ScreenLoading
       imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"

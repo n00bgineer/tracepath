@@ -7,7 +7,6 @@ export const users = () => {
 }
 
 export const user = ({ id }) => {
-  console.log(`GUID: ${id}`)
   return db.user.findUnique({
     where: { guid: id },
   })

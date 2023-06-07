@@ -39,10 +39,7 @@ const Context = ({ children }) => {
   // MUTATION FOR CREATING NEW USER
   const [createUser] = useMutation(CREATE_USER_MUTATION, {
     // ON SUCCESSFUL EXECUTION OF MUTATION
-    onCompleted: (res) => {
-      // UPDATING USER STATE
-      setAccount(res.createUser)
-    },
+    onCompleted: (res) => setAccount(res.createUser),
     // WHEN AN ERROR HAS OCCURED WHILE EXECUTION OF MUTATION
     onError: (error) => {
       console.error('ERROR OCCURED WHILE SIGNING UP')
@@ -53,11 +50,7 @@ const Context = ({ children }) => {
   // MUTATION FOR CREATING NEW GOOGLE USER
   const [createGoogleUser] = useMutation(CREATE_GOOGLE_USER_MUTATION, {
     // ON SUCCESSFUL EXECUTION OF MUTATION
-    onCompleted: (res) => {
-      // UPDATING USER STATE
-      console.log(res)
-      setAccount(res.createGoogleUser)
-    },
+    onCompleted: (res) => setAccount(res.createGoogleUser),
     // WHEN AN ERROR HAS OCCURED WHILE EXECUTION OF MUTATION
     onError: (error) => {
       console.error('ERROR OCCURED WHILE SIGNING UP')
@@ -67,11 +60,7 @@ const Context = ({ children }) => {
 
   // MUTATION FOR UPDATING NEW USER
   const [updateUser] = useMutation(UPDATE_USER_MUTATION, {
-    onCompleted: (res) => {
-      // UPDATING USER STATE
-      console.log(res)
-      setAccount(res.createUser)
-    },
+    onCompleted: (res) => setAccount(res.createUser),
     onError: (error) => {
       console.error('ERROR OCCURED WHILE SIGNING IN')
       console.error(error)

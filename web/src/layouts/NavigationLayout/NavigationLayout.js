@@ -122,13 +122,8 @@ const NavigationLayout = ({ children }) => {
    */
   function setLogout() {
     logOut()
-      .then(() => {
-        // RESETTING ANALYTICS PROFILE, REMOVING PROFILE DATA & NAVIGATING TO LANDING PAGE
-        resetStates()
-      })
-      .catch(() => {
-        console.log('🚨 AN ERROR OCCURED WHILE LOGGING OUT')
-      })
+      .then(() => resetStates())
+      .catch((error) => console.error(error))
   }
 
   return (
