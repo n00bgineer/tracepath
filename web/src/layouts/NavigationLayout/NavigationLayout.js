@@ -17,18 +17,32 @@ import { useRecoilState } from 'recoil'
 import { routes } from '@redwoodjs/router'
 
 import './navigationLayout.css'
+import { useAuth } from 'src/auth'
 import BottomNavigation from 'src/components/BottomNavigation/BottomNavigation'
 import PositionedScreen from 'src/components/PositionedScreen/PositionedScreen'
 import SideNavigation from 'src/components/SideNavigation/SideNavigation'
-import { darkModeAtom } from 'src/contexts/atoms'
+import {
+  darkModeAtom,
+  reportAtom,
+  accountAtom,
+  regionsAtom,
+  userReportsAtom,
+} from 'src/contexts/atoms'
+import global from 'src/contexts/global'
 
 const NavigationLayout = ({ children }) => {
-  // SETTING LOCAL VARIABLES
+  // GETTING AUTH CONTEXT
+  const { logOut } = useAuth()
+
   // GETTING CURRENT PATHNAME
   const { pathname } = window.location
 
   // GETTING ATOMIC STATES
-  const [isDarkMode, setDarkTheme] = useRecoilState(darkModeAtom)
+  const [report, setReport] = useRecoilState(reportAtom)
+  const [account, setAccount] = useRecoilState(accountAtom)
+  const [regions, setRegions] = useRecoilState(regionsAtom)
+  const [isDarkMode, setDarkMode] = useRecoilState(darkModeAtom)
+  const [userReports, setUserReports] = useRecoilState(userReportsAtom)
 
   // SETTING MEDIA QUERY
   const isMobileViewport = useMediaQuery('(min-width:900px)')
@@ -72,7 +86,7 @@ const NavigationLayout = ({ children }) => {
       selectedIcon: <Logout />,
       unselectedIcon: <LogoutOutlined />,
       isSelected: true,
-      onClick: () => {},
+      onClick: setLogout,
     },
   ]
 
@@ -83,9 +97,38 @@ const NavigationLayout = ({ children }) => {
    * @returns {undefined} undefined
    */
   function toggleDarkTheme() {
-    console.log(`${!isDarkMode}`)
     window.localStorage.setItem('isDarkMode', `${!isDarkMode}`)
-    setDarkTheme(!isDarkMode)
+    setDarkMode(!isDarkMode)
+  }
+
+  /**
+   * @name resetStates
+   * @description METHOD TO RESET STATES
+   * @returns {undefined} undefined
+   */
+  function resetStates() {
+    setReport(null)
+    setAccount(null)
+    setRegions(null)
+    setUserReports(null)
+    setDarkMode(global.isDarkMode)
+    window.localStorage.setItem('isDarkMode', `${global.isDarkMode}`)
+  }
+
+  /**
+   * @name setLogout
+   * @description METHOD TO LOG OUT
+   * @returns {undefined} undefined
+   */
+  function setLogout() {
+    logOut()
+      .then(() => {
+        // RESETTING ANALYTICS PROFILE, REMOVING PROFILE DATA & NAVIGATING TO LANDING PAGE
+        resetStates()
+      })
+      .catch(() => {
+        console.log('🚨 AN ERROR OCCURED WHILE LOGGING OUT')
+      })
   }
 
   return (
