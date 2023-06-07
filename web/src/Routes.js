@@ -10,7 +10,8 @@ import { Router, Route, Set, Private } from '@redwoodjs/router'
 import { QUERY as USER_ACCOUNT_QUERY } from 'src/components/User/UserCell/UserCell'
 
 import { firebaseClient, useAuth } from './auth'
-import { accountAtom, darkModeAtom } from './contexts/atoms'
+import ModalRouter from './components/ModalRouter/ModalRouter'
+import { accountAtom, darkModeAtom, modalTypeAtom } from './contexts/atoms'
 import NavigationLayout from './layouts/NavigationLayout/NavigationLayout'
 import DarkTheme from './themes/darkTheme'
 import LightTheme from './themes/lightTheme'
@@ -19,6 +20,7 @@ const Routes = () => {
   // GETTING ATOMIC STATES
   const [account, setAccount] = useRecoilState(accountAtom)
   const [isDarkMode, setDarkMode] = useRecoilState(darkModeAtom)
+  const [modalType, setModalType] = useRecoilState(modalTypeAtom)
 
   // GETTING AUTH CONTEXT
   const { isAuthenticated } = useAuth()
@@ -48,6 +50,7 @@ const Routes = () => {
    * @returns {undefined} undefined
    */
   const setAccountLoad = async (guid) => {
+    setModalType('splash')
     await client
       .query({
         query: USER_ACCOUNT_QUERY,
@@ -57,7 +60,9 @@ const Routes = () => {
       })
       .then((res) => setAccount(res.data.user))
       .catch((error) => console.error(error.message))
-      .finally(() => {})
+      .finally(() => {
+        setModalType('')
+      })
   }
 
   useEffect(() => {
@@ -76,6 +81,7 @@ const Routes = () => {
   return (
     <ThemeProvider theme={isDarkMode === true ? DarkTheme : LightTheme}>
       <CssBaseline />
+      <ModalRouter />
       <Router useAuth={useAuth}>
         <Set wrap={NavigationLayout}>
           <Private unauthenticated="landing">
