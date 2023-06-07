@@ -25,9 +25,9 @@ const CustomTab = styled(MuiTab)(({ theme }) => ({
     fontSize: '1rem!important',
   },
   '&.MuiTab-sizeLarge': {
-    padding: '10px 20px!important',
-    fontSize: '1.5rem!important',
-    fontWeight: 'bolder!important',
+    padding: '15px 25px',
+    fontSize: '1.143rem',
+    minHeight: '61px',
   },
 
   // ICON SIZE STYLES
