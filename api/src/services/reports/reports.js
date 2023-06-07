@@ -68,6 +68,7 @@ export const createReport = async ({ input }) => {
       return db.report.create({
         data: {
           ...report,
+          userId: input.userId,
           reportVersion: config.LATEST_REPORT_VERSION,
           regionName: input.regionName,
         },

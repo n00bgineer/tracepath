@@ -17,7 +17,7 @@ import Input from 'src/components/Input/Input'
 import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/RegionsCell'
 import ReportData from 'src/components/ReportData/ReportData'
 import Select from 'src/components/Select/Select'
-import { reportAtom, regionsAtom } from 'src/contexts/atoms'
+import { reportAtom, regionsAtom, accountAtom } from 'src/contexts/atoms'
 
 /**
  * @name validateUrl
@@ -86,6 +86,7 @@ const ReportForm = ({ loading, onSave }) => {
     ]
 
   // GETTING ATOMIC STATES
+  const [account] = useRecoilState(accountAtom)
   const [report, setReport] = useRecoilState(reportAtom)
   const [regions, setRegions] = useRecoilState(regionsAtom)
 
@@ -295,7 +296,9 @@ const ReportForm = ({ loading, onSave }) => {
     resetReportStates()
 
     // BASIC CHECKS
-    if (selectedRegion === null || selectedRegion === 'default')
+    if (!account)
+      setSubmitErrorText("Just a second! Account data hasn't loaded")
+    else if (selectedRegion === null || selectedRegion === 'default')
       setSubmitErrorText('Please select a region to continue')
     else if (urlErrorText !== '' || url.length === 0)
       setSubmitErrorText('Please enter an appropriate URL')
@@ -304,6 +307,7 @@ const ReportForm = ({ loading, onSave }) => {
       const data = {
         url: url,
         regionName: selectedRegion,
+        userId: account.id,
       }
       await onSave(data).then((response) => {
         const data = response.data
