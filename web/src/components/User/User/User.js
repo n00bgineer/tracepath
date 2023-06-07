@@ -70,7 +70,6 @@ const User = ({ user }) => {
 
   useEffect(() => {
     if (reports === null || reports === undefined) setUserReports()
-    console.log(reports)
   }, [reports])
 
   return (
