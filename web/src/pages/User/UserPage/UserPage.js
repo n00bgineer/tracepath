@@ -6,7 +6,8 @@ import { accountAtom } from 'src/contexts/atoms'
 const UserPage = () => {
   // GETTING ATOMIC STATES
   const [account] = useRecoilState(accountAtom)
-  return account !== null ? <UserCell id={account.id} /> : <></>
+
+  return account !== null ? <UserCell id={account.guid} /> : <></>
 }
 
 export default UserPage
