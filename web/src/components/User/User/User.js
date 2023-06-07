@@ -57,7 +57,7 @@ const User = ({ user }) => {
       .query({
         query: USER_REPORTS_QUERY,
         variables: {
-          id: 'bba8c3b0-fc14-43b0-a2fb-4ab8a8314d46',
+          id: user.id,
         },
       })
       .then((res) => {
