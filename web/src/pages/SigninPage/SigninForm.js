@@ -1,5 +1,5 @@
 // IMPORTING PACKAGES/MODULES
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
   Email,
@@ -9,13 +9,16 @@ import {
   VisibilityOff,
 } from '@mui/icons-material'
 import { Box, Typography, Link } from '@mui/material'
+import { GoogleAuthProvider } from 'firebase/auth'
 
-import { Link as RedwoodLink, routes } from '@redwoodjs/router'
+import { Link as RedwoodLink, navigate, routes } from '@redwoodjs/router'
 
+import { useAuth } from 'src/auth'
 import Alert from 'src/components/Alert/Alert'
 import Button from 'src/components/Button/Button'
 import IconButton from 'src/components/IconButton/IconButton'
 import Input from 'src/components/Input/Input'
+import { useAppContext } from 'src/contexts/context'
 
 // INPUT FIELD VALIDATION METHODS
 /**
@@ -69,6 +72,7 @@ const SigninForm = () => {
   // SETTING LOCAL STATE
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isAuthInProcess, setIsAuthInProcess] = useState(false)
   const [isPasswordVisible, setPasswordVisibility] = useState(false)
 
   // INPUT FIELD VALIDATION STATES
@@ -76,7 +80,71 @@ const SigninForm = () => {
   const [submitErrorText, setSubmitErrorText] = useState('')
   const [passwordErrorText, setPasswordErrorText] = useState('')
 
+  // GETTING AUTH CONTEXT
+  const { logIn, signUp, loading, isAuthenticated } = useAuth()
+
+  // GETTING CONTEXT VALUES
+  const { signinGoogleUser, loginUser } = useAppContext()
+
+  // SETTING AUTHENTICATION PROVIDER
+  const provider = new GoogleAuthProvider()
+  provider.addScope('https://www.googleapis.com/auth/userinfo.email')
+  provider.addScope('https://www.googleapis.com/auth/userinfo.profile')
+
   // METHODS
+
+  /**
+   * @name setGoogleLogin
+   * @description METHOD TO EXECUTE LOGIN USING GOOGLE
+   * @param {*} event EVENT OBJECT
+   * @returns {undefined} undefined
+   */
+  const setGoogleLogin = async (event) => {
+    event.preventDefault()
+    setIsAuthInProcess(true)
+    await signUp(provider)
+      .then((userData) => {
+        // STORING NEW USER DATA
+        const input = {
+          email: userData.user.email,
+          guid: userData.user.uid,
+        }
+        signinGoogleUser(input)
+      })
+      .catch((error) => {
+        setSubmitErrorText(error.message)
+      })
+      .finally(() => {
+        setIsAuthInProcess(false)
+      })
+  }
+
+  /**
+   * @name setSignin
+   * @description METHOD TO EXECUTE MAIN SIGNIN
+   * @param {*} event EVENT OBJECT
+   * @returns {undefined} undefined
+   */
+  const setSignin = async (event) => {
+    event.preventDefault()
+    setIsAuthInProcess(true)
+    await logIn({ email: email, password: password })
+      .then((userData) => {
+        // STORING NEW USER DATA
+        const id = userData.user.uid
+        const input = {
+          email: userData.user.email,
+        }
+        loginUser(id, input)
+      })
+      .catch((error) => {
+        setSubmitErrorText(error.message)
+      })
+      .finally(() => {
+        setIsAuthInProcess(false)
+      })
+  }
+
   /**
    * @name setTogglePasswordVisibility
    * @description METHOD TO TOGGLE PASSWORD VISIBILITY
@@ -149,10 +217,18 @@ const SigninForm = () => {
    */
   const submitForm = (event) => {
     event.preventDefault()
-    if (!(emailErrorText === '' || passwordErrorText === ''))
+    if (emailErrorText !== '' || passwordErrorText !== '')
       setSubmitErrorText('Resolve the errors mentioned above')
-    else setSubmitErrorText('')
+    else {
+      setSubmitErrorText('')
+      setSignin(event)
+    }
   }
+
+  // SETTING SIDE EFFECTS
+  useEffect(() => {
+    if (isAuthenticated) navigate(routes.generate())
+  }, [isAuthenticated])
 
   return (
     <>
@@ -173,6 +249,8 @@ const SigninForm = () => {
           startIcon={<Google />}
           margin="medium"
           color="primary"
+          disabled={loading || isAuthInProcess}
+          onClick={setGoogleLogin}
         >
           Continue with Google
         </Button>
@@ -188,6 +266,7 @@ const SigninForm = () => {
           color={emailErrorText !== '' ? 'error' : 'primary'}
           onInput={setEmailField}
           errorText={emailErrorText}
+          disabled={loading || isAuthInProcess}
           label="email"
         />
         <Input
@@ -206,6 +285,7 @@ const SigninForm = () => {
           color={passwordErrorText !== '' ? 'error' : 'primary'}
           onInput={setPasswordField}
           errorText={passwordErrorText}
+          disabled={loading || isAuthInProcess}
           label="password"
         />
         <Typography variant="body2" className="auth-link forgot-password-link">
@@ -218,12 +298,15 @@ const SigninForm = () => {
           </Link>
         </Typography>
         <Button
+          type="submit"
           size="medium"
+          margin="large"
           variant="contained"
           fullWidth={true}
           color="primary"
+          disabled={loading || isAuthInProcess}
         >
-          Log in
+          {isAuthInProcess ? 'Signing in ...' : 'Sign in'}
         </Button>
         {submitErrorText !== '' && (
           <Alert fullWidth={true} margin="medium" severity="error">
