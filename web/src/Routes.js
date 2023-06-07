@@ -1,20 +1,34 @@
 // IMPORTING PACKAGES/MODULES
 import { useEffect } from 'react'
 
+import { useApolloClient } from '@apollo/client'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { useRecoilState } from 'recoil'
 
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 
-import { useAuth } from './auth'
-import { darkModeAtom } from './contexts/atoms'
+import { QUERY as USER_ACCOUNT_QUERY } from 'src/components/User/UserCell/UserCell'
+
+import { firebaseClient, useAuth } from './auth'
+import { accountAtom, darkModeAtom } from './contexts/atoms'
 import NavigationLayout from './layouts/NavigationLayout/NavigationLayout'
 import DarkTheme from './themes/darkTheme'
 import LightTheme from './themes/lightTheme'
 
 const Routes = () => {
   // GETTING ATOMIC STATES
+  const [account, setAccount] = useRecoilState(accountAtom)
   const [isDarkMode, setDarkMode] = useRecoilState(darkModeAtom)
+
+  // GETTING AUTH CONTEXT
+  const { isAuthenticated } = useAuth()
+
+  // INITIALISING APOLLO CLIENT
+  const client = useApolloClient()
+
+  // USING AUTH STATE CHANGE FUNCTION TO FETCH USER PROFILE DATA
+  const { firebaseApp, firebaseAuth } = firebaseClient
+  const auth = firebaseAuth.getAuth(firebaseApp)
 
   /**
    * @name setLocalStorage
@@ -27,9 +41,37 @@ const Routes = () => {
     else setDarkMode(window.localStorage.getItem('isDarkMode') === 'false' ? false : true)
   }
 
+  /**
+   * @name setAccountLoad
+   * @description METHOD TO LOAD ACCOUNT DETAILS
+   * @param {*} guid UNIQUE ID
+   * @returns {undefined} undefined
+   */
+  const setAccountLoad = async (guid) => {
+    await client
+      .query({
+        query: USER_ACCOUNT_QUERY,
+        variables: {
+          id: guid,
+        },
+      })
+      .then((res) => setAccount(res.data.user))
+      .catch((error) => console.error(error.message))
+      .finally(() => {})
+  }
+
   useEffect(() => {
     setLocalStorage()
   }, [])
+
+  // HANDLING SIDE EFFECTS
+  useEffect(() => {
+    if (isAuthenticated && !account) {
+      firebaseAuth.onAuthStateChanged(auth, async (user) => {
+        if (user !== null) setAccountLoad(user.uid)
+      })
+    }
+  }, [isAuthenticated, account])
 
   return (
     <ThemeProvider theme={isDarkMode === true ? DarkTheme : LightTheme}>
