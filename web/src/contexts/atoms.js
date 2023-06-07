@@ -20,6 +20,10 @@ export const darkModeAtom = atom({
   key: 'darkTheme',
   default: global.isDarkMode,
 })
+export const modalTypeAtom = atom({
+  key: 'modalType',
+  default: null,
+})
 export const userReportsAtom = atom({
   key: 'userReports',
   default: null,
