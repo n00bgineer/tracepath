@@ -28,6 +28,7 @@
   border-radius: 25px;
   display: block;
   max-height: 125px;
+  min-height: 125px;
 }
 .user-info-container{
   align-items: flex-start;
