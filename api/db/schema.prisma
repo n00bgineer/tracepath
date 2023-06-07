@@ -34,7 +34,7 @@ model User {
   guid        String   @unique
   createdAt   DateTime @default(now())
   updateAt    DateTime @updatedAt
-  lastLoginAt DateTime
+  lastLoginAt DateTime @default(now())
 
   // TYPES
   roleType         RoleType         @default(USER)
