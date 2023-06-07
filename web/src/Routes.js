@@ -7,14 +7,14 @@ import { useRecoilState } from 'recoil'
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 
 import { useAuth } from './auth'
-import { darkThemeAtom } from './contexts/atoms'
+import { darkModeAtom } from './contexts/atoms'
 import NavigationLayout from './layouts/NavigationLayout/NavigationLayout'
 import DarkTheme from './themes/darkTheme'
 import LightTheme from './themes/lightTheme'
 
 const Routes = () => {
   // GETTING ATOMIC STATES
-  const [isDarkMode, setDarkMode] = useRecoilState(darkThemeAtom)
+  const [isDarkMode, setDarkMode] = useRecoilState(darkModeAtom)
 
   /**
    * @name setLocalStorage
@@ -23,11 +23,8 @@ const Routes = () => {
    */
   const setLocalStorage = () => {
     // SETTING THEME STATE TO SET THEME
-    if (window.localStorage.getItem('isDarkMode') === null) {
-      window.localStorage.setItem('isDarkMode', `${isDarkMode}`)
-    } else {
-      setDarkMode(Boolean(window.localStorage.getItem('isDarkMode')))
-    }
+    if (window.localStorage.getItem('isDarkMode') === null) window.localStorage.setItem('isDarkMode', `${isDarkMode}`)
+    else setDarkMode(window.localStorage.getItem('isDarkMode') === 'false' ? false : true)
   }
 
   useEffect(() => {
