@@ -58,11 +58,14 @@ const Routes = () => {
           id: guid,
         },
       })
-      .then((res) => setAccount(res.data.user))
-      .catch((error) => console.error(error.message))
-      .finally(() => {
-        setModalType('')
+      .then((res) => {
+        setAccount(res.data.user)
+
+        // CHECKING FOR DISPLAY NAME VALUE AND LOADING ONBOARDING MODAL
+        if (!res.data.user.displayName) setModalType('onboarding')
+        else setModalType('')
       })
+      .catch((error) => console.error(error.message))
   }
 
   useEffect(() => {
