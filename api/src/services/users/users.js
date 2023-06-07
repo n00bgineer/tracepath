@@ -17,7 +17,20 @@ export const createUser = async ({ input }) => {
   const userName = await generateUsername(input.email, input.guid)
 
   return db.user.create({
-    data: { ...input, username: userName },
+    data: { ...input, userName: userName },
+  })
+}
+
+export const createGoogleUser = async ({ input }) => {
+  // SETTING USER NAME
+  const userName = await generateUsername(input.email, input.guid)
+
+  return db.user.upsert({
+    where: {
+      guid: input.guid,
+    },
+    update: { userName: input.useName },
+    create: { ...input, userName: userName },
   })
 }
 

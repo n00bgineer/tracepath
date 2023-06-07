@@ -17,6 +17,19 @@ export const CREATE_USER_MUTATION = gql`
     }
   }
 `
+export const CREATE_GOOGLE_USER_MUTATION = gql`
+  mutation CreateGoogleUserMutation($input: CreateUserInput!) {
+    createGoogleUser(input: $input) {
+      id
+      guid
+      createdAt
+      accountType
+      userName
+      email
+      displayName
+    }
+  }
+`
 
 const NewUser = () => {
   const [createUser, { loading, error }] = useMutation(CREATE_USER_MUTATION, {
