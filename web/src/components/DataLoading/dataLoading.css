@@ -5,6 +5,7 @@
 }
 .data-loading-container > .data-loading-container-image{
   max-height: 300px;
+  min-height: 300px;
   margin: 10px auto 0px;
   display: block;
 }

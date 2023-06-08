@@ -68,6 +68,17 @@ const User = ({ user }) => {
       })
   }
 
+  /**
+   * @name setErrorImg
+   * @description METHOD TO SET ERROR IMAGE
+   * @param {*} event EVENT OBJECT
+   * @returns {undefined} undefined
+   */
+  const setErrorImg = (event) => {
+    event.target.src =
+      'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683880188/tracepath/assets/tracepath_logo_v1_lerhbc.png'
+  }
+
   useEffect(() => {
     if (reports === null || reports === undefined) setUserReports()
   }, [reports])
@@ -82,9 +93,10 @@ const User = ({ user }) => {
           }}
         >
           <img
-            src="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685999029/An_illustration_of_lush_gren_mountain_forest_again-transformed_naqdxt.jpg"
+            src="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1686219644/An_illustration_of_lush_gren_mountain_forest_again-transformed_mwemx3.jpg"
             className="user-header-img"
             alt="Lush green mountains"
+            onError={setErrorImg}
           />
         </Box>
         <Box className="user-avatar-info-container">

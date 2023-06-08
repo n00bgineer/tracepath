@@ -13,6 +13,8 @@
 }
 .user-account-header-image-container > .user-header-img{
   height: var(--desktop-img-header-height);
+  max-height: var(--desktop-img-header-height);
+  min-height: var(--desktop-img-header-height);
   object-fit: cover;
   width: 100%;
 }
@@ -45,10 +47,10 @@
   width: calc(100% - 50px);
 }
 .user-data-skeleton{
-  height: 400px!important;
-  width: 100%;
   border-radius: 25px;
+  height: 400px!important;
   margin-top: 10px!important;
+  width: 100%;
 }
 .user-tab{
   margin-top: 10px;
@@ -60,6 +62,8 @@
   }
   .user-account-header-image-container > .user-header-img{
     height: var(--mobile-img-header-height);
+    max-height: var(--mobile-img-header-height);
+    min-height: var(--mobile-img-header-height);
   }
   .user-avatar-info-container{
     align-items: center;
