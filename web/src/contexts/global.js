@@ -1,3 +1,3 @@
 export default {
-  isDarkMode: false,
+  isDarkMode: true,
 }
