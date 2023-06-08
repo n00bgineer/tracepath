@@ -27,6 +27,7 @@ export const regions = () => {
               return { ...region, status: 'NOK' }
             }
           } catch (error) {
+            console.error(error)
             return { ...region, status: 'NOK' }
           }
         })
