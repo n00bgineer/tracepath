@@ -6,10 +6,14 @@
   padding: 10px;
   width: 100%;
 }
+.user-account-header{
+  position: relative;
+}
 .user-account-header-image-container{
   border-radius: 15px;
   max-height: var(--desktop-img-header-height);
   overflow: hidden;
+  position: relative;
 }
 .user-account-header-image-container > .user-header-img{
   height: var(--desktop-img-header-height);
@@ -18,12 +22,22 @@
   object-fit: cover;
   width: 100%;
 }
+.user-account-header-image-container > .user-account-mobile-menu{
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.3);
+  color: #000;
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 .user-avatar-info-container{
   align-items: flex-end;
   display: flex;
   justify-content: flex-start;
   margin-left: 25px;
   margin-top: -40px;
+  z-index: 5;
 }
 .user-avatar-img {
   aspect-ratio: 1/1;
@@ -31,6 +45,7 @@
   display: block;
   max-height: 125px;
   min-height: 125px;
+  z-index: inherit;
 }
 .user-info-container{
   align-items: flex-start;
@@ -55,6 +70,9 @@
 .user-tab{
   margin-top: 10px;
 }
+.user-menu{
+  margin-top: 5px;
+}
 
 @media screen and (max-width: 900px) {
   .user-account-header-image-container{
@@ -64,6 +82,9 @@
     height: var(--mobile-img-header-height);
     max-height: var(--mobile-img-header-height);
     min-height: var(--mobile-img-header-height);
+  }
+  .user-account-header-image-container > .user-account-mobile-menu{
+    display: block;
   }
   .user-avatar-info-container{
     align-items: center;
