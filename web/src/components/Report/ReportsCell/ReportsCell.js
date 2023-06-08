@@ -59,7 +59,7 @@ export const Loading = () => {
     <ScreenLoading
       imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
       title="Fetching curated reports"
-      subtitle="Discovering curated performance and security insights of various web apps"
+      subtitle="Discover curated performance and security insights of various web apps"
     />
   )
 }
