@@ -5,7 +5,7 @@
 #####
 
 services:
-- name: main-web
+- name: 'PROD :: TRACEPATH :: CLIENT'
   type: web
   env: static
   buildCommand: yarn install && yarn rw deploy render web
@@ -18,17 +18,12 @@ services:
   routes:
   - type: rewrite
     source: /.redwood/functions/*
-#####
-# NOTE: replace destination api url after first deploy to Render
-# example:
-#   destination: https://myredwoodproject-api.onrender.com/*
-#####
     destination: replace_with_api_url/*
   - type: rewrite
     source: /*
     destination: /index.html
 
-- name: main-api
+- name: 'PROD :: TRACEPATH :: SERVICE'
   type: web
   plan: free
   env: node
