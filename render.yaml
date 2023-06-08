@@ -18,7 +18,7 @@ services:
   routes:
   - type: rewrite
     source: /.redwood/functions/*
-    destination: replace_with_api_url/*
+    destination: https://prod-tracepath-service.onrender.com/*
   - type: rewrite
     source: /*
     destination: /index.html
