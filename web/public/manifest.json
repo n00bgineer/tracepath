@@ -1,0 +1,28 @@
+{
+  "name": "Tracepath",
+  "short_name": "Tracepath",
+  "description": "Track your application's performance effortlessly with Tracepath. Visualize network routes and analyze simplified metrics for enhanced monitoring.",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#1d9449",
+  "theme_color": "#1d9449",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": [
+    "utilities",
+    "network",
+    "monitoring",
+    "performance"
+  ]
+}

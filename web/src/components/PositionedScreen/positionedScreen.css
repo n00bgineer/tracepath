@@ -1,0 +1,19 @@
+:root{
+  --side-navigation-width: 81px;
+  --bottom-navigation-height: 66px;
+}
+.positioned-screen{
+  display: block;
+  height: 100%;
+  margin-left: var(--side-navigation-width);
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: calc(100% - var(--side-navigation-width));
+}
+@media screen and (max-width: 900px) {
+  .positioned-screen{
+    margin-left: unset;
+    height: calc(100% - var(--bottom-navigation-height));
+    width: 100%;
+  }
+}

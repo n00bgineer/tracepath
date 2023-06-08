@@ -1,0 +1,10 @@
+/* MARGIN STYLES */
+.MuiSelect-margin-small{
+  margin-bottom: 5px;
+}
+.MuiSelect-margin-medium{
+  margin-bottom: 12.5px;
+}
+.MuiSelect-margin-large{
+  margin-bottom: 20px;
+}

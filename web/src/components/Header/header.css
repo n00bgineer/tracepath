@@ -1,0 +1,53 @@
+/* HEADER STYLES */
+header{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px auto;
+  padding: 10px 20px;
+  width: 95%;
+}
+header .brand-info-container{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+header .brand-info-container > .logo{
+  height: 55px;
+  margin-right: 5px;
+}
+header .brand-info-container > .brand-name{
+  font-size: 2em!important;
+  font-weight: bolder!important;
+}
+header .primary-links > a, .secondary-links > a{
+  font-weight: 500;
+  margin-right: 15px;
+  text-decoration: none;
+}
+header .primary-links > a:hover, .secondary-links > a:hover{
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+  header{
+    margin-top: 15px;
+    padding: 5px;
+    width: 100%;
+  }
+
+  header .brand-info-container > .logo{
+    height: 45px;
+  }
+  header .brand-info-container > .brand-name{
+    font-size: 1.5em!important;
+  }
+  header .primary-links > a{
+    margin-right: 5px;
+  }
+  header .secondary-links{
+    visibility: hidden;
+  }
+}

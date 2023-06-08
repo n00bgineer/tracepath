@@ -1,0 +1,42 @@
+.policy-container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 0px 10px;
+  width: 80%;
+}
+.policy-header{
+  font-size: 2em!important;
+  font-weight: 900!important;
+  margin-bottom: 20px!important;
+  text-align: center!important;
+}
+.policy-last-update{
+  margin-bottom: 20px!important;
+}
+.policy-body{
+max-width: 80%;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Raleway';
+  margin: 10px 0px;
+}
+p, ul{
+  margin: 3px auto;
+}
+
+@media screen and (max-width: 1100px) {
+  .policy-container{
+    width: 100%;
+  }
+  .policy-body{
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .policy-body{
+    max-width: 95%;
+  }
+}

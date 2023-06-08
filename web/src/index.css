@@ -1,0 +1,75 @@
+/* GRADIENTS */
+.primary-gradient-background{
+  background: rgb(29,148,73);
+  background: radial-gradient(circle, rgba(29,148,73,1) 50%, rgba(255,255,255,1) 100%)
+}
+.secondary-gradient-background{
+  background: rgb(177,92,91);
+  background: radial-gradient(circle, rgba(255,255,255,1), rgba(177,92,91,1) 90% 100%);
+}
+
+/* COMMON FASHBOARD STYLES */
+.dashboard .page-description-container{
+  margin: 5px 0px 10px;
+}
+.dashboard .page-title{
+  font-size: 1.5em!important;
+  font-weight: bolder!important;
+  margin-bottom: 5px;
+}
+
+/* SETTING MAP MARKER STYLES */
+.blinking-dot {
+  align-items: center;
+  color: black!important;
+  /* animation: blink 2s infinite; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.marker-subcontainer{
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 1);
+  border: 5px solid #ed6c02;
+  border-radius: 15px;
+  font-family: 'Source Sans Pro';
+  margin-bottom: -40px;
+  margin-left: 160px;
+  max-width: fit-content;
+  min-width: 125px;
+  padding: 5px;
+  position: absolute;
+  top: 0px;
+  visibility: hidden;
+}
+.marker-subcontainer > .city-country{
+  font-size: 14px;
+  font-weight: bold;
+}
+.marker-subcontainer > .lat-long{
+  font-size: 12px;
+}
+
+/* MODAL STYLES */
+.full-modal{
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 2000;
+}

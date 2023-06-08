@@ -1,0 +1,56 @@
+.fatal-error-page{
+  align-items: center;
+  background: red;
+  background-image: url("https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685172167/tracepath/assets/404_dswv4j.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.fatal-error-card{
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.5)!important;
+  border-radius: 25px!important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 10px!important;
+  width: 450px;
+}
+
+.fatal-error-page .page-title{
+  margin-bottom: 5px!important;
+  text-align: center!important;
+}
+
+.fatal-error-page .page-subtitle{
+  margin-bottom: 20px!important;
+  text-align: center!important;
+}
+
+.fatal-error-page .brand-info-container{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.fatal-error-page .brand-info-container > .logo{
+  height: 55px;
+  margin-right: 5px;
+}
+.fatal-error-page .brand-info-container > .brand-name{
+  font-size: 2em!important;
+  font-weight: bolder!important;
+}
+
+@media screen and (max-width: 900px) {
+  .fatal-error-card{
+    width: 90%;
+  }
+}

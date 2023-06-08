@@ -1,0 +1,26 @@
+.faq-card{
+  border: 1px solid;
+  border-radius: 25px!important;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  margin: 15px;
+  max-width: calc(33% - 50px);
+  min-width: 400px;
+  padding: 25px;
+}
+.faq-question{
+  font-size: 1.1em!important;
+  font-weight: bold!important;
+}
+.faq-answer{
+  font-size: 0.9em!important;
+  margin-top: 5px!important;
+}
+
+@media screen and (max-width: 700px) {
+  .faq-card{
+    min-width: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,36 @@
+.report-form-globe-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+  max-height: 100%;
+}
+.report-form-container{
+  padding: 10px;
+  width: 33.333%;
+  max-width: 33.333%;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.report-globe-container{
+  flex-grow: 3;
+  width: 66.666%;
+  max-width: 66.666%;
+}
+.report-form-skeleton{
+  height: 176px!important;
+  width: 100%;
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 1100px) {
+  .report-globe-container{
+    display: none;
+    width: unset;
+  }
+  .report-form-container{
+    max-width: unset;
+    width: 100%;
+  }
+}
