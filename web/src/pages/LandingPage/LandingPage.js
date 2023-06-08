@@ -94,14 +94,12 @@ const LandingPage = () => {
             className="hero-img-container"
             sx={(theme) => {
               return {
-                border:
+                border: `1px solid ${theme.palette.divider}`,
+                boxShadow: `0 0 10px ${theme.palette.divider}`,
+                bgcolor:
                   theme.palette.mode === 'light'
-                    ? '1px solid rgb(56, 68, 77)'
-                    : '1px solid rgba(230,230,230,0.4)',
-                boxShadow:
-                  theme.palette.mode === 'light'
-                    ? '0 0 10px rgb(56, 68, 77)'
-                    : '0 0 10px rgba(230,230,230,0.4)',
+                    ? 'grey.100'
+                    : 'background.default',
               }
             }}
           >
