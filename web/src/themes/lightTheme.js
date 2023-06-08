@@ -11,29 +11,32 @@ const LightTheme = createTheme({
     secondary: {
       main: '#b15c5b',
     },
+    grey: {
+      main: '#EDE7E3',
+    },
     background: {
-      default: '#ececec',
+      default: '#fff',
     },
   },
   typography: {
     fontFamily: 'Source Sans Pro',
     h1: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Raleway',
     },
     h2: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Raleway',
     },
     h3: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Raleway',
     },
     h4: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Raleway',
     },
     h5: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Raleway',
     },
     h6: {
-      fontFamily: 'Josefin Sans',
+      fontFamily: 'Raleway',
     },
     fontSize: 16,
   },

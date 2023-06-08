@@ -1,7 +1,0 @@
-{
-  "name": "diagonostic",
-  "packageManager": "yarn@3.5.1",
-  "dependencies": {
-    "nodejs-traceroute": "^2.0.1"
-  }
-}
