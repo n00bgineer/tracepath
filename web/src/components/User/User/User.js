@@ -2,7 +2,14 @@
 import { useEffect, useState } from 'react'
 
 import { useApolloClient } from '@apollo/client'
-import { Assessment, Inventory2 } from '@mui/icons-material'
+import {
+  Assessment,
+  DarkMode,
+  Inventory2,
+  LightMode,
+  Logout,
+  Menu as MenuIcon,
+} from '@mui/icons-material'
 import { Box, Skeleton, Tabs, Typography, useMediaQuery } from '@mui/material'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
@@ -12,13 +19,23 @@ import { useRecoilState } from 'recoil'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
+import { useAuth } from 'src/auth'
 import DataLoading from 'src/components/DataLoading/DataLoading'
 import { capitalise } from 'src/components/HopTimeline/HopTimeline'
+import IconButton from 'src/components/IconButton/IconButton'
+import Menu from 'src/components/Menu/Menu'
 import { QUERY1 as USER_REPORTS_QUERY } from 'src/components/Report/ReportsCell'
 import SiteMetaCard from 'src/components/SiteMetaCard/SiteMetaCard'
 import Tab from 'src/components/Tab/Tab'
 import TabPanel from 'src/components/TabPanel/TabPanel'
-import { userReportsAtom } from 'src/contexts/atoms'
+import {
+  accountAtom,
+  darkModeAtom,
+  regionsAtom,
+  reportAtom,
+  userReportsAtom,
+} from 'src/contexts/atoms'
+import global from 'src/contexts/global'
 
 // INSTANTIATING TIME AGO DEFAULT LOCALE
 TimeAgo.addDefaultLocale(en)
@@ -27,17 +44,94 @@ const timeAgo = new TimeAgo('en-US')
 const User = ({ user }) => {
   // SETTING LOCAL STATES
   const [tabValue, setTabValue] = useState(0)
+  const [menuAnchorEl, setMenuAnchorEl] = useState(null)
+  const open = Boolean(menuAnchorEl)
 
   // SETTING MEDIA QUERY
   const isMobileViewport = useMediaQuery('(max-width:900px)')
 
   // GETTING ATOMIC STATES
+  const [isDarkMode, setDarkMode] = useRecoilState(darkModeAtom)
+  const [report, setReport] = useRecoilState(reportAtom)
+  const [account, setAccount] = useRecoilState(accountAtom)
+  const [regions, setRegions] = useRecoilState(regionsAtom)
   const [reports, setReports] = useRecoilState(userReportsAtom)
 
   // INITIALISING APOLLO CLIENT
   const client = useApolloClient()
 
+  // GETTING AUTH CONTEXT
+  const { logOut } = useAuth()
+
+  // SETTING LOCAL VARIABLES
+  const menuItems = [
+    {
+      icon: isDarkMode ? <DarkMode /> : <LightMode />,
+      label: isDarkMode ? 'Dark Mode' : 'Light Mode',
+      onClick: toggleDarkTheme,
+    },
+    {
+      icon: <Logout />,
+      label: 'Logout',
+      onClick: setLogout,
+    },
+  ]
+
   // METHODS
+  /**
+   * @name resetStates
+   * @description METHOD TO RESET STATES
+   * @returns {undefined} undefined
+   */
+  function resetStates() {
+    setReport(null)
+    setAccount(null)
+    setRegions(null)
+    setUserReports(null)
+    setDarkMode(global.isDarkMode)
+    window.localStorage.setItem('isDarkMode', `${global.isDarkMode}`)
+  }
+
+  /**
+   * @name setLogout
+   * @description METHOD TO LOG OUT
+   * @returns {undefined} undefined
+   */
+  function setLogout() {
+    logOut()
+      .then(() => resetStates())
+      .catch((error) => console.error(error))
+  }
+
+  /**
+   * @name toggleDarkTheme
+   * @description METHOD TO TOGGLE DARK THEME
+   * @returns {undefined} undefined
+   */
+  function toggleDarkTheme() {
+    window.localStorage.setItem('isDarkMode', `${!isDarkMode}`)
+    setDarkMode(!isDarkMode)
+  }
+
+  /**
+   * @name openMenu
+   * @description METHOD TO OPEN MENU
+   * @param {*} event EVENT OBJECT
+   * @returns {undefined} undefined
+   */
+  function openMenu(event) {
+    setMenuAnchorEl(event.currentTarget)
+  }
+
+  /**
+   * @name closeMenu
+   * @description METHOD TO CLOSE MENU
+   * @returns {undefined} undefined
+   */
+  function closeMenu() {
+    setMenuAnchorEl(null)
+  }
+
   /**
    * @name setTab
    * @description METHOD TO SET TAB VALUE
@@ -92,6 +186,16 @@ const User = ({ user }) => {
             return { border: `1px solid ${theme.palette.divider}` }
           }}
         >
+          <IconButton className="user-account-mobile-menu" onClick={openMenu}>
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            open={open}
+            anchorEl={menuAnchorEl}
+            onClose={closeMenu}
+            menuItems={menuItems}
+            className="user-menu"
+          />
           <img
             src="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1686219644/An_illustration_of_lush_gren_mountain_forest_again-transformed_mwemx3.jpg"
             className="user-header-img"
