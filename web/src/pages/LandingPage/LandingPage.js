@@ -99,7 +99,7 @@ const LandingPage = () => {
                 bgcolor:
                   theme.palette.mode === 'light'
                     ? 'grey.100'
-                    : 'background.card',
+                    : 'background.default',
               }
             }}
           >
