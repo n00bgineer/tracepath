@@ -5,7 +5,7 @@ import { useApolloClient } from '@apollo/client'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { useRecoilState } from 'recoil'
 
-import { Router, Route, Set, Private } from '@redwoodjs/router'
+import { Router, Route, Set, Private, routes } from '@redwoodjs/router'
 
 import { QUERY as USER_ACCOUNT_QUERY } from 'src/components/User/UserCell/UserCell'
 
@@ -24,6 +24,9 @@ const Routes = () => {
 
   // GETTING AUTH CONTEXT
   const { isAuthenticated } = useAuth()
+
+  // GETTING CURRENT PATHNAME
+  const { pathname } = window.location
 
   // INITIALISING APOLLO CLIENT
   const client = useApolloClient()
@@ -50,7 +53,14 @@ const Routes = () => {
    * @returns {undefined} undefined
    */
   const setAccountLoad = async (guid) => {
-    setModalType('splash')
+    // SETTING LOCAL VARIABLES
+    const pattern = /^\/report\/.*/
+
+    // SHOWING SPLASH SCREEN ONLY ON SPECIFIC SCREENS
+    if (pathname === routes.account() || pathname === routes.explore() || pathname === routes.generate() || pattern.test(pathname)) {
+      setModalType('splash')
+    }
+
     await client
       .query({
         query: USER_ACCOUNT_QUERY,
@@ -90,13 +100,13 @@ const Routes = () => {
           <Private unauthenticated="landing">
             <Route path="/generate" page={ReportNewReportPage} name="generate" />
             <Route path="/account" page={UserUserPage} name="account" />
+            <Route path="/explore" page={ReportReportsPage} name="explore" />
+            <Route path="/report/{id}" page={ReportReportPage} name="report" />
           </Private>
-          <Route path="/explore" page={ReportReportsPage} name="explore" />
-          <Route path="/report/{id}" page={ReportReportPage} name="report" />
         </Set>
-        <Route path="/" page={LandingPage} name="landing" prerender={true} />
-        <Route path="/tos" page={ToSPage} name="tos" prerender={true} />
-        <Route path="/privacy" page={PrivacyPage} name="privacy" prerender={true} />
+        <Route path="/" page={LandingPage} name="landing" />
+        <Route path="/tos" page={ToSPage} name="tos" />
+        <Route path="/privacy" page={PrivacyPage} name="privacy" />
         <Route path="/signin" page={SigninPage} name="signin" />
         <Route path="/signup" page={SignupPage} name="signup" />
         <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
