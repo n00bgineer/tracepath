@@ -17,7 +17,11 @@ const CustomMenu = styled(MuiMenu)(() => ({
     borderRadius: '25px',
   },
 }))
-const CustomMenuItem = styled(MuiMenuItem)(() => ({}))
+const CustomMenuItem = styled(MuiMenuItem)(() => ({
+  '&.MuiMenuItem-root': {
+    borderRadius: '999px',
+  },
+}))
 const CustomListItemIcon = styled(MuiListItemIcon)(() => ({}))
 const CustomListItemText = styled(MuiListItemText)(() => ({}))
 
