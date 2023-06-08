@@ -1,0 +1,7 @@
+.onboarding-tabs{
+  margin: 20px 10px 0px;
+  width: calc(100% - 20px);
+}
+.onboarding-tab-panel{
+  width: 100%;
+}

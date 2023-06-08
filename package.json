@@ -8,6 +8,7 @@
     ]
   },
   "devDependencies": {
+    "@redwoodjs/auth-firebase-setup": "5.1.2",
     "@redwoodjs/core": "5.1.2"
   },
   "eslintConfig": {

@@ -15,13 +15,22 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.132",
     "@mui/material": "^5.13.0",
+    "@redwoodjs/auth-firebase-web": "5.1.2",
     "@redwoodjs/forms": "5.1.2",
     "@redwoodjs/router": "5.1.2",
     "@redwoodjs/web": "5.1.2",
+    "cobe": "^0.6.3",
+    "firebase": "^9",
+    "humanize-string": "2.1.0",
+    "javascript-time-ago": "^2.5.9",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-globe.gl": "^2.24.1",
+    "react-markdown": "^8.0.7",
     "recoil": "^0.7.7"
   }
 }

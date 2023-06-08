@@ -1,0 +1,89 @@
+/* FOOTER SECTION */
+footer{
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 50px 30px;
+}
+
+/* STYLING BRAND INFO (e.g. LOGO, NAME, etc) */
+footer > .brand-info-container{
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 25px;
+  max-width: 400px;
+}
+footer .brand-logo-container{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+footer .brand-logo-container > .logo{
+  height: 40px;
+  margin-right: 5px;
+}
+footer .brand-logo-container > .brand-name{
+  font-size: 1.5em!important;
+  font-weight: bolder!important;
+}
+footer .brand-info-container > .brand-description{
+  margin: 10px 0px!important;
+  margin-top: 10px!important;
+  max-width: 80%!important;
+}
+.footer-copyright{
+  font-weight: 900!important;
+  text-align: center!important;
+}
+
+/* STYLING LINKS AND LINK HEADERS */
+.footer-links-container{
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-links-subcontainer{
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 45px;
+}
+.footer-links-header{
+  font-size: 1.1em!important;
+  font-weight: 900!important;
+}
+.footer-link{
+  display: block!important;
+  text-decoration: none!important;
+}
+.footer-link:hover{
+  text-decoration: underline!important;
+}
+
+@media screen and (max-width: 1100px) {
+  footer .brand-info-container > .brand-description{
+    max-width: 80%!important;
+  }
+  .footer-copyright{
+    margin-bottom: 10px!important;
+  }
+  .footer-links-container{
+    margin-top: 10px;
+  }
+  .footer-links-subcontainer{
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 700px) {
+  footer .brand-info-container > .brand-description{
+    max-width: 100%!important;
+  }
+}
