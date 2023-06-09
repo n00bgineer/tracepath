@@ -11,7 +11,7 @@ import {
 const CustomPaper = styled(MuiPaper)(() => ({}))
 const CustomMenu = styled(MuiMenu)(() => ({
   '& .MuiList-root': {
-    padding: '10px',
+    padding: '5px',
   },
   '& .MuiMenu-paper': {
     borderRadius: '25px',
