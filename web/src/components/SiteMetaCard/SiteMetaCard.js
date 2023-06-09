@@ -53,6 +53,10 @@ const Card = styled(MuiCard)(({ theme }) => ({
   },
   '& .site-meta-hostname': {
     fontWeight: 'bold',
+    maxWidth: 'calc(100% - 45px)',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   '& .site-meta-description': {
     margin: '5px 0px',
