@@ -1,6 +1,6 @@
 // IMPORTING PACKAGES/MODULES
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
   Divider,
@@ -41,8 +41,36 @@ const BottomNavigationAction = styled(MuiBottomNavigationAction)(
 )
 
 const BottomNavigation = ({ topActions, ...props }) => {
+  // SETTING LOCAL VARIABLES
+  const { pathname } = window.location
+
   // SETTING LOCAL STATES
-  const [bottomNavigationValue, setBottomNavigationValue] = useState(0)
+  const [bottomNavigationValue, setBottomNavigationValue] = useState(
+    setDefaultNavigation()
+  )
+
+  // METHODS
+  /**
+   * @name setDefaultNavigation
+   * @description SETTING VALUE FOR BOTTOM NAVIGATION
+   * @returns {INDEX}
+   */
+  function setDefaultNavigation() {
+    try {
+      topActions.forEach((topActionItem, index) => {
+        if (topActionItem.link === pathname) throw index
+      })
+    } catch (err) {
+      return err
+    }
+  }
+
+  useEffect(() => {
+    if (pathname === '/generate') setBottomNavigationValue(0)
+    else if (pathname === '/explore') setBottomNavigationValue(1)
+    else if (pathname === '/account') setBottomNavigationValue(2)
+    else setBottomNavigationValue(-1)
+  }, [pathname])
 
   return (
     <>

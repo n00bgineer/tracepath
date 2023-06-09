@@ -139,6 +139,9 @@ section{
   flex-wrap: wrap;
   justify-content: center;
 }
+.default-pricing-mode{
+  font-weight: bolder!important;
+}
 
 /* FAQ SECTIONS */
 .faq-card-container{
