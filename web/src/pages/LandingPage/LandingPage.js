@@ -1,8 +1,15 @@
 // IMPORTING PACKAGES/MODULES
 import { useEffect, useRef } from 'react'
 
-import { FreeBreakfast, Paid } from '@mui/icons-material'
-import { Box, Chip, Typography, useMediaQuery } from '@mui/material'
+import { FreeBreakfast, Https, Paid } from '@mui/icons-material'
+import {
+  Box,
+  Card as MuiCard,
+  Chip,
+  Typography,
+  useMediaQuery,
+  styled,
+} from '@mui/material'
 import createGlobe from 'cobe'
 import { useRecoilState } from 'recoil'
 
@@ -17,6 +24,24 @@ import Footer from 'src/components/Footer/Footer'
 import Header from 'src/components/Header/Header'
 import PriceCard from 'src/components/PriceCard/PriceCard'
 import { darkModeAtom } from 'src/contexts/atoms'
+
+// CUSTOM COMPONENTS
+const AddressBar = styled(MuiCard)(({ theme }) => ({
+  '&.MuiCard-root': {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '10px',
+    borderRadius: '15px',
+    padding: '3px',
+    bgColor: theme.palette.mode === 'light' ? 'background.card' : '#000',
+    border: `1px solid ${theme.palette.divider}`,
+  },
+  '& .address-bar-icon': {
+    marginRight: '5px',
+  },
+}))
 
 const LandingPage = () => {
   // SETTING REFERENCES
@@ -103,6 +128,14 @@ const LandingPage = () => {
               }
             }}
           >
+            <AddressBar elevation={0}>
+              <Https
+                fontSize="xs"
+                className="address-bar-icon"
+                color="success"
+              />
+              <Typography variant="body2">tracepath.in</Typography>
+            </AddressBar>
             <img
               src={
                 isDarkMode
