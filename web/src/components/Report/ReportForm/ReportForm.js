@@ -377,9 +377,9 @@ const ReportForm = ({ loading, onSave }) => {
             Generate Reports
           </Typography>
           <Typography variant="body2" className="page-subtitle">
-            Leverage comprehensive reports to analyze performance metrics and
-            make informed decisions for your web application&rsquo;s
-            optimization
+            Leverage comprehensive reports to analyze various metrics and make
+            informed decisions for your web application&rsquo;s performance and
+            security
           </Typography>
         </Box>
 
