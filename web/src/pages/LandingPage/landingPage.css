@@ -61,16 +61,18 @@ section{
 .hero-img-container{
   border-radius: 25px;
   margin: 50px auto 0px;
-  width: calc(80% - 40px);
-  position: relative;
   padding: 10px;
+  position: relative;
+  width: calc(80% - 40px);
 }
 .hero-img-container > .hero-desktop-img{
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 15px;
   display: block;
   width: 100%;
 }
 .hero-img-container > .hero-mobile-img{
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 15px;
   display: none;
   width: 100%;
