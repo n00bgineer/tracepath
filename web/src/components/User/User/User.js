@@ -230,6 +230,7 @@ const User = ({ user }) => {
             sx: { display: 'none' },
           }}
           centered={isMobileViewport}
+          variant={isMobileViewport ? 'fullWidth' : 'standard'}
         >
           <Tab
             label="Your reports"
