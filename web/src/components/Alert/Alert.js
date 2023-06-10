@@ -29,6 +29,9 @@ const CustomAlert = styled(MuiAlert)(({ theme }) => ({
   '&.MuiAlert-filledInfo': {
     background: `linear-gradient(to top, ${theme.palette.info.dark}, ${theme.palette.info.main}, ${theme.palette.info.main})`,
   },
+  '& .MuiAlert-action': {
+    padding: '0px',
+  },
 
   // MARGIN STYLES
   '&.MuiAlert-margin-small': { marginBottom: '5px' },
