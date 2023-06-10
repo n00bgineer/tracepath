@@ -38,7 +38,7 @@ const LightTheme = createTheme({
       dark: '#aba59f',
       50: '#fbf8f7',
       100: '#f4eee9',
-      200: '#e8d7d0',
+      200: '#ebe7e4',
       300: '#dcc0b8',
       400: '#d1a9a0',
       500: '#c5938a',
