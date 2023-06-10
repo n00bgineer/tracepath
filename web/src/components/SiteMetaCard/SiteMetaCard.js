@@ -53,6 +53,10 @@ const Card = styled(MuiCard)(({ theme }) => ({
   },
   '& .site-meta-hostname': {
     fontWeight: 'bold',
+    maxWidth: 'calc(100% - 45px)',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   '& .site-meta-description': {
     margin: '5px 0px',
@@ -68,6 +72,7 @@ const SiteMetaCard = ({
   scores,
   ...props
 }) => {
+  // SETTING LOCAL VARIABLES
   const { fcp, lcp, cls, tbt, tti, speedIndex } = scores
 
   /**
@@ -79,15 +84,15 @@ const SiteMetaCard = ({
   const setColorValue = (score) => {
     const value = score * 1000
 
-    if (value < 50) return 0
-    else if (value < 150) return 100
-    else if (value < 250) return 200
-    else if (value < 350) return 300
-    else if (value < 450) return 400
-    else if (value < 550) return 500
-    else if (value < 650) return 600
-    else if (value < 750) return 700
-    else if (value < 850) return 800
+    if (value < 50) return '50'
+    else if (value < 150) return '100'
+    else if (value < 250) return '200'
+    else if (value < 350) return '300'
+    else if (value < 450) return '400'
+    else if (value < 550) return '500'
+    else if (value < 650) return '600'
+    else if (value < 750) return '700'
+    else if (value < 850) return '800'
     else if (value < 950) return 'main'
     else return 'dark'
   }

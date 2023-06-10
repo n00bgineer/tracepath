@@ -181,7 +181,7 @@ const Performance = ({ data, ...props }) => {
         metricName="Speed Index"
         metricQuestion="How quickly does this app loads?"
         metricDesc1="measures the perceived amount of time it takes to load the app. It takes"
-        metricDesc2="to load this app."
+        metricDesc2="to load this app"
       />
 
       {/* FCP CARD */}
@@ -192,7 +192,7 @@ const Performance = ({ data, ...props }) => {
         metricName="First Contentful Paint"
         metricQuestion="How quickly does this app displays the first element to it's users?"
         metricDesc1="(FCP) measures the amount of time it takes for the first element to load. It takes"
-        metricDesc2="to load the first element."
+        metricDesc2="to load the first element"
       />
 
       {/* LCP CARD */}
@@ -203,7 +203,7 @@ const Performance = ({ data, ...props }) => {
         metricName="Largest Contentful Paint"
         metricQuestion="How quickly does this app displays the largest element to it's users?"
         metricDesc1="(LCP) measures the amount of time it takes for the largest piece of content (e.g. hero) to load. It takes"
-        metricDesc2="to load the largest element."
+        metricDesc2="to load the largest element"
       />
 
       {/* TBT CARD */}
@@ -214,7 +214,7 @@ const Performance = ({ data, ...props }) => {
         metricName="Time Blocking Time"
         metricQuestion="How long is the app's main thread locked up by long taks?"
         metricDesc1="(TBT) measures the total amount of time that the main thread is blocked by long tasks. A long task is a task that runs on the main thread for more than 50 milliseconds. Your main thread is blocked for "
-        metricDesc2="."
+        // metricDesc2="."
       />
 
       {/* TTI CARD */}
@@ -225,7 +225,7 @@ const Performance = ({ data, ...props }) => {
         metricName="Time To Interactive"
         metricQuestion="How quickly does the page become fully interactive after loading?"
         metricDesc1="(TTI) measures the amount of time the page is unresponsive to user input while it's loading and rendering content. It takes"
-        metricDesc2="for your app to become fully interatcive."
+        metricDesc2="for your app to become fully interatcive"
       />
 
       {/* CLS CARD */}
@@ -233,7 +233,7 @@ const Performance = ({ data, ...props }) => {
         metricType="cls"
         metricScore={data.clsScore}
         metricQuestion="How often do users experience unexpected layout shifts on the app?"
-        metricDesc1="A layout shift occurs when a visible element on a web page changes it's position from one rendered frame to another. Cumulative Layout Shift (CLS) in a unitless metrics which measures layout shifts. Lower the value, better will be the user experience."
+        metricDesc1="A layout shift occurs when a visible element on a web page changes it's position from one rendered frame to another. Cumulative Layout Shift (CLS) in a unitless metrics which measures layout shifts. Lower the value, better will be the user experience"
         tooltipText="Value close to zero is better"
       />
     </Box>

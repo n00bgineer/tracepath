@@ -28,3 +28,7 @@ export const userReportsAtom = atom({
   key: 'userReports',
   default: null,
 })
+export const reportLoadingAtom = atom({
+  key: 'recentReportLoading',
+  default: false,
+})

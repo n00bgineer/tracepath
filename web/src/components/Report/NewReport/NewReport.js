@@ -1,7 +1,11 @@
 // IMPORTING PACKAGES/MODULES
+
+import { useRecoilState } from 'recoil'
+
 import { useMutation } from '@redwoodjs/web'
 
 import ReportForm from 'src/components/Report/ReportForm'
+import { reportAtom, reportLoadingAtom } from 'src/contexts/atoms'
 
 const CREATE_REPORT_MUTATION = gql`
   mutation CreateReportMutation($input: CreateReportInput!) {
@@ -46,15 +50,25 @@ const CREATE_REPORT_MUTATION = gql`
 `
 
 const NewReport = () => {
-  const [createReport, { loading, error }] = useMutation(
-    CREATE_REPORT_MUTATION,
-    {
-      onCompleted: () => console.log('REPORT CREATED'),
-      onError: (error) => console.error(error.message),
-    }
-  )
+  // GETTING ATOMIC STATES
+  const [report, setReport] = useRecoilState(reportAtom)
+  const [loading, setLoading] = useRecoilState(reportLoadingAtom)
+
+  // CREATING GQL MUTATION
+  const [createReport, { error }] = useMutation(CREATE_REPORT_MUTATION, {
+    onCompleted: (data) => {
+      setLoading(false)
+      setReport(data.createReport)
+    },
+    onError: (error) => {
+      setLoading(false)
+      console.error(error.message)
+    },
+  })
 
   const onSave = async (input) => {
+    setReport(null)
+    setLoading(true)
     return await createReport({ variables: { input } })
   }
 

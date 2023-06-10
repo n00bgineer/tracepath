@@ -1,3 +1,4 @@
+// IMPORTING PACKAGES/MODULES
 import { initializeApp, getApp, getApps } from 'firebase/app'
 import * as firebaseAuth from 'firebase/auth'
 
@@ -10,17 +11,13 @@ const firebaseConfig = {
 
 const firebaseApp = ((config) => {
   const apps = getApps()
-
-  if (!apps.length) {
-    initializeApp(config)
-  }
-
+  if (!apps.length) initializeApp(config)
   return getApp()
 })(firebaseConfig)
 
 export const firebaseClient = {
   firebaseAuth,
-  firebaseApp, // optional
+  firebaseApp,
 }
 
 export const { AuthProvider, useAuth } = createAuth(firebaseClient)

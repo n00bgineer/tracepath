@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useApolloClient } from '@apollo/client'
 import { Assessment, Link, Refresh, Storage } from '@mui/icons-material'
 import { Box, Skeleton, Typography } from '@mui/material'
+import { getAuth, sendEmailVerification } from 'firebase/auth'
 import Globe from 'react-globe.gl'
 import { useRecoilState } from 'recoil'
 import './reportForm.css'
@@ -18,7 +19,6 @@ import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/Region
 import ReportData from 'src/components/ReportData/ReportData'
 import Select from 'src/components/Select/Select'
 import { reportAtom, regionsAtom, accountAtom } from 'src/contexts/atoms'
-
 /**
  * @name validateUrl
  * @description METHOD TO VALIDATE URL
@@ -67,7 +67,7 @@ const ReportForm = ({ loading, onSave }) => {
 </div>
 </div>`
 
-  // STORING LOADING CONTAINER ITEMS
+  // STORING LOADING  DATA CONTAINER ITEMS
   const loadingContainerItems = [
     {
       label: "It might take a minute to load your report, so here's a Panda",
@@ -87,7 +87,7 @@ const ReportForm = ({ loading, onSave }) => {
 
   // GETTING ATOMIC STATES
   const [account] = useRecoilState(accountAtom)
-  const [report, setReport] = useRecoilState(reportAtom)
+  const [report] = useRecoilState(reportAtom)
   const [regions, setRegions] = useRecoilState(regionsAtom)
 
   // SETTING LOCAL STATE
@@ -99,6 +99,12 @@ const ReportForm = ({ loading, onSave }) => {
   // INPUT FIELD VALIDATION STATES
   const [urlErrorText, setUrlErrorText] = useState('')
   const [submitErrorText, setSubmitErrorText] = useState('')
+  const [accountValidationErrorText, setAccountValidationErrorText] =
+    useState('')
+
+  // GETTING AUTH CONTEXT
+  const auth = getAuth()
+  const currentUser = auth.currentUser
 
   // INITIALISING APOLLO CLIENT
   const client = useApolloClient()
@@ -270,6 +276,7 @@ const ReportForm = ({ loading, onSave }) => {
     setArcsData([])
     setPointData([])
     setSubmitErrorText('')
+    setAccountValidationErrorText('')
   }
 
   /**
@@ -285,6 +292,26 @@ const ReportForm = ({ loading, onSave }) => {
   }
 
   /**
+   * @name setVerifyMail
+   * @description METHOD TO VERIFY MAIL
+   * @returns {undefined} undefined
+   */
+  const setVerifyMail = async () => {
+    // SENDING VERIFICATION MAIL
+    await sendEmailVerification(currentUser)
+      .then(() => {
+        setAccountValidationErrorText(
+          'Please check your mail & refresh upon verification'
+        )
+      })
+      .catch(() => {
+        setAccountValidationErrorText(
+          'Error occured upon sending verification mail'
+        )
+      })
+  }
+
+  /**
    * @name onSubmit
    * @description METHOD TO SUBMIT DATA
    * @param {*} event EVENT OBJECT
@@ -296,7 +323,9 @@ const ReportForm = ({ loading, onSave }) => {
     resetReportStates()
 
     // BASIC CHECKS
-    if (!account)
+    if (!currentUser.emailVerified)
+      setAccountValidationErrorText('Please verify your account')
+    else if (!account)
       setSubmitErrorText("Just a second! Account data hasn't loaded")
     else if (selectedRegion === null || selectedRegion === 'default')
       setSubmitErrorText('Please select a region to continue')
@@ -312,8 +341,7 @@ const ReportForm = ({ loading, onSave }) => {
       await onSave(data).then((response) => {
         const data = response.data
         const errors = response.errors
-        if (data) setReport(data.createReport)
-        else setSubmitErrorText(capitalise(errors.message))
+        if (!data) setSubmitErrorText(capitalise(errors.message))
       })
     }
   }
@@ -377,9 +405,9 @@ const ReportForm = ({ loading, onSave }) => {
             Generate Reports
           </Typography>
           <Typography variant="body2" className="page-subtitle">
-            Leverage comprehensive reports to analyze performance metrics and
-            make informed decisions for your web application&rsquo;s
-            optimization
+            Leverage comprehensive reports to analyze various metrics and make
+            informed decisions for your web application&rsquo;s performance and
+            security
           </Typography>
         </Box>
 
@@ -426,6 +454,28 @@ const ReportForm = ({ loading, onSave }) => {
             >
               Get Insights
             </Button>
+            {accountValidationErrorText !== '' && (
+              <Alert
+                fullWidth={true}
+                margin="large"
+                severity="error"
+                action={
+                  <Button
+                    size="small"
+                    sx={{
+                      color: 'common.white',
+                      background: 'rgba(255, 255, 255, 0.3)',
+                      backdropFilter: 'blur(10px)',
+                    }}
+                    onClick={setVerifyMail}
+                  >
+                    <Typography variant="body2">Verify</Typography>
+                  </Button>
+                }
+              >
+                {accountValidationErrorText}
+              </Alert>
+            )}
             {submitErrorText !== '' && (
               <Alert
                 fullWidth={true}

@@ -1,6 +1,7 @@
 // IMPORTING PACKAGES/MODULES
 
 import styled from '@emotion/styled'
+import { Lock, LockOpen } from '@mui/icons-material'
 import {
   Timeline as MuiTimeline,
   TimelineConnector,
@@ -27,7 +28,6 @@ export const capitalise = (text) => {
 // CUSTOM COMPONENTS
 const TimelineCard = styled(Card)(({ theme }) => ({
   '&.MuiCard-root': {
-    padding: '20px',
     borderRadius: '25px',
     border: `1px solid ${theme.palette.divider}`,
     display: 'flex',
@@ -38,6 +38,10 @@ const TimelineCard = styled(Card)(({ theme }) => ({
   '& .hop-ip': {
     fontWeight: 'bold',
   },
+  '& .hop-content-chip-container': {
+    padding: '20px',
+    width: '100%',
+  },
   '& .hop-content-container': {
     flexGrow: '1',
   },
@@ -46,6 +50,21 @@ const TimelineCard = styled(Card)(({ theme }) => ({
   },
   '& .hop-chip': {
     marginRight: '10px',
+  },
+  '& .hop-reputation-container': {
+    width: '100%',
+    padding: '10px 20px',
+    background: `linear-gradient(to top, ${theme.palette.error.dark}, ${theme.palette.error.main}, ${theme.palette.error.main})`,
+  },
+  '& .hop-reputation-verdict': {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    color: theme.palette.common.white,
+  },
+  '& .hop-reputation-verdict-icon': {
+    marginRight: '5px',
   },
 }))
 const Timeline = styled(MuiTimeline)(() => ({
@@ -77,6 +96,12 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
     bgColor: `info.400`,
   } // ORIGIN AND DESTINATION COLOR
 
+  // SETTING LOCAL STATES
+  const maliciousReputationScore = hops.filter((hop) => {
+    if (hop.reputation && hop.reputation.verdict === 'malicious') return true
+    else return false
+  }).length
+
   // METHODS
   /**
    * @name determineHopChipColor
@@ -99,11 +124,28 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
     }
   }
 
+  /**
+   * @name setHopReputationText
+   * @description METHOD TO REPUTATION TEXT
+   * @param {*} hop HOP OBJECT
+   * @returns {String} HOP REPUTATION
+   */
+  const setHopReputationText = (hop) => {
+    // SETTING LOCAL VARIABLES
+    const hopReputationCategories = hop.reputation.category.length > 0 ? `` : ''
+    return `This IP address was found to be ${hop.reputation.verdict}. ${hopReputationCategories}`
+  }
+
   return (
     <>
       {pointData.length < 2 && (
         <Alert fullWidth={true} margin="medium" size="small" severity="warning">
           No more than one location found
+        </Alert>
+      )}
+      {maliciousReputationScore > 0 && (
+        <Alert fullWidth={true} margin="medium" size="small" severity="info">
+          {maliciousReputationScore} malicious IP addresses found
         </Alert>
       )}
       <Timeline {...props}>
@@ -117,72 +159,102 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
                 </TimelineSeparator>
                 <TimelineContent>
                   <TimelineCard elevation={0}>
-                    <Box className="hop-content-container">
-                      <Typography variant="h5" className="hop-ip">
-                        {hop.ip === '*' ? 'xxx.xxx.xxx.xxx' : hop.ip}
-                      </Typography>
-                      {hop.type === 'GEOLOCATED' && (
-                        <>
-                          {hop.data.country && (
+                    <Box className="hop-content-chip-container">
+                      <Box className="hop-content-container">
+                        <Typography variant="h5" className="hop-ip">
+                          {hop.ip === '*' ? 'xxx.xxx.xxx.xxx' : hop.ip}
+                        </Typography>
+                        {hop.type === 'GEOLOCATED' && (
+                          <>
+                            {hop.data.country && (
+                              <Typography variant="body2" color="grey">
+                                {hop.data.city &&
+                                  capitalise(hop.data.city + ', ')}
+                                {capitalise(hop.data.country)}
+                              </Typography>
+                            )}
                             <Typography variant="body2" color="grey">
-                              {hop.data.city &&
-                                capitalise(hop.data.city + ', ')}
-                              {capitalise(hop.data.country)}
+                              {hop.data.latitude}, {hop.data.longitude}
                             </Typography>
-                          )}
-                          <Typography variant="body2" color="grey">
-                            {hop.data.latitude}, {hop.data.longitude}
-                          </Typography>
-                        </>
-                      )}
-                      {hop.type === 'UNGEOLOCATED' && (
-                        <>
-                          <Typography variant="body2" color="grey">
-                            This IP address cannot be geolocated
-                          </Typography>
-                        </>
-                      )}
-                      {hop.type === 'PRIVATE' && (
-                        <>
-                          <Typography variant="body2" color="grey">
-                            This is a private IP address & it cannot be
-                            geolocated
-                          </Typography>
-                        </>
-                      )}
-                      {hop.type === 'UNTRACEROUTABLE' && (
-                        <>
-                          <Typography variant="body2" color="grey">
-                            Cannot ascertain IP address because the router
-                            blocks ICMP requests
-                          </Typography>
-                        </>
-                      )}
-                    </Box>
-                    <Box className="hop-chips-container">
-                      {(index === 0 || hops.length - 1 === index) && (
+                          </>
+                        )}
+                        {hop.type === 'UNGEOLOCATED' && (
+                          <>
+                            <Typography variant="body2" color="grey">
+                              This IP address cannot be geolocated
+                            </Typography>
+                          </>
+                        )}
+                        {hop.type === 'PRIVATE' && (
+                          <>
+                            <Typography variant="body2" color="grey">
+                              This is a private IP address & it cannot be
+                              geolocated
+                            </Typography>
+                          </>
+                        )}
+                        {hop.type === 'UNTRACEROUTABLE' && (
+                          <>
+                            <Typography variant="body2" color="grey">
+                              Cannot ascertain IP address because the router
+                              blocks ICMP requests
+                            </Typography>
+                          </>
+                        )}
+                      </Box>
+                      <Box className="hop-chips-container">
+                        {(index === 0 || hops.length - 1 === index) && (
+                          <Chip
+                            sx={origDestColor}
+                            label={
+                              <Typography variant="body2">
+                                {index === 0 ? 'Origin' : 'Destination'}
+                              </Typography>
+                            }
+                            size="small"
+                            className="hop-chip"
+                          />
+                        )}
                         <Chip
-                          sx={origDestColor}
+                          sx={determineHopChipColor(hop.type, hop.data)}
                           label={
                             <Typography variant="body2">
-                              {index === 0 ? 'Origin' : 'Destination'}
+                              {hop.type !== undefined && capitalise(hop.type)}
                             </Typography>
                           }
                           size="small"
                           className="hop-chip"
                         />
-                      )}
-                      <Chip
-                        sx={determineHopChipColor(hop.type, hop.data)}
-                        label={
-                          <Typography variant="body2">
-                            {hop.type !== undefined && capitalise(hop.type)}
-                          </Typography>
-                        }
-                        size="small"
-                        className="hop-chip"
-                      />
+                      </Box>
                     </Box>
+                    {hop.reputation && hop.score != -1 && (
+                      <Box
+                        className="hop-reputation-container"
+                        sx={(theme) => {
+                          return {
+                            borderTop: `1px solid ${theme.palette.divider}`,
+                          }
+                        }}
+                      >
+                        <Typography
+                          variant="body2"
+                          className="hop-reputation-verdict"
+                        >
+                          {hop.reputation.verdict === 'malicious' ? (
+                            <LockOpen
+                              fontSize="inherit"
+                              className="hop-reputation-verdict-icon"
+                            />
+                          ) : (
+                            <Lock
+                              fontSize="inherit"
+                              className="hop-reputation-verdict-icon"
+                            />
+                          )}{' '}
+                          {setHopReputationText(hop)}
+                        </Typography>
+                      </Box>
+                    )}
                   </TimelineCard>
                 </TimelineContent>
               </TimelineItem>

@@ -33,7 +33,6 @@ const SplashModal = () => {
   const [account] = useRecoilState(accountAtom)
 
   useEffect(() => {
-    console.log(loading, isAuthenticated, account)
     if (loading) {
       setLoaderText('Checking whether the user has logged in')
       setProgress(50)
