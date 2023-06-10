@@ -51,11 +51,11 @@ const User = ({ user }) => {
   const isMobileViewport = useMediaQuery('(max-width:900px)')
 
   // GETTING ATOMIC STATES
-  const [isDarkMode, setDarkMode] = useRecoilState(darkModeAtom)
   const [report, setReport] = useRecoilState(reportAtom)
   const [account, setAccount] = useRecoilState(accountAtom)
   const [regions, setRegions] = useRecoilState(regionsAtom)
   const [reports, setReports] = useRecoilState(userReportsAtom)
+  const [isDarkMode, setDarkMode] = useRecoilState(darkModeAtom)
 
   // INITIALISING APOLLO CLIENT
   const client = useApolloClient()
