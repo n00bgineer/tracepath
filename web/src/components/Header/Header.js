@@ -61,7 +61,7 @@ const Header = () => {
       >
         {isAuthenticated ? (
           <Link component={RedwoodLink} to={routes.generate()}>
-            Dashboard
+            Home
           </Link>
         ) : (
           <Link component={RedwoodLink} to={routes.signup()}>
