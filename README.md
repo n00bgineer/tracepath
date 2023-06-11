@@ -56,9 +56,6 @@ DATABASE_URL=postgresql://db_name:db_password@db_url:db_port
   apiKey: 'AIzaSyA3aHw_Ci2dk0XvKiyEHhXe9xINzForu7g',
   authDomain: 'tracepath-dev.firebaseapp.com',
   projectId: 'tracepath-dev',
-  storageBucket: 'tracepath-dev.appspot.com',
-  messagingSenderId: '526054997896',
-  appId: '1:526054997896:web:431bace8f2c3c46ba1c43d',
 }
 ```
 
