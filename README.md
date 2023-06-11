@@ -1,5 +1,7 @@
 # Tracepath
 
+**NOTE:** Pangea's API's are not used in this repository as this repository just contains the application client and server. Visit the [diagonostics server](https://github.com/n00bgineer/tracepath-diagonostics) repo to explore the usage of Pangea's APIs.
+
 ![Tracepath](https://res.cloudinary.com/dgu9rv3om/image/upload/v1685827597/demo-dark_t2rsk2.png)
 
 **Tracepath** is an open-source application for performance and security monitoring. Currently, for any given web application's URL (e.g., pangea.cloud), it generates a report consisting of two parts:
