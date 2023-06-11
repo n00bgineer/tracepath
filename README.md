@@ -61,3 +61,10 @@ DATABASE_URL=postgresql://db_name:db_password@db_url:db_port
 ```
 
 That's all you need to setup the development server, but there's more, you'll also need to setup the diagonostics server. Head over to `tracepath-diagonostics` repo for more info.
+
+
+## Contributing
+
+Contributions are welcome! If you find any issues or want to add new features, please open an issue or submit a pull request to the GitHub repository.
+
+Before contributing, please read the contribution guidelines. If you have any questions or need assistance, please contact our support team at `n00bgineer@protonmail.com`.
