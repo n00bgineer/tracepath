@@ -1,6 +1,6 @@
 # Tracepath Application Client & Server
 
-**NOTE:** Pangea's API's are **not used in this repository** as this repository just contains the application client and server. **Visit the [diagonostics server](https://github.com/n00bgineer/tracepath-diagonostics) repository** to explore the usage of Pangea's APIs for development of Tracepath.
+**Note:** Pangea's APIs are **not used in this repository**, as this repository only contains the application client and server. Please visit the [diagnostics server](https://github.com/n00bgineer/tracepath-diagonostics) repository to explore the usage of Pangea's APIs for development of Tracepath.
 
 ![Tracepath](https://res.cloudinary.com/dgu9rv3om/image/upload/v1685827597/demo-dark_t2rsk2.png)
 
