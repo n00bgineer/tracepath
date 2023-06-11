@@ -11,7 +11,6 @@
 2. **Security tracerouting**, a unique feature offered by Tracepath, helps visualize the routing path of packets along with their geographic location and IP reputation score to identify malicious IP addresses through which the IP packets might be passing. It combines tracerouting, IP geolocation, and IP threat/reputation intelligence.
 
 ## Setup
----
 
 **Repos**
 
