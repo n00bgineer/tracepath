@@ -1,4 +1,4 @@
-# Tracepath
+# Tracepath Application Client & Server
 
 **NOTE:** Pangea's API's are **not used in this repository** as this repository just contains the application client and server. **Visit the [diagonostics server](https://github.com/n00bgineer/tracepath-diagonostics) repository** to explore the usage of Pangea's APIs for development of Tracepath.
 
