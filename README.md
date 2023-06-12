@@ -1,121 +1,70 @@
-# README
+# Tracepath Application Client & Server
 
-Welcome to [RedwoodJS](https://redwoodjs.com)!
+**Note:** Pangea's APIs are **not used in this repository**, as this repository only contains the application client and server. Please visit the [diagnostics server](https://github.com/n00bgineer/tracepath-diagonostics) repository to explore the usage of Pangea's APIs for development of Tracepath.
 
-> **Prerequisites**
->
-> - Redwood requires [Node.js](https://nodejs.org/en/) (>=18.x) and [Yarn](https://yarnpkg.com/) (>=1.15)
-> - Are you on Windows? For best results, follow our [Windows development setup](https://redwoodjs.com/docs/how-to/windows-development-setup) guide
+![Tracepath](https://res.cloudinary.com/dgu9rv3om/image/upload/v1685827597/demo-dark_t2rsk2.png)
+
+**Tracepath** is an open-source application for performance and security monitoring. Currently, for any given web application's URL (e.g., pangea.cloud), it generates a report consisting of two parts:
+
+1. **Performance analysis**, which contains the web application's performance report generated against one of Tracepath's diagnostic servers (refer to the `tracepath-diagnostics` repository for details). These servers run on a cloud instance deployed at a specific location (e.g., Mumbai, Stockholm). The performance analysis is conducted using Google's `lighthouse` tool running on a headless chrome browser. However, unlike a typical Lighthouse report, Tracepath presents the performance metrics in a jargon-free form that can be easily understood by non-technical stakeholders of a project.
+
+2. **Security tracerouting**, a unique feature offered by Tracepath, helps visualize the routing path of packets along with their geographic location and IP reputation score to identify malicious IP addresses through which the IP packets might be passing. It combines tracerouting, IP geolocation, and IP threat/reputation intelligence.
+
+## Setup
+
+**Repos**
+
+Tracepath consists of three parts:
+1. **Client**, which is a react client that allows users to generate and retrieve performance and security reports, authenticate users, amongst other things.
+2. **Application Server**, which is the server that handles client requests for storing and accessing data, amongst other things, including communicating with the diagonostics server and replaying the information back to client.
+3. **Diagonostics Server**, which is the server that generates performance and security reports.
+
+This repository **only contains code for the client and the application server**. To access the code for the diagonostics server, checkout the `tracepath-diagonostics` server.
+
+**Prerequisites**
+
+Tracepath's client and application server is a Redwood.js application and follows the typical Redwood structure and setup requirements:
+
+```
+Redwood requires Node.js (>=18.x) and Yarn (>=1.15)
+```
 
 Start by installing dependencies:
 
 ```
+
 yarn install
 ```
 
 Then change into that directory and start the development server:
 
 ```
-cd my-redwood-project
+git clone https://github.com/n00bgineer/tracepath.git ./tracepath-main
+cd tracepath-main
+yarn install
 yarn redwood dev
 ```
 
-Your browser should automatically open to http://localhost:8910 where you'll see the Welcome Page, which links to many great resources.
+To successfully run the development server, you'll need some additional information:
 
-> **The Redwood CLI**
->
-> Congratulations on running your first Redwood CLI command!
-> From dev to deploy, the CLI is with you the whole way.
-> And there's quite a few commands at your disposal:
-> ```
-> yarn redwood --help
-> ```
-> For all the details, see the [CLI reference](https://redwoodjs.com/docs/cli-commands).
-
-## Prisma and the database
-
-Redwood wouldn't be a full-stack framework without a database. It all starts with the schema. Open the [`schema.prisma`](api/db/schema.prisma) file in `api/db` and replace the `UserExample` model with the following `Post` model:
-
+1. You'll need an environment variable file (i.e. `.env`) with the PostgreSQL connection string which is stored in a key called `DATABASE_URL`:
 ```
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  body      String
-  createdAt DateTime @default(now())
+DATABASE_URL=postgresql://db_name:db_password@db_url:db_port
+```
+2. You'll also need keys from Firebase for authentication. Just search for the key `apiKey` and replace the following variables:
+```
+{
+  apiKey: 'AIzaSyA3aHw_Ci2dk0XvKiyEHhXe9xINzForu7g',
+  authDomain: 'tracepath-dev.firebaseapp.com',
+  projectId: 'tracepath-dev',
 }
 ```
 
-Redwood uses [Prisma](https://www.prisma.io/), a next-gen Node.js and TypeScript ORM, to talk to the database. Prisma's schema offers a declarative way of defining your app's data models. And Prisma [Migrate](https://www.prisma.io/migrate) uses that schema to make database migrations hassle-free:
+That's all you need to setup the development server, but there's more, you'll also need to setup the diagonostics server. Head over to `tracepath-diagonostics` repo for more info.
 
-```
-yarn rw prisma migrate dev
 
-# ...
+## Contributing
 
-? Enter a name for the new migration: › create posts
-```
+Contributions are welcome! If you find any issues or want to add new features, please open an issue or submit a pull request to the GitHub repository.
 
-> `rw` is short for `redwood`
-
-You'll be prompted for the name of your migration. `create posts` will do.
-
-Now let's generate everything we need to perform all the CRUD (Create, Retrieve, Update, Delete) actions on our `Post` model:
-
-```
-yarn redwood g scaffold post
-```
-
-Navigate to http://localhost:8910/posts/new, fill in the title and body, and click "Save":
-
-Did we just create a post in the database? Yup! With `yarn rw g scaffold <model>`, Redwood created all the pages, components, and services necessary to perform all CRUD actions on our posts table.
-
-## Frontend first with Storybook
-
-Don't know what your data models look like?
-That's more than ok—Redwood integrates Storybook so that you can work on design without worrying about data.
-Mockup, build, and verify your React components, even in complete isolation from the backend:
-
-```
-yarn rw storybook
-```
-
-Before you start, see if the CLI's `setup ui` command has your favorite styling library:
-
-```
-yarn rw setup ui --help
-```
-
-## Testing with Jest
-
-It'd be hard to scale from side project to startup without a few tests.
-Redwood fully integrates Jest with the front and the backends and makes it easy to keep your whole app covered by generating test files with all your components and services:
-
-```
-yarn rw test
-```
-
-To make the integration even more seamless, Redwood augments Jest with database [scenarios](https://redwoodjs.com/docs/testing.md#scenarios)  and [GraphQL mocking](https://redwoodjs.com/docs/testing.md#mocking-graphql-calls).
-
-## Ship it
-
-Redwood is designed for both serverless deploy targets like Netlify and Vercel and serverful deploy targets like Render and AWS:
-
-```
-yarn rw setup deploy --help
-```
-
-Don't go live without auth!
-Lock down your front and backends with Redwood's built-in, database-backed authentication system ([dbAuth](https://redwoodjs.com/docs/authentication#self-hosted-auth-installation-and-setup)), or integrate with nearly a dozen third party auth providers:
-
-```
-yarn rw setup auth --help
-```
-
-## Next Steps
-
-The best way to learn Redwood is by going through the comprehensive [tutorial](https://redwoodjs.com/docs/tutorial/foreword) and joining the community (via the [Discourse forum](https://community.redwoodjs.com) or the [Discord server](https://discord.gg/redwoodjs)).
-
-## Quick Links
-
-- Stay updated: read [Forum announcements](https://community.redwoodjs.com/c/announcements/5), follow us on [Twitter](https://twitter.com/redwoodjs), and subscribe to the [newsletter](https://redwoodjs.com/newsletter)
-- [Learn how to contribute](https://redwoodjs.com/docs/contributing)
+Before contributing, please read the contribution guidelines. If you have any questions or need assistance, please contact our support team at `n00bgineer@protonmail.com`.

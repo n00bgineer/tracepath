@@ -19835,6 +19835,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mixpanel-browser@npm:^2.47.0":
+  version: 2.47.0
+  resolution: "mixpanel-browser@npm:2.47.0"
+  checksum: 6b481c8bb6c19d8075f460b7e3e15a94f0c0f17e27c63b61604f56c02112abb9a7e31ea10110a5a2bc1884c618b1239f7d057cf770afbfe19b619d5b20e5ca56
+  languageName: node
+  linkType: hard
+
 "mkdirp@npm:^0.5.1, mkdirp@npm:^0.5.3, mkdirp@npm:^0.5.6":
   version: 0.5.6
   resolution: "mkdirp@npm:0.5.6"
@@ -22512,6 +22519,13 @@ __metadata:
   version: 3.2.1
   resolution: "react-fast-compare@npm:3.2.1"
   checksum: 81e805b9cde58a49e37ecb7361a4c97a24e869182761ceda9428c9f4de4b26e461a33c155bfe8fad67c8ae26c6355750671ff6335df80c5d3fe9c537ff2d6ffb
+  languageName: node
+  linkType: hard
+
+"react-ga4@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "react-ga4@npm:2.1.0"
+  checksum: 314aa86dd7cb868535f26bfb8b537d3b3c20649c66b2b942fba72e081295441446932a4ae96499231c8a4836ab0a222a97b1bd03633b8cc1477991efe93444cd
   languageName: node
   linkType: hard
 
@@ -26766,9 +26780,11 @@ __metadata:
     firebase: ^9
     humanize-string: 2.1.0
     javascript-time-ago: ^2.5.9
+    mixpanel-browser: ^2.47.0
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
+    react-ga4: ^2.1.0
     react-globe.gl: ^2.24.1
     react-markdown: ^8.0.7
     recoil: ^0.7.7
