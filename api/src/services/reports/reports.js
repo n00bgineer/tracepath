@@ -53,7 +53,7 @@ export const createReport = async ({ input }) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      url: input.url,
+      url: input.url.toLowerCase(),
     }),
   }
 
