@@ -2,6 +2,8 @@
 import { Box, Drawer as MuiDrawer, styled } from '@mui/material'
 
 import './sideNavigation.css'
+import { useAuth } from 'src/auth'
+
 import SideNavigationElement from '../SideNavigationElement/SideNavigationElement'
 
 // CUSTOM COMPONENTS
@@ -23,6 +25,9 @@ const SideNavigation = ({
   let logoSizeClass = 'side-navigation-logo-medium'
   if (size === 'small') logoSizeClass = 'side-navigation-logo-small'
   else if (size === 'large') logoSizeClass = 'side-navigation-logo-large'
+
+  // GETTING AUTH CONTEXT
+  const { isAuthenticated } = useAuth()
 
   return (
     <SideNavigationDrawer
@@ -55,7 +60,7 @@ const SideNavigation = ({
           })}
         </Box>
       )}
-      {bottomActions && (
+      {bottomActions && isAuthenticated && (
         <Box className="side-navigation-bottom-actions">
           {bottomActions.map((bottomActionItem) => {
             return (
