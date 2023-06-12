@@ -334,7 +334,7 @@ const ReportForm = ({ loading, onSave }) => {
     else {
       // STORING FORM DATA
       const data = {
-        url: url,
+        url: url.toLowerCase(),
         regionName: selectedRegion,
         userId: account.id,
       }

@@ -5,6 +5,7 @@ import { useRecoilState } from 'recoil'
 
 import { useMutation } from '@redwoodjs/web'
 
+import Events from 'src/analytics/analytics'
 import { UPDATE_USER_MUTATION } from 'src/components/User/EditUserCell'
 import { CREATE_USER_MUTATION } from 'src/components/User/NewUser'
 import { CREATE_GOOGLE_USER_MUTATION } from 'src/components/User/NewUser'
@@ -39,7 +40,14 @@ const Context = ({ children }) => {
   // MUTATION FOR CREATING NEW USER
   const [createUser] = useMutation(CREATE_USER_MUTATION, {
     // ON SUCCESSFUL EXECUTION OF MUTATION
-    onCompleted: (res) => setAccount(res.createUser),
+    onCompleted: (res) => {
+      setAccount(res.createUser)
+      Events.auth.identify(res.createUser.id)
+      Events.auth.set({
+        $name: res.createUser.username,
+        $email: res.createUser.email,
+      })
+    },
     // WHEN AN ERROR HAS OCCURED WHILE EXECUTION OF MUTATION
     onError: (error) => {
       console.error('ERROR OCCURED WHILE SIGNING UP')
@@ -60,7 +68,7 @@ const Context = ({ children }) => {
 
   // MUTATION FOR UPDATING NEW USER
   const [updateUser] = useMutation(UPDATE_USER_MUTATION, {
-    onCompleted: (res) => setAccount(res.createUser),
+    onCompleted: (res) => setAccount(res.updateUser),
     onError: (error) => {
       console.error('ERROR OCCURED WHILE SIGNING IN')
       console.error(error)
