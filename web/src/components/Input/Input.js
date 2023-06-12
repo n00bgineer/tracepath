@@ -15,7 +15,7 @@ const CustomInput = styled(MuiInput)(({ theme }) => ({
     borderRadius: '9999px',
   },
   '&.MuiOutlinedInput-root:hover': {
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+    boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
   },
 
   // SIZE STYLES
@@ -53,22 +53,22 @@ const CustomInput = styled(MuiInput)(({ theme }) => ({
 
   // FOCUSED STYLES
   '&.MuiInputBase-colorPrimary.Mui-focused': {
-    boxShadow: `0 0 10px ${theme.palette.primary.main}`,
+    boxShadow: `0 0 5px ${theme.palette.primary.main}`,
   },
   '&.MuiInputBase-colorSecondary.Mui-focused': {
-    boxShadow: `0 0 10px ${theme.palette.secondary.main}`,
+    boxShadow: `0 0 5px ${theme.palette.secondary.main}`,
   },
   '&.MuiInputBase-colorInfo.Mui-focused': {
-    boxShadow: `0 0 10px ${theme.palette.info.main}`,
+    boxShadow: `0 0 5px ${theme.palette.info.main}`,
   },
   '&.MuiInputBase-colorError.Mui-focused': {
-    boxShadow: `0 0 10px ${theme.palette.error.main}`,
+    boxShadow: `0 0 5px ${theme.palette.error.main}`,
   },
   '&.MuiInputBase-colorSuccess.Mui-focused': {
-    boxShadow: `0 0 10px ${theme.palette.success.main}`,
+    boxShadow: `0 0 5px ${theme.palette.success.main}`,
   },
   '&.MuiError.Mui-focused': {
-    boxShadow: `0 0 10px ${theme.palette.error.main}`,
+    boxShadow: `0 0 5px ${theme.palette.error.main}`,
   },
 }))
 const CustomFormHelperText = styled(MuiFormHelperText)(() => ({

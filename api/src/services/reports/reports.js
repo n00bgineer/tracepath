@@ -49,16 +49,31 @@ export const createReport = async ({ input }) => {
   const today = new Date()
   const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1)
   const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0)
-  const reports = await db.report.findMany({
+  const user = await db.user.findUnique({
     where: {
-      userId: input.userId,
-      createdAt: {
-        gte: firstDayOfMonth,
-        lte: lastDayOfMonth,
+      id: input.userId,
+    },
+    select: {
+      subscriptionType: true,
+      roleType: true,
+      Reports: {
+        select: {
+          id: true,
+        },
+        where: {
+          createdAt: {
+            gte: firstDayOfMonth,
+            lte: lastDayOfMonth,
+          },
+        },
       },
     },
   })
-  if (reports.length >= 5)
+  if (
+    user.roleType !== 'ADMIN' &&
+    user.subscriptionType === 'FREE' &&
+    user.Reports.length >= 5
+  )
     throw new RedwoodGraphQLError("You've crossed your free monthly limit")
 
   // RECONSTRUCTING SERVER URL & SETTING REQUEST OPTION
