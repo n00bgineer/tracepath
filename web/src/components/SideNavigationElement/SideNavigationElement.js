@@ -50,7 +50,7 @@ const CustomListItemButton = styled(MuiListItemButton)(({ theme }) => ({
     background: `linear-gradient(to top, ${theme.palette.primary.dark}, ${theme.palette.primary.main}, ${theme.palette.primary.main})`,
   },
   '&.Mui-selected:hover': {
-    boxShadow: `0 0 10px ${theme.palette.primary.main}`,
+    boxShadow: `0 0 5px ${theme.palette.primary.main}`,
     filter: 'brightness(120%)',
   },
 }))

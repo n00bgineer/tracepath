@@ -120,7 +120,7 @@ const LandingPage = () => {
             sx={(theme) => {
               return {
                 border: `1px solid ${theme.palette.divider}`,
-                boxShadow: `0 0 10px ${theme.palette.divider}`,
+                boxShadow: `0 0 5px ${theme.palette.divider}`,
                 bgcolor:
                   theme.palette.mode === 'light'
                     ? 'grey.100'
