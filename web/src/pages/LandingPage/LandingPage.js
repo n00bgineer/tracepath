@@ -233,7 +233,7 @@ const LandingPage = () => {
               features={[
                 // '- Deep dives for all metrics',
                 '- Security tracerouting for reports',
-                '- Only 3 reports/mo',
+                '- Only 5 reports/mo',
                 '- Manual execution',
                 '- Access to all the servers',
                 <Typography component="div" key="TraceScore" variant="body1">
