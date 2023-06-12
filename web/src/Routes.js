@@ -100,9 +100,9 @@ const Routes = () => {
           <Private unauthenticated="landing">
             <Route path="/generate" page={ReportNewReportPage} name="generate" />
             <Route path="/account" page={UserUserPage} name="account" />
+            <Route path="/explore" page={ReportReportsPage} name="explore" />
+            <Route path="/report/{id}" page={ReportReportPage} name="report" />
           </Private>
-          <Route path="/explore" page={ReportReportsPage} name="explore" />
-          <Route path="/report/{id}" page={ReportReportPage} name="report" />
         </Set>
         <Route path="/" page={LandingPage} name="landing" />
         <Route path="/tos" page={ToSPage} name="tos" />
