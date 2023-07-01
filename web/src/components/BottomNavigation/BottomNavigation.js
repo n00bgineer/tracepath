@@ -1,31 +1,41 @@
 // IMPORTING PACKAGES/MODULES
-
 import { useEffect, useState } from 'react'
 
 import {
   Divider,
+  Paper as MuiPaper,
   BottomNavigation as MuiBottomNavigation,
   BottomNavigationAction as MuiBottomNavigationAction,
-  Paper,
   styled,
 } from '@mui/material'
 
-import './bottomNavigation.css'
 import { Link as RedwoodLink } from '@redwoodjs/router'
 
 // CUSTOM COMPONENTS
+// CUSTOM PAPER COMPONENT ENCAPSULATING BOTTOM NAVIGATION & BOTTOM NAVIGATION ACTION COMPONENTS
+const CustomPaper = styled(MuiPaper)(() => ({
+  '&.MuiPaper-root': {
+    bottom: '0',
+    left: '0',
+    position: 'fixed',
+    right: '0',
+    zIndex: '1200',
+  },
+}))
+// CUSTOM BOTTOM NAVIGATION COMPONENT
 const CustomBottomNavigation = styled(MuiBottomNavigation)(() => ({
   '&.MuiBottomNavigation-root': {
     height: '66px',
   },
 }))
-const BottomNavigationAction = styled(MuiBottomNavigationAction)(
+// CUSTOM BOTTOM NAVIGATION ELEMENT COMPONENT
+const CustomBottomNavigationAction = styled(MuiBottomNavigationAction)(
   ({ theme }) => ({
     '&.MuiBottomNavigationAction-root': {
       padding: '10px',
     },
     '&.MuiBottomNavigationAction-root.Mui-selected > .MuiSvgIcon-root': {
-      background: `linear-gradient(to top, ${theme.palette.primary.dark}, ${theme.palette.primary.main}, ${theme.palette.primary.main})`,
+      background: `${theme.palette.primary.light}`,
       backgroundClip: 'text',
       textFillColor: 'transparent',
     },
@@ -53,11 +63,12 @@ const BottomNavigation = ({ topActions, ...props }) => {
   /**
    * @name setDefaultNavigation
    * @description SETTING VALUE FOR BOTTOM NAVIGATION
-   * @returns {INDEX}
+   * @returns {Integer} -1 WHEN THE PATH DOES NOT MATCHES THE REQUIRED PATHS OR 0 - topActions.length-1
    */
   function setDefaultNavigation() {
     try {
       topActions.forEach((topActionItem, index) => {
+        // IF THE CURRENT PATHNAME IS NOT IN THE TOP ACTIONS ARRAY, THEN RETURN -1
         if (topActionItem.link === pathname) throw index
       })
     } catch (err) {
@@ -74,19 +85,17 @@ const BottomNavigation = ({ topActions, ...props }) => {
 
   return (
     <>
-      <Paper elevation={3} className="bottom-navigation-paper">
+      <CustomPaper elevation={3}>
         <Divider />
         <CustomBottomNavigation
           {...props}
           showLabels
           value={bottomNavigationValue}
-          onChange={(event, newValue) => {
-            setBottomNavigationValue(newValue)
-          }}
+          onChange={(event, newValue) => setBottomNavigationValue(newValue)}
         >
           {topActions.map((topActionItem) => {
             return (
-              <BottomNavigationAction
+              <CustomBottomNavigationAction
                 component={RedwoodLink}
                 to={topActionItem.link}
                 key={topActionItem.label}
@@ -96,7 +105,7 @@ const BottomNavigation = ({ topActions, ...props }) => {
             )
           })}
         </CustomBottomNavigation>
-      </Paper>
+      </CustomPaper>
     </>
   )
 }
