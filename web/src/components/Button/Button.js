@@ -3,6 +3,7 @@ import { Button as MuiButton } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 // CUSTOM COMPONENTS
+// CUSTOM BUTTON COMPONENT
 const CustomButton = styled(MuiButton)(({ theme }) => ({
   borderRadius: '9999px',
   textTransform: 'none',
@@ -113,7 +114,7 @@ const Button = ({ ...props }) => {
   return (
     <CustomButton
       {...props}
-      className={(props.className ? props.className : '') + ' ' + marginClass}
+      className={`${props.className ? props.className : ''} ${marginClass}`}
     />
   )
 }
