@@ -1,8 +1,8 @@
 // IMPORTING PACKAGES/MODULES
-import { Alert as MuiAlert } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Alert as MuiAlert, styled } from '@mui/material'
 
 // CUSTOM COMPONENTS
+// CUSTOM ALERT COMPONENT
 const CustomAlert = styled(MuiAlert)(({ theme }) => ({
   // DEFAULT STYLES
   '&.MuiAlert-root': {
@@ -70,15 +70,9 @@ const Alert = ({ margin, fullWidth, size, ...props }) => {
     <CustomAlert
       variant="filled"
       {...props}
-      className={
-        (props.className ? props.className : '') +
-        ' ' +
-        marginClass +
-        ' ' +
-        fullWidthClass +
-        ' ' +
-        sizeClass
-      }
+      className={`${
+        props.className ? props.className : ''
+      } ${marginClass} ${fullWidthClass} ${sizeClass}`}
     />
   )
 }
