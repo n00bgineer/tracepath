@@ -255,7 +255,6 @@ const User = ({ user }) => {
             <DataLoading
               title="Reports Error"
               subtitle="An error occured while loading your report"
-              gray={true}
               imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685743033/emptyPerformance_rbqkus.png"
             />
           )}
@@ -263,7 +262,6 @@ const User = ({ user }) => {
             <DataLoading
               title="No Reports"
               subtitle="Couldn't find any reports for your account"
-              gray={true}
               imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1686058485/empty-user-reports_xbcf3b.png"
             />
           )}

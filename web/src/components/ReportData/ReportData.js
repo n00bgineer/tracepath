@@ -137,7 +137,6 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
             <DataLoading
               title="Performance Analysis Error!"
               subtitle="Performance analysis data is empty"
-              gray={true}
               imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685743033/emptyPerformance_rbqkus.png"
             />
           ) : (
@@ -151,7 +150,6 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
             <DataLoading
               title="Tracerouting Error!"
               subtitle="Security tracerouting data is empty"
-              gray={true}
               imgUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685742401/emptyTracepath_fvhoxr.png"
             />
           )}

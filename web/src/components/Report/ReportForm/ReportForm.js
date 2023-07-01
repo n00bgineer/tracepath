@@ -467,7 +467,6 @@ const ReportForm = ({ loading, onSave, regions }) => {
           <DataLoading
             title="Generating report"
             subtitle={randomLoadingContainerItem.label}
-            gray={true}
             imgUrl={randomLoadingContainerItem.imgUrl}
           />
         )}
