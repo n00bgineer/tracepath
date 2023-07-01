@@ -1,7 +1,6 @@
 // IMPORTING PACKAGES/MODULES
 import { useEffect, useRef, useState } from 'react'
 
-import { useApolloClient } from '@apollo/client'
 import { Assessment, Link, Refresh, Storage } from '@mui/icons-material'
 import { Box, Skeleton, Typography } from '@mui/material'
 import { getAuth, sendEmailVerification } from 'firebase/auth'
@@ -15,10 +14,9 @@ import DataLoading from 'src/components/DataLoading/DataLoading'
 import { capitalise } from 'src/components/HopTimeline/HopTimeline'
 import IconButton from 'src/components/IconButton/IconButton'
 import Input from 'src/components/Input/Input'
-import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/RegionsCell'
 import ReportData from 'src/components/ReportData/ReportData'
 import Select from 'src/components/Select/Select'
-import { reportAtom, regionsAtom, accountAtom } from 'src/contexts/atoms'
+import { reportAtom, accountAtom } from 'src/contexts/atoms'
 /**
  * @name validateUrl
  * @description METHOD TO VALIDATE URL
@@ -30,7 +28,7 @@ const validateUrl = (url) => {
   return urlPattern.test(url)
 }
 
-const ReportForm = ({ loading, onSave }) => {
+const ReportForm = ({ loading, onSave, regions }) => {
   // SETTING LOCAL VARIABLES
   // STORING HTML
   const markerSvg = `<div class="blinking-dot">
@@ -88,7 +86,6 @@ const ReportForm = ({ loading, onSave }) => {
   // GETTING ATOMIC STATES
   const [account] = useRecoilState(accountAtom)
   const [report] = useRecoilState(reportAtom)
-  const [regions, setRegions] = useRecoilState(regionsAtom)
 
   // SETTING LOCAL STATE
   const [url, setUrl] = useState('') // SETTING URL
@@ -105,9 +102,6 @@ const ReportForm = ({ loading, onSave }) => {
   // GETTING AUTH CONTEXT
   const auth = getAuth()
   const currentUser = auth.currentUser
-
-  // INITIALISING APOLLO CLIENT
-  const client = useApolloClient()
 
   // SETTING REFERENCES
   const globeContainerRef = useRef(null)
@@ -346,43 +340,12 @@ const ReportForm = ({ loading, onSave }) => {
     }
   }
 
-  /**
-   * @name setRegionsLoad
-   * @description METHOD TO LOAD REGIONS DATA
-   * @returns {undefined} undefined
-   */
-  const setRegionsLoad = async () => {
-    await client
-      .query({
-        query: REGIONS_QUERY,
-      })
-      .then((res) => {
-        setRegions(
-          res.data.regions.map((region) => {
-            return {
-              label: region.name,
-              value: region.regionName,
-              disabled: region.status === 'OK' ? false : true,
-              chipLabel: region.status === 'OK' ? '🟢 ONLINE' : '🔴 OFFLINE',
-              chipColor: region.status === 'OK' ? 'primary' : 'error',
-            }
-          })
-        )
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  }
-
   // SETTING SIDE EFFECTS
-  // ON-LOAD SIDE EFFECT
   useEffect(() => {
     // SETTING GLOBE CONTAINER REFERENCE
     globeContainerRef.current = document.getElementsByClassName(
       'report-globe-container'
     )
-    // LOADING REGIONS DATA
-    if (regions === null) setRegionsLoad()
   }, [])
 
   // REPORT LOAD SIDE EFFECT
