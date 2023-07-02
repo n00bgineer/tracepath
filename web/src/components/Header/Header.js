@@ -12,6 +12,7 @@ const Header = () => {
 
   return (
     <Box component="header">
+      {/* SECONDARY LINKS CONTAINER */}
       <Box
         component="nav"
         className="secondary-links"
@@ -34,6 +35,8 @@ const Header = () => {
           Updates
         </Link>
       </Box>
+
+      {/* BRAND INFO CONTAINER */}
       <Box className="brand-info-container">
         <img
           src="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
@@ -45,6 +48,8 @@ const Header = () => {
           Tracepath
         </Typography>
       </Box>
+
+      {/* PRIMARY LINKS CONTAINER */}
       <Box
         component="nav"
         className="primary-links"

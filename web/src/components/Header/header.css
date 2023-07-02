@@ -4,7 +4,7 @@ header{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0px auto;
+  margin: 15px auto 0px;
   padding: 10px 20px;
   width: 95%;
 }
@@ -33,7 +33,6 @@ header .primary-links > a:hover, .secondary-links > a:hover{
 
 @media screen and (max-width: 900px) {
   header{
-    margin-top: 15px;
     padding: 5px;
     width: 100%;
   }
