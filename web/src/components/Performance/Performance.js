@@ -1,11 +1,23 @@
 // IMPORTING PACKAGES/MODULES
-import { Box, Card as MuiCard, Typography, styled } from '@mui/material'
+import {
+  Box as MuiBox,
+  Card as MuiCard,
+  Typography,
+  styled,
+} from '@mui/material'
 
-import './performance.css'
 import { Tooltip } from '../SiteMetaCard/SiteMetaCard'
 
 // CUSTOM COMPONENTS
-const Card = styled(MuiCard)(({ theme }) => ({
+// CUSTOM BOX COMPONENT
+const CustomBox = styled(MuiBox)(() => ({
+  '&.MuiBox-root': {
+    padding: '0px',
+    margin: '10px 0px',
+  },
+}))
+// CUSTOM CARD COMPONENT
+const CustomCard = styled(MuiCard)(({ theme }) => ({
   '&.MuiCard-root': {
     borderRadius: '25px',
     border: `1px solid ${theme.palette.divider}`,
@@ -48,7 +60,8 @@ const Card = styled(MuiCard)(({ theme }) => ({
   },
 }))
 
-const SpeedCard = ({
+// CUSTOM CARD COMPONENT FOR SHOWING PERF METRIC INFO
+const MetricCard = ({
   metricType,
   metricValue,
   metricScore,
@@ -110,9 +123,9 @@ const SpeedCard = ({
   }
 
   return (
-    <Card elevation={0}>
+    <CustomCard elevation={0}>
       <Tooltip title={tooltipText}>
-        <Box
+        <MuiBox
           className="performance-score-container"
           sx={(theme) => {
             return {
@@ -138,9 +151,9 @@ const SpeedCard = ({
           <Typography variant="h4" className="performance-score-text">
             {metricScore === 0 ? 0 : parseInt(metricScore.toFixed(2) * 100)}
           </Typography>
-        </Box>
+        </MuiBox>
       </Tooltip>
-      <Box className="performance-details-container">
+      <MuiBox className="performance-details-container">
         <Typography variant="h6" className="metric-question">
           {metricQuestion}
         </Typography>
@@ -160,21 +173,16 @@ const SpeedCard = ({
           )}{' '}
           {metricDesc2}
         </Typography>
-      </Box>
-    </Card>
+      </MuiBox>
+    </CustomCard>
   )
 }
 
 const Performance = ({ data, ...props }) => {
   return (
-    <Box
-      {...props}
-      className={
-        (props.className ? props.className : '') + ' performance-container'
-      }
-    >
+    <CustomBox {...props}>
       {/* SI CARD */}
-      <SpeedCard
+      <MetricCard
         metricType="speedIndex"
         metricScore={data.speedIndexScore}
         metricValue={data.speedIndexValue}
@@ -185,7 +193,7 @@ const Performance = ({ data, ...props }) => {
       />
 
       {/* FCP CARD */}
-      <SpeedCard
+      <MetricCard
         metricType="fcp"
         metricScore={data.fcpScore}
         metricValue={data.fcpValue}
@@ -196,7 +204,7 @@ const Performance = ({ data, ...props }) => {
       />
 
       {/* LCP CARD */}
-      <SpeedCard
+      <MetricCard
         metricType="lcp"
         metricScore={data.lcpScore}
         metricValue={data.lcpValue}
@@ -207,7 +215,7 @@ const Performance = ({ data, ...props }) => {
       />
 
       {/* TBT CARD */}
-      <SpeedCard
+      <MetricCard
         metricType="tbt"
         metricScore={data.tbtScore}
         metricValue={data.tbtValue}
@@ -218,7 +226,7 @@ const Performance = ({ data, ...props }) => {
       />
 
       {/* TTI CARD */}
-      <SpeedCard
+      <MetricCard
         metricType="tti"
         metricScore={data.ttiScore}
         metricValue={data.ttiValue}
@@ -229,14 +237,14 @@ const Performance = ({ data, ...props }) => {
       />
 
       {/* CLS CARD */}
-      <SpeedCard
+      <MetricCard
         metricType="cls"
         metricScore={data.clsScore}
         metricQuestion="How often do users experience unexpected layout shifts on the app?"
         metricDesc1="A layout shift occurs when a visible element on a web page changes it's position from one rendered frame to another. Cumulative Layout Shift (CLS) in a unitless metrics which measures layout shifts. Lower the value, better will be the user experience"
         tooltipText="Value close to zero is better"
       />
-    </Box>
+    </CustomBox>
   )
 }
 
