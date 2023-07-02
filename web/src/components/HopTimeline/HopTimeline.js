@@ -1,6 +1,4 @@
 // IMPORTING PACKAGES/MODULES
-
-import styled from '@emotion/styled'
 import { Lock, LockOpen } from '@mui/icons-material'
 import {
   Timeline as MuiTimeline,
@@ -10,7 +8,7 @@ import {
   TimelineItem as MuiTimelineItem,
   TimelineSeparator,
 } from '@mui/lab'
-import { Box, Card, Chip, Typography } from '@mui/material'
+import { Box, Card, Chip, Typography, styled } from '@mui/material'
 
 import Alert from '../Alert/Alert'
 
@@ -26,6 +24,7 @@ export const capitalise = (text) => {
 }
 
 // CUSTOM COMPONENTS
+// TIMELINE CARD COMPONENT
 const TimelineCard = styled(Card)(({ theme }) => ({
   '&.MuiCard-root': {
     borderRadius: '25px',
@@ -67,12 +66,16 @@ const TimelineCard = styled(Card)(({ theme }) => ({
     marginRight: '5px',
   },
 }))
+
+// TIMELINE COMPONENT
 const Timeline = styled(MuiTimeline)(() => ({
   '&.MuiTimeline-root': {
     padding: '0px',
     margin: '10px 0px',
   },
 }))
+
+// TIMELINE ITEM COMPONENT
 const TimelineItem = styled(MuiTimelineItem)(() => ({
   '&.MuiTimelineItem-root': {
     marginBottom: '20px',
@@ -82,6 +85,8 @@ const TimelineItem = styled(MuiTimelineItem)(() => ({
     padding: '0px',
   },
 }))
+
+// TIMELINE CONTENT COMPONENT
 const TimelineContent = styled(MuiTimelineContent)(() => ({
   '&.MuiTimelineContent-root': {
     padding: '0px',
@@ -138,16 +143,20 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
 
   return (
     <>
+      {/* SHOWING AN ALERT, IF <=1 LOCATION ITEMS WERE FOUND */}
       {pointData.length < 2 && (
         <Alert fullWidth={true} margin="medium" size="small" severity="warning">
           No more than one location found
         </Alert>
       )}
+
+      {/* SHOWING AN ALERT, IF A MALICIOUS IP ADDRESS WAS FOUND */}
       {maliciousReputationScore > 0 && (
         <Alert fullWidth={true} margin="medium" size="small" severity="info">
           {maliciousReputationScore} malicious IP addresses found
         </Alert>
       )}
+
       <Timeline {...props}>
         {hops &&
           hops.map((hop, index, hops) => {
@@ -164,6 +173,7 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
                         <Typography variant="h5" className="hop-ip">
                           {hop.ip === '*' ? 'xxx.xxx.xxx.xxx' : hop.ip}
                         </Typography>
+
                         {hop.type === 'GEOLOCATED' && (
                           <>
                             {hop.data.country && (
@@ -178,6 +188,7 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
                             </Typography>
                           </>
                         )}
+
                         {hop.type === 'UNGEOLOCATED' && (
                           <>
                             <Typography variant="body2" color="grey">
@@ -185,6 +196,7 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
                             </Typography>
                           </>
                         )}
+
                         {hop.type === 'PRIVATE' && (
                           <>
                             <Typography variant="body2" color="grey">
@@ -193,6 +205,7 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
                             </Typography>
                           </>
                         )}
+
                         {hop.type === 'UNTRACEROUTABLE' && (
                           <>
                             <Typography variant="body2" color="grey">
@@ -227,6 +240,8 @@ const HopTimeline = ({ hops, pointData, ...props }) => {
                         />
                       </Box>
                     </Box>
+
+                    {/* SHOWING IP REPUTATION INFO */}
                     {hop.reputation && hop.score != -1 && (
                       <Box
                         className="hop-reputation-container"
