@@ -1,14 +1,27 @@
 // IMPORTING PACKAGES/MODULES
 import {
-  Box,
+  Box as MuiBox,
   FormHelperText as MuiFormHelperText,
   OutlinedInput as MuiInput,
   Typography,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import './input.css'
 
 // CUSTOM COMPONENTS
+// CUSTOM BOX COMPONENT
+const CustomBox = styled(MuiBox)(() => ({
+  '&.MuiOutlinedInput-margin-small': {
+    marginBottom: '5px',
+  },
+  '&.MuiOutlinedInput-margin-medium': {
+    marginBottom: '12.5px',
+  },
+  '&.MuiOutlinedInput-margin-large': {
+    marginBottom: '20px',
+  },
+}))
+
+// CUSTOM INPUT COMPONENT
 const CustomInput = styled(MuiInput)(({ theme }) => ({
   // ROOT STYLES
   '&.MuiOutlinedInput-root': {
@@ -71,6 +84,8 @@ const CustomInput = styled(MuiInput)(({ theme }) => ({
     boxShadow: `0 0 5px ${theme.palette.error.main}`,
   },
 }))
+
+// CUSTOM FORM HELPER TEXT COMPONENT
 const CustomFormHelperText = styled(MuiFormHelperText)(() => ({
   '&.MuiFormHelperText-root': {
     margin: '10px 0px',
@@ -87,7 +102,7 @@ const Input = ({ margin, errorText, formHelperText, ...props }) => {
   else if (margin === 'large') marginClass = 'MuiOutlinedInput-margin-large'
 
   return (
-    <Box className={marginClass}>
+    <CustomBox className={marginClass}>
       <CustomInput {...props} notched={false} />
       {formHelperText && !errorText && (
         <CustomFormHelperText>
@@ -101,7 +116,7 @@ const Input = ({ margin, errorText, formHelperText, ...props }) => {
           </Typography>
         </CustomFormHelperText>
       )}
-    </Box>
+    </CustomBox>
   )
 }
 export default Input
