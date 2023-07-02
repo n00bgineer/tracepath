@@ -1,14 +1,15 @@
+// IMPORTING PACKAGES/MODULES
 import {
   styled,
   Menu as MuiMenu,
-  Paper as MuiPaper,
+  Paper,
   MenuItem as MuiMenuItem,
   ListItemIcon as MuiListItemIcon,
   ListItemText as MuiListItemText,
 } from '@mui/material'
 
-// CUSTOM MENU
-const CustomPaper = styled(MuiPaper)(() => ({}))
+// CUSTOM COMPONENTS
+// CUSTOM MENU COMPONENT
 const CustomMenu = styled(MuiMenu)(() => ({
   '& .MuiList-root': {
     padding: '5px',
@@ -17,17 +18,32 @@ const CustomMenu = styled(MuiMenu)(() => ({
     borderRadius: '25px',
   },
 }))
+// CUSTOM MENU ITEM COMPONENT
 const CustomMenuItem = styled(MuiMenuItem)(() => ({
   '&.MuiMenuItem-root': {
-    borderRadius: '999px',
+    borderRadius: '20px',
+    padding: '5px 10px',
+    display: 'flex',
   },
 }))
-const CustomListItemIcon = styled(MuiListItemIcon)(() => ({}))
-const CustomListItemText = styled(MuiListItemText)(() => ({}))
+// CUSTOM LIST ITEM COMPONENT
+const CustomListItemIcon = styled(MuiListItemIcon)(() => ({
+  '& .MuiSvgIcon-root': {
+    height: '20px',
+    width: '20px',
+  },
+}))
+// CUSTOM LIST ITEM TEXT COMPONENT
+const CustomListItemText = styled(MuiListItemText)(() => ({
+  '&.MuiListItemText-root': {
+    flexGrow: 1,
+    textAlign: 'left',
+  },
+}))
 
 const Menu = ({ anchorEl, open, onClose, menuItems, ...props }) => {
   return (
-    <CustomPaper>
+    <Paper>
       <CustomMenu
         anchorEl={anchorEl}
         open={open}
@@ -49,7 +65,7 @@ const Menu = ({ anchorEl, open, onClose, menuItems, ...props }) => {
             )
           })}
       </CustomMenu>
-    </CustomPaper>
+    </Paper>
   )
 }
 
