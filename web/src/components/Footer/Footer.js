@@ -1,8 +1,30 @@
 // IMPORTING PACKAGES/MODULES
-import { Box, Divider, Link, Typography } from '@mui/material'
+import {
+  Box,
+  Divider,
+  Link as MuiLink,
+  Typography,
+  styled,
+} from '@mui/material'
 
 import { routes } from '@redwoodjs/router'
 import './footer.css'
+
+// CUSTOM COMPONENTS
+// CUSTOM LINK COMPONENT
+const CustomLink = styled(MuiLink)(({ theme }) => ({
+  '&.footer-link': {
+    display: 'block',
+    textDecoration: 'none',
+    color:
+      theme.palette.mode === 'light'
+        ? theme.palette.common.black
+        : theme.palette.common.white,
+  },
+  '&.footer-link:hover': {
+    textDecoration: 'underline',
+  },
+}))
 
 const Footer = () => {
   return (
@@ -46,86 +68,46 @@ const Footer = () => {
             <Typography variant="body1" className="footer-links-header">
               About
             </Typography>
-            <Link
+            <CustomLink
               component="a"
               className="footer-link"
               href={`${window.location.origin}/#features`}
-              sx={(theme) => {
-                return {
-                  color:
-                    theme.palette.mode === 'light'
-                      ? 'common.black'
-                      : 'common.white',
-                }
-              }}
             >
               Features
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               component="a"
               className="footer-link"
               href={`${window.location.origin}/#pricing`}
-              sx={(theme) => {
-                return {
-                  color:
-                    theme.palette.mode === 'light'
-                      ? 'common.black'
-                      : 'common.white',
-                }
-              }}
             >
               Pricing
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               component="a"
               className="footer-link"
               href={`${window.location.origin}/#faq`}
-              sx={(theme) => {
-                return {
-                  color:
-                    theme.palette.mode === 'light'
-                      ? 'common.black'
-                      : 'common.white',
-                }
-              }}
             >
               FAQ
-            </Link>
+            </CustomLink>
           </Box>
           <Box className="footer-links-subcontainer">
             <Typography variant="body1" className="footer-links-header">
               Policy
             </Typography>
-            <Link
+            <CustomLink
               component="a"
               className="footer-link"
               href={routes.privacy()}
-              sx={(theme) => {
-                return {
-                  color:
-                    theme.palette.mode === 'light'
-                      ? 'common.black'
-                      : 'common.white',
-                }
-              }}
             >
               Privacy
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               component="a"
               className="footer-link"
               href={routes.tos()}
-              sx={(theme) => {
-                return {
-                  color:
-                    theme.palette.mode === 'light'
-                      ? 'common.black'
-                      : 'common.white',
-                }
-              }}
             >
               Terms
-            </Link>
+            </CustomLink>
           </Box>
         </Box>
       </Box>
