@@ -1,8 +1,8 @@
 // IMPORTING PACKAGES/MODULES
 import { useState } from 'react'
 
-import { AccountBalance, Face2 } from '@mui/icons-material'
-import { Box, Tabs, Typography } from '@mui/material'
+import { AccountBalance, AssignmentInd } from '@mui/icons-material'
+import { Box, Typography } from '@mui/material'
 import { useRecoilState } from 'recoil'
 
 import { useMutation } from '@redwoodjs/web'
@@ -16,6 +16,7 @@ import './onboardingForm.css'
 
 import Tab from '../Tab/Tab'
 import TabPanel from '../TabPanel/TabPanel'
+import Tabs from '../Tabs/Tabs'
 
 // INPUT FIELD VALIDATION METHODS
 /**
@@ -188,7 +189,7 @@ const OnboardingForm = () => {
       >
         <Tab
           label="Individual"
-          icon={<Face2 fontSize="medium" />}
+          icon={<AssignmentInd fontSize="medium" />}
           iconPosition="start"
           size="large"
         />
@@ -204,11 +205,11 @@ const OnboardingForm = () => {
           <Input
             placeholder="Enter your name"
             required={true}
-            startAdornment={<Face2 />}
+            startAdornment={<AssignmentInd />}
             fullWidth={true}
             type="text"
             value={displayName}
-            margin="medium"
+            margin="large"
             color={displayNameErrorText !== '' ? 'error' : 'primary'}
             onInput={setDisplayNameField}
             errorText={displayNameErrorText}
@@ -242,7 +243,7 @@ const OnboardingForm = () => {
             fullWidth={true}
             type="text"
             value={displayName}
-            margin="medium"
+            margin="large"
             color={displayNameErrorText !== '' ? 'error' : 'primary'}
             onInput={setDisplayNameField}
             errorText={displayNameErrorText}
