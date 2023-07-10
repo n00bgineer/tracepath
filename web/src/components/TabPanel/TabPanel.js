@@ -1,22 +1,23 @@
 // IMPORTING PACKAGES/MODULES
-import { Box } from '@mui/material'
-import './tabPanel.css'
+import { Box, styled } from '@mui/material'
 
+// CUSTOM COMPONENTS
+const CustomBox = styled(Box)(() => ({
+  '&.tabpanel-container': {
+    margin: '5px 0px',
+  },
+}))
 const TabPanel = ({ children, value, index, ...props }) => {
   return (
-    <div
+    <CustomBox
       {...props}
       role="tabpanel"
       hidden={value !== index}
       id={`tabpanel-${index}`}
-      className={
-        props.className
-          ? props.className + ' tabpanel-container'
-          : 'tabpanel-container'
-      }
+      className={`${props.className ? props.className : ''} tabpanel-container`}
     >
       {value === index && <Box>{children}</Box>}
-    </div>
+    </CustomBox>
   )
 }
 export default TabPanel
