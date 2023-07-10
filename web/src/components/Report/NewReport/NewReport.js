@@ -1,5 +1,4 @@
 // IMPORTING PACKAGES/MODULES
-
 import { useEffect } from 'react'
 
 import { useApolloClient } from '@apollo/client'
@@ -11,6 +10,8 @@ import { QUERY as REGIONS_QUERY } from 'src/components/Region/RegionsCell/Region
 import ReportForm from 'src/components/Report/ReportForm'
 import { regionsAtom, reportAtom, reportLoadingAtom } from 'src/contexts/atoms'
 
+// QUERIES AND MUTATIONS
+// MUTATION TO CREATE A REPORT
 const CREATE_REPORT_MUTATION = gql`
   mutation CreateReportMutation($input: CreateReportInput!) {
     createReport(input: $input) {

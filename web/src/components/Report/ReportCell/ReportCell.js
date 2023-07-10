@@ -4,6 +4,8 @@ import { routes } from '@redwoodjs/router'
 import Report from 'src/components/Report/Report'
 import ScreenLoading from 'src/components/ScreenLoading/ScreenLoading'
 
+// QUERIES AND MUTATIONS
+// QUERY TO FETCH A REPORT BY ID
 export const QUERY = gql`
   query FindReportById($id: String!) {
     report: report(id: $id) {
