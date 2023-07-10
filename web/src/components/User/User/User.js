@@ -10,7 +10,7 @@ import {
   Logout,
   Menu as MenuIcon,
 } from '@mui/icons-material'
-import { Box, Skeleton, Tabs, Typography, useMediaQuery } from '@mui/material'
+import { Box, Skeleton, Typography, useMediaQuery } from '@mui/material'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import './user.css'
@@ -28,6 +28,7 @@ import { QUERY1 as USER_REPORTS_QUERY } from 'src/components/Report/ReportsCell'
 import SiteMetaCard from 'src/components/SiteMetaCard/SiteMetaCard'
 import Tab from 'src/components/Tab/Tab'
 import TabPanel from 'src/components/TabPanel/TabPanel'
+import Tabs from 'src/components/Tabs/Tabs'
 import {
   accountAtom,
   darkModeAtom,
@@ -173,6 +174,7 @@ const User = ({ user }) => {
       'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683880188/tracepath/assets/tracepath_logo_v1_lerhbc.png'
   }
 
+  // SETTING SIDE EFFECTS
   useEffect(() => {
     if (reports === null || reports === undefined) setUserReports()
   }, [reports])
@@ -223,27 +225,30 @@ const User = ({ user }) => {
         </Box>
       </Box>
       <Box className="user-account-body">
-        <Tabs
-          value={tabValue}
-          onChange={setTab}
-          TabIndicatorProps={{
-            sx: { display: 'none' },
-          }}
-          centered={isMobileViewport}
-          variant={isMobileViewport ? 'fullWidth' : 'standard'}
-        >
-          <Tab
-            label="Your reports"
-            icon={<Assessment fontSize="small" />}
-            iconPosition="start"
-          />
-          <Tab
-            label={'Your projects'}
-            icon={<Inventory2 fontSize="small" />}
-            iconPosition="start"
-            disabled
-          />
-        </Tabs>
+        <Box className="user-tabs-container">
+          <Tabs
+            value={tabValue}
+            onChange={setTab}
+            TabIndicatorProps={{
+              sx: { display: 'none' },
+            }}
+            centered={isMobileViewport}
+            variant={isMobileViewport ? 'fullWidth' : 'standard'}
+            className="user-tabs"
+          >
+            <Tab
+              label="Your reports"
+              icon={<Assessment fontSize="small" />}
+              iconPosition="start"
+            />
+            <Tab
+              label={'Your projects'}
+              icon={<Inventory2 fontSize="small" />}
+              iconPosition="start"
+              disabled
+            />
+          </Tabs>
+        </Box>
         <TabPanel value={0} className="user-tab" index={tabValue}>
           {/* LOADING STATE */}
           {reports === null && (

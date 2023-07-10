@@ -67,6 +67,12 @@
   margin-top: 10px!important;
   width: 100%;
 }
+.user-tabs-container{
+  margin-bottom: 10px;
+}
+.user-tabs{
+  width: fit-content;
+}
 .user-tab{
   margin-top: 10px;
 }
@@ -108,5 +114,8 @@
   .user-account-body{
     margin: 10px auto 0px;
     width: calc(100%);
+  }
+  .user-tabs{
+    width: 100%;
   }
 }

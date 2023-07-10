@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 import { OpenInNew, Shield, ShutterSpeed } from '@mui/icons-material'
-import { Box, Tabs, Typography, useMediaQuery } from '@mui/material'
+import { Box, Typography, useMediaQuery } from '@mui/material'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
@@ -14,6 +14,7 @@ import Performance from '../Performance/Performance'
 import SiteMetaCard from '../SiteMetaCard/SiteMetaCard'
 import Tab from '../Tab/Tab'
 import TabPanel from '../TabPanel/TabPanel'
+import Tabs from '../Tabs/Tabs'
 
 const ReportData = ({ data, hideLink, pointData, ...props }) => {
   // SETTING LOCAL VARIABLES
@@ -70,11 +71,9 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
   return (
     <Box
       {...props}
-      className={
-        props.className
-          ? props.className + ' report-data-container'
-          : 'report-data-container'
-      }
+      className={`${
+        props.className ? props.className : ''
+      } report-data-container`}
     >
       {!hideLink && (
         <>
@@ -104,7 +103,7 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
           </Typography>
         </>
       )}
-      <Box className="report-tabs-container">
+      <Box className="report-sitemeta-tabs-container">
         <SiteMetaCard
           url={data.url}
           finalUrl={data.finalUrl}
@@ -113,25 +112,29 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
           createdAt={data.createdAt}
           scores={scores}
         />
-        <Tabs
-          value={tabValue}
-          onChange={setTab}
-          variant="fullWidth"
-          TabIndicatorProps={{
-            sx: { display: 'none' },
-          }}
-        >
-          <Tab
-            label="Performance"
-            icon={<ShutterSpeed fontSize="small" />}
-            iconPosition="start"
-          />
-          <Tab
-            label={!isMobileViewport ? 'Tracerouting' : 'Security Tracerouting'}
-            icon={<Shield fontSize="small" />}
-            iconPosition="start"
-          />
-        </Tabs>
+        <Box className="report-tabs-container">
+          <Tabs
+            value={tabValue}
+            onChange={setTab}
+            variant="fullWidth"
+            TabIndicatorProps={{
+              sx: { display: 'none' },
+            }}
+          >
+            <Tab
+              label="Performance"
+              icon={<ShutterSpeed fontSize="small" />}
+              iconPosition="start"
+            />
+            <Tab
+              label={
+                !isMobileViewport ? 'Tracerouting' : 'Security Tracerouting'
+              }
+              icon={<Shield fontSize="small" />}
+              iconPosition="start"
+            />
+          </Tabs>
+        </Box>
         <TabPanel value={0} index={tabValue}>
           {!isValidPerformanceData(data) ? (
             <DataLoading

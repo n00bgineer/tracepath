@@ -13,6 +13,9 @@
 .report-subtitle{
   margin-bottom: 5px!important;
 }
-.report-tabs-container{
+.report-sitemeta-tabs-container{
   margin: 5px 0px;
+}
+.report-tabs-container{
+  margin-bottom: 15px;
 }
