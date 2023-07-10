@@ -1,9 +1,12 @@
+// IMPORTING PACKAGE/MODULES
 import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import RegionForm from 'src/components/Region/RegionForm'
 
+// QUERIES AND MUTATIONS
+// REGIONS FETCH QUERY
 export const QUERY = gql`
   query EditRegionById($id: String!) {
     region: region(id: $id) {
@@ -12,6 +15,8 @@ export const QUERY = gql`
     }
   }
 `
+
+// REGION UPDATE MUTATION
 const UPDATE_REGION_MUTATION = gql`
   mutation UpdateRegionMutation($id: String!, $input: UpdateRegionInput!) {
     updateRegion(id: $id, input: $input) {

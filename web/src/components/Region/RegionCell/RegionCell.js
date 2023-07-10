@@ -1,6 +1,8 @@
 // IMPORTING PACKAGES/MOFDULES
 import Region from 'src/components/Region/Region'
 
+// QUERIES AND MUTATIONS
+// QUERY TO FIND A MUTATION BY ID
 export const QUERY = gql`
   query FindRegionById($id: String!) {
     region: region(id: $id) {

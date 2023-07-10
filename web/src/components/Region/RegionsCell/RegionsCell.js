@@ -3,6 +3,8 @@ import { Link, routes } from '@redwoodjs/router'
 
 import Regions from 'src/components/Region/Regions'
 
+// QUERIES AND MUTATIONS
+// QUERY TO FETCH ALL REGIONS
 export const QUERY = gql`
   query FindRegions {
     regions {

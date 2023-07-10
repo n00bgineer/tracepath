@@ -1,9 +1,12 @@
+// IMPORTING PACKAGE/MODULES
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { formatEnum, jsonDisplay, timeTag } from 'src/lib/formatters'
 
+// QUERIES AND MUTATIONS
+// MUTATION TO DELETE A REGION
 const DELETE_REGION_MUTATION = gql`
   mutation DeleteRegionMutation($id: String!) {
     deleteRegion(id: $id) {

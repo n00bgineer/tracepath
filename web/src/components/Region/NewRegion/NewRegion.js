@@ -1,9 +1,12 @@
+// IMPORTING PACKAGE/MODULES
 import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import RegionForm from 'src/components/Region/RegionForm'
 
+// QUERIES AND MUTATIONS
+// CREATE NEW REGION MUTATION
 const CREATE_REGION_MUTATION = gql`
   mutation CreateRegionMutation($input: CreateRegionInput!) {
     createRegion(input: $input) {

@@ -6,6 +6,8 @@ import { toast } from '@redwoodjs/web/toast'
 import { QUERY } from 'src/components/Region/RegionsCell'
 import { formatEnum, jsonTruncate, timeTag, truncate } from 'src/lib/formatters'
 
+// QUERIES AND MUTATIONS
+// MUTATION TO DELETE A REGION
 const DELETE_REGION_MUTATION = gql`
   mutation DeleteRegionMutation($id: String!) {
     deleteRegion(id: $id) {
