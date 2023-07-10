@@ -17,16 +17,16 @@ const CustomTab = styled(MuiTab)(({ theme }) => ({
 
   // SIZE STYLES
   '&.MuiTab-sizeSmall': {
-    padding: '2.5px 5px!important',
+    padding: '0x 5px!important',
     fontSize: '0.875rem!important',
   },
   '&.MuiTab-sizeMedium': {
-    padding: '5x 10px!important',
-    fontSize: '1rem!important',
+    padding: '0x 10px!important',
+    fontSize: '0.8rem!important',
   },
   '&.MuiTab-sizeLarge': {
-    padding: '15px 25px',
-    fontSize: '1.143rem',
+    padding: '0px 25px',
+    fontSize: '1rem',
     minHeight: '61px',
   },
 
@@ -43,8 +43,8 @@ const CustomTab = styled(MuiTab)(({ theme }) => ({
 
   // COLOR STYLES
   '&.MuiTab-primary.Mui-selected': {
-    background: `linear-gradient(to top, ${theme.palette.primary.dark}, ${theme.palette.primary.main}, ${theme.palette.primary.main})`,
-    color: '#FFF',
+    background: `#FFF`,
+    color: '#000',
   },
   '&.MuiTab-secondary.Mui-selected': {
     background: `linear-gradient(to top, ${theme.palette.secondary.dark}, ${theme.palette.secondary.main}, ${theme.palette.secondary.main})`,
@@ -71,13 +71,9 @@ const Tab = ({ size, color, ...props }) => {
   return (
     <CustomTab
       {...props}
-      className={
-        (props.className ? props.className : '') +
-        ' ' +
-        sizeClass +
-        ' ' +
-        colorClass
-      }
+      className={`${
+        props.className ? props.className : ''
+      } ${sizeClass} ${colorClass}`}
     />
   )
 }
