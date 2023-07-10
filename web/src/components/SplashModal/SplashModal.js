@@ -1,5 +1,4 @@
 // IMPORTING PACKAGES/MODULES
-
 import { useEffect, useState } from 'react'
 
 import {
@@ -8,7 +7,6 @@ import {
   Typography,
   styled,
 } from '@mui/material'
-import './splashModal.css'
 import { useRecoilState } from 'recoil'
 
 import { useAuth } from 'src/auth'
@@ -18,6 +16,24 @@ export const LinearProgress = styled(MuiLinearProgress)(() => ({
   '&.MuiLinearProgress-root': {
     minWidth: '200px',
     borderRadius: '9999px',
+  },
+}))
+
+// CUSTOM COMPONENTS
+const CustomBox = styled(Box)(() => ({
+  '&.splash-modal > .splash-modal-content-container': {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    minWidth: '20%',
+  },
+  '& .splash-modal-content-container > .logo': {
+    height: '100px',
+    marginBottom: '15px',
+  },
+  '& .splash-loader-text': {
+    marginTop: '10px',
   },
 }))
 
@@ -49,7 +65,7 @@ const SplashModal = () => {
   }, [loading, isAuthenticated, account])
 
   return (
-    <Box
+    <CustomBox
       className="full-modal splash-modal"
       sx={{ bgcolor: 'background.default' }}
     >
@@ -65,7 +81,7 @@ const SplashModal = () => {
           {loaderText}
         </Typography>
       </Box>
-    </Box>
+    </CustomBox>
   )
 }
 
