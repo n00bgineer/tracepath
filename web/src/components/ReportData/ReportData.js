@@ -2,11 +2,10 @@
 import { useState } from 'react'
 
 import { OpenInNew, Shield, ShutterSpeed } from '@mui/icons-material'
-import { Box, Typography, useMediaQuery } from '@mui/material'
+import { Box, Typography, styled, useMediaQuery } from '@mui/material'
 
 import { Link as RedwoodLink, routes } from '@redwoodjs/router'
 
-import './reportData.css'
 import DataLoading from '../DataLoading/DataLoading'
 import HopTimeline from '../HopTimeline/HopTimeline'
 import IconButton from '../IconButton/IconButton'
@@ -16,6 +15,31 @@ import Tab from '../Tab/Tab'
 import TabPanel from '../TabPanel/TabPanel'
 import Tabs from '../Tabs/Tabs'
 
+// CUSTOM COMPONENTS
+// CUSTOM BOX COMPONENT
+const CustomBox = styled(Box)(() => ({
+  '&.report-data-container': {
+    margin: '10px 0px',
+  },
+  '& .report-title-container': {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  '& .report-title': {
+    fontSize: '1.25em',
+    fontWeight: '600',
+  },
+  '& .report-subtitle': {
+    marginBottom: '5px',
+  },
+  '& .report-sitemeta-tabs-container': {
+    margin: '5px 0px',
+  },
+  '& .report-tabs-container': {
+    margin: '15px 0px',
+  },
+}))
 const ReportData = ({ data, hideLink, pointData, ...props }) => {
   // SETTING LOCAL VARIABLES
   const scores = {
@@ -69,7 +93,7 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
   }
 
   return (
-    <Box
+    <CustomBox
       {...props}
       className={`${
         props.className ? props.className : ''
@@ -158,7 +182,7 @@ const ReportData = ({ data, hideLink, pointData, ...props }) => {
           )}
         </TabPanel>
       </Box>
-    </Box>
+    </CustomBox>
   )
 }
 
