@@ -8,7 +8,6 @@ import {
   Chip,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import './select.css'
 
 // CUSTOM COMPONENTS
 const CustomBox = styled(Box)(() => ({

@@ -1,7 +1,6 @@
 // IMPORTING PACKAGES/MODULES
 import { Box, Drawer as MuiDrawer, styled } from '@mui/material'
 
-import './sideNavigation.css'
 import { useAuth } from 'src/auth'
 
 import SideNavigationElement from '../SideNavigationElement/SideNavigationElement'
@@ -11,6 +10,24 @@ import SideNavigationElement from '../SideNavigationElement/SideNavigationElemen
 const SideNavigationDrawer = styled(MuiDrawer)(() => ({
   '& .MuiPaper-root': {
     padding: '10px',
+  },
+  '& .side-navigation-logo': {
+    marginBottom: '10px',
+  },
+  '& .side-navigation-logo-small': {
+    width: '30px',
+    height: '30px',
+  },
+  '& .side-navigation-logo-medium': {
+    width: '50px',
+    height: '50px',
+  },
+  '& .side-navigation-logo-large': {
+    width: '60px',
+    height: '60px',
+  },
+  '& .side-navigation-top-actions': {
+    flexGrow: '1',
   },
 }))
 

@@ -6,7 +6,6 @@ import {
 } from '@mui/material'
 
 import { Link as RedwoodLink } from '@redwoodjs/router'
-import './sideNavigationElement.css'
 
 // CUSTOM COMPONENTS
 // CUSTOM LIST ITEM BUTTON COMPONENT
