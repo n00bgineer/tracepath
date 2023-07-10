@@ -11,6 +11,18 @@ import { styled } from '@mui/material/styles'
 import './select.css'
 
 // CUSTOM COMPONENTS
+const CustomBox = styled(Box)(() => ({
+  /* MARGIN STYLES */
+  '&.MuiSelect-margin-small': {
+    marginBottom: '5px',
+  },
+  '&.MuiSelect-margin-medium': {
+    marginBottom: '12.5px',
+  },
+  '&.MuiSelect-margin-large': {
+    marginBottom: '20px',
+  },
+}))
 const CustomMenuItem = styled(MuiMenuItem)(() => ({
   // ROOT STYLES
   '&.MuiMenuItem-root': {
@@ -121,7 +133,7 @@ const Select = ({
   else if (margin === 'large') marginClass = 'MuiSelect-margin-large'
 
   return (
-    <Box className={marginClass}>
+    <CustomBox className={marginClass}>
       <CustomSelect
         {...props}
         notched={false}
@@ -175,7 +187,7 @@ const Select = ({
           </Typography>
         </CustomFormHelperText>
       )}
-    </Box>
+    </CustomBox>
   )
 }
 export default Select
