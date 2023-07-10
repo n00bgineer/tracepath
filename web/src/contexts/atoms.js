@@ -3,7 +3,6 @@ import { atom } from 'recoil'
 
 import global from './global'
 
-// STORING MODAL TYPE
 export const reportAtom = atom({
   key: 'recentReport',
   default: null,
