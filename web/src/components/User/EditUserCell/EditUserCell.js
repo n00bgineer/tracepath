@@ -1,9 +1,12 @@
+// IMPORTING PACKAGES/MODULES
 import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import UserForm from 'src/components/User/UserForm'
 
+// QUERIES AND MUTATIONS
+// QUERY TO FETCH A USER BY ID
 export const QUERY = gql`
   query EditUserById($id: String!) {
     user: user(id: $id) {
@@ -17,6 +20,8 @@ export const QUERY = gql`
     }
   }
 `
+
+// MUTATION TO UPDATE A REPORT BY ID
 export const UPDATE_USER_MUTATION = gql`
   mutation UpdateUserMutation($id: String!, $input: UpdateUserInput!) {
     updateUser(id: $id, input: $input) {

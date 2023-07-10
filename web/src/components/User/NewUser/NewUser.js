@@ -1,9 +1,12 @@
+// IMPORTING PACKAGES/MODULES
 import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import UserForm from 'src/components/User/UserForm'
 
+// QUERIES AND MUTATIONS
+// MUTATION TO CREATE A NEW USER
 export const CREATE_USER_MUTATION = gql`
   mutation CreateUserMutation($input: CreateUserInput!) {
     createUser(input: $input) {
@@ -17,6 +20,8 @@ export const CREATE_USER_MUTATION = gql`
     }
   }
 `
+
+// MUTATION TO SIGNIN BY GOOGLE
 export const CREATE_GOOGLE_USER_MUTATION = gql`
   mutation CreateGoogleUserMutation($input: CreateUserInput!) {
     createGoogleUser(input: $input) {

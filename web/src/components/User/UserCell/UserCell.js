@@ -4,6 +4,8 @@ import { routes } from '@redwoodjs/router'
 import ScreenLoading from 'src/components/ScreenLoading/ScreenLoading'
 import User from 'src/components/User/User'
 
+// QUERIES AND MUTATIONS
+// QUERY TO FETCH A USER BY ID
 export const QUERY = gql`
   query FindUserById($id: String!) {
     user: user(id: $id) {

@@ -1,7 +1,10 @@
+// IMPORTING PACKAGES/MODULES
 import { Link, routes } from '@redwoodjs/router'
 
 import Users from 'src/components/User/Users'
 
+// QUERIES AND MUTATIONS
+// QUERY TO FETCH USERS
 export const QUERY = gql`
   query FindUsers {
     users {

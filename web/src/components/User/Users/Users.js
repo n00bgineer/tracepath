@@ -1,3 +1,4 @@
+// IMPORTING PACAKGES/MODULES
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
@@ -5,6 +6,8 @@ import { toast } from '@redwoodjs/web/toast'
 import { QUERY } from 'src/components/User/UsersCell'
 import { formatEnum, timeTag, truncate } from 'src/lib/formatters'
 
+// QUERIES AND MUTATIONS
+// MUTATION TO DELETE A USER
 const DELETE_USER_MUTATION = gql`
   mutation DeleteUserMutation($id: String!) {
     deleteUser(id: $id) {
