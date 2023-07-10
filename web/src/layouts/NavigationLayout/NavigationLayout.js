@@ -11,12 +11,11 @@ import {
   Logout,
   LogoutOutlined,
 } from '@mui/icons-material'
-import { Box, useMediaQuery } from '@mui/material'
+import { Box, styled, useMediaQuery } from '@mui/material'
 import { useRecoilState } from 'recoil'
 
 import { routes } from '@redwoodjs/router'
 
-import './navigationLayout.css'
 import { useAuth } from 'src/auth'
 import BottomNavigation from 'src/components/BottomNavigation/BottomNavigation'
 import PositionedScreen from 'src/components/PositionedScreen/PositionedScreen'
@@ -30,6 +29,13 @@ import {
 } from 'src/contexts/atoms'
 import global from 'src/contexts/global'
 
+// CUSTOM COMPONENTS
+const CustomBox = styled(Box)(() => ({
+  '&.navigation-layout': {
+    position: 'relative',
+    height: '100%',
+  },
+}))
 const NavigationLayout = ({ children }) => {
   // GETTING AUTH CONTEXT
   const { logOut } = useAuth()
@@ -127,7 +133,7 @@ const NavigationLayout = ({ children }) => {
   }
 
   return (
-    <Box className="navigation-layout">
+    <CustomBox className="navigation-layout">
       {!isMobileViewport ? (
         <BottomNavigation topActions={topActions} />
       ) : (
@@ -139,7 +145,7 @@ const NavigationLayout = ({ children }) => {
         />
       )}
       <PositionedScreen>{children}</PositionedScreen>
-    </Box>
+    </CustomBox>
   )
 }
 
