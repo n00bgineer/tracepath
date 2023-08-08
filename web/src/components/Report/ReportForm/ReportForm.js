@@ -70,12 +70,12 @@ const ReportForm = ({ loading, onSave, regions }) => {
     {
       label: "It might take a minute to load your report, so here's a Panda",
       imgUrl:
-        'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685369472/panda_mi7tab.png',
+        'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685369472/tracepath/assets/panda_mi7tab.png',
     },
     {
       label: "It might take a minute to load your report, so here's a Rhea",
       imgUrl:
-        'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685369489/fawn_dvhyuz.png',
+        'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685369489/tracepath/assets/fawn_dvhyuz.png',
     },
   ]
   const randomLoadingContainerItem =
@@ -481,9 +481,9 @@ const ReportForm = ({ loading, onSave, regions }) => {
       <div className="report-globe-container" ref={globeContainerRef}>
         <Globe
           projection="equirectangular"
-          globeImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685334753/earth-blue-marble_ype7nq.jpg"
-          bumpImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685335416/earth-topology_q6brg8.png"
-          backgroundImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685335571/night-sky_hplesi.png"
+          globeImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685334753/tracepath/assets/earth-blue-marble_ype7nq.jpg"
+          bumpImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335416/tracepath/assets/earth-topology_q6brg8.png"
+          backgroundImageUrl="https://res.cloudinary.com/dgu9rv3om/image/upload/v1685335571/tracepath/assets/night-sky_hplesi.png"
           width={(window.innerWidth - 81) * 0.667}
           height={globeContainerRef.current?.offsetHeight}
           showAtmosphere={true}

@@ -199,7 +199,7 @@ const User = ({ user }) => {
             className="user-menu"
           />
           <img
-            src="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1686219644/An_illustration_of_lush_gren_mountain_forest_again-transformed_mwemx3.jpg"
+            src="https://res.cloudinary.com/dgu9rv3om/image/upload/v1686219644/tracepath/assets/An_illustration_of_lush_gren_mountain_forest_again-transformed_mwemx3.jpg"
             className="user-header-img"
             alt="Lush green mountains"
             onError={setErrorImg}

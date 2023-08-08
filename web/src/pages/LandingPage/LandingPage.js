@@ -139,8 +139,8 @@ const LandingPage = () => {
             <img
               src={
                 isDarkMode
-                  ? 'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685827597/demo-dark_t2rsk2.png'
-                  : 'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685827581/demo-light_dvuhln.png'
+                  ? 'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685827597/tracepath/assets/demo-dark_t2rsk2.png'
+                  : 'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685827581/tracepath/assets/demo-light_dvuhln.png'
               }
               alt="Tracepath Desktop Hero"
               className="hero-desktop-img"
@@ -149,8 +149,8 @@ const LandingPage = () => {
             <img
               src={
                 isDarkMode
-                  ? 'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685900422/demo-dark-mobile_nczznz.png'
-                  : 'https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685900398/demo-light-mobile_rzbpok.png'
+                  ? 'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685900422/tracepath/assets/demo-dark-mobile_nczznz.png'
+                  : 'https://res.cloudinary.com/dgu9rv3om/image/upload/v1685900398/tracepath/assets/demo-light-mobile_rzbpok.png'
               }
               alt="Tracepath Mobile Hero"
               className="hero-mobile-img"
